@@ -2901,7 +2901,8 @@ body.lead-open { overflow: hidden; }
   color: var(--plaster);
   max-width: 14ch;
 }
-.ad-hero-copy > p {
+.ad-hero-copy > p,
+.ad-hero-lead {
   max-width: 540px;
   margin: 0 0 28px;
   font-size: 18px;
@@ -3513,6 +3514,24 @@ body.lead-open { overflow: hidden; }
   .ad-hero { min-height: 100vh; min-height: 100svh; }
   .ad-hero-stage { width: calc(100% - 40px); margin-bottom: 28px; }
   .ad-hero-copy h1 { font-size: 40px; }
+  .ad-hero-lead { display: none; }
+  .ad-hero-actions {
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .ad-hero-actions .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    height: auto;
+    min-height: 38px;
+    padding: 8px 10px;
+    font-size: 11px;
+    letter-spacing: .04em;
+    line-height: 1.25;
+    text-align: center;
+    white-space: normal;
+  }
   .ad-trust { padding: 40px 0; }
   .ad-trust-grid { gap: 28px 16px; }
   .ad-services,
