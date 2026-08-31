@@ -198,8 +198,8 @@
       "<p>Built and handed over</p>" +
       "</article>" +
       "<article>" +
-      icon('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V9h5v11"/><path d="M9 20V5h6v15"/><path d="M15 20v-7h5v7"/><path d="M3 20h18"/></svg>') +
-      "<h3>Bangalore</h3>" +
+      icon('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-5.6 7-11.2A7 7 0 0 0 5 9.8C5 15.4 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.2"/></svg>') +
+      '<h3><span data-counter="8">1</span>+ Places</h3>' +
       "<p>Operational presence</p>" +
       "</article>" +
       "<article>" +
