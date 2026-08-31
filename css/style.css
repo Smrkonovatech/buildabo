@@ -2569,6 +2569,27 @@ body.lead-open { overflow: hidden; }
 @media (max-width: 767px) {
   .portfolio-grid { grid-template-columns: 1fr; gap: 18px; }
   .project-detail-nav { flex-wrap: wrap; }
+  .project-detail-meta {
+    text-align: left;
+  }
+  .project-detail-meta h2 {
+    text-align: left;
+  }
+  .project-detail-meta ul {
+    margin: 0;
+    max-width: none;
+  }
+  .project-detail-meta li,
+  .project-detail-meta li:nth-child(3),
+  .project-detail-meta li:nth-child(n + 4),
+  .project-detail-meta li:last-child {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .project-detail-meta strong,
+  .project-detail-meta span {
+    text-align: left;
+  }
 }
 
 .nav-item.has-drop { position: relative; }
@@ -2901,7 +2922,6 @@ body.lead-open { overflow: hidden; }
   color: var(--plaster);
   max-width: 14ch;
 }
-.ad-hero-copy > p,
 .ad-hero-lead {
   max-width: 540px;
   margin: 0 0 28px;
@@ -3512,26 +3532,45 @@ body.lead-open { overflow: hidden; }
 }
 @media (max-width: 767px) {
   .ad-hero { min-height: 100vh; min-height: 100svh; }
-  .ad-hero-stage { width: calc(100% - 40px); margin-bottom: 28px; }
-  .ad-hero-copy h1 { font-size: 40px; }
+  .ad-hero-stage { width: calc(100% - 32px); margin-bottom: 24px; }
+  .ad-hero-copy h1 {
+    font-size: clamp(26px, 8vw, 32px);
+    line-height: 1.12;
+    max-width: none;
+    margin: 0 0 14px;
+  }
+  .ad-hero-copy h1 br { display: none; }
   .ad-hero-lead { display: none; }
+  .ad-hero-trust {
+    font-size: 10px;
+    letter-spacing: .07em;
+    line-height: 1.5;
+  }
   .ad-hero-actions {
     flex-wrap: nowrap;
     gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
   .ad-hero-actions .btn {
     flex: 1 1 0;
     min-width: 0;
     height: auto;
-    min-height: 38px;
-    padding: 8px 10px;
-    font-size: 11px;
-    letter-spacing: .04em;
-    line-height: 1.25;
+    min-height: 40px;
+    padding: 8px 8px;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 1.2;
     text-align: center;
     white-space: normal;
   }
+  .ad-section-head h2,
+  .ad-cities h2,
+  .ad-final h2 {
+    font-size: clamp(24px, 7.2vw, 32px);
+    line-height: 1.15;
+  }
+  .ad-final p { font-size: 16px; }
+  .ad-kicker { letter-spacing: .12em; }
   .ad-trust { padding: 40px 0; }
   .ad-trust-grid { gap: 28px 16px; }
   .ad-services,
