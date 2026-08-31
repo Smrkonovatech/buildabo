@@ -180,7 +180,7 @@
       '">' +
       '<div class="portfolio-card-media"><img src="' +
       escapeHtml(image) +
-      '" width="1600" height="1200" alt="' +
+      '" width="800" height="600" loading="lazy" decoding="async" alt="' +
       escapeHtml(project.title) +
       " in " +
       escapeHtml(project.location) +
@@ -238,7 +238,7 @@
           '" class="project-card">' +
           '<img src="' +
           escapeHtml(project.images[0]) +
-          '" alt="' +
+          '" width="800" height="600" loading="lazy" decoding="async" alt="' +
           escapeHtml(project.title) +
           " in " +
           escapeHtml(project.location) +
@@ -317,7 +317,9 @@
             '<figure class="project-detail-frame">' +
             '<img src="' +
             escapeHtml(src) +
-            '" alt="' +
+            '" width="1600" height="1000"' +
+            (index ? ' loading="lazy"' : ' fetchpriority="high"') +
+            ' decoding="async" alt="' +
             escapeHtml(project.title) +
             " in " +
             escapeHtml(project.location) +

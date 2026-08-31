@@ -1,36 +1,61 @@
 document.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.ticker.lagSmoothing(0);
+  const isMobile = window.__buildaboMobile === true || window.matchMedia("(max-width: 767px)").matches;
+  const hasGsap = typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined";
+  if (hasGsap) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.ticker.lagSmoothing(isMobile ? 500 : 0);
+  }
 
-  const lenis = new Lenis({
-    autoRaf: false,
-    smoothWheel: true,
-    lerp: 0.1,
-    wheelMultiplier: 1,
-    touchMultiplier: 1.2,
+  document.querySelectorAll("img").forEach((img) => {
+    img.decoding = "async";
+    const inHero = img.closest(".hero, .ad-hero, .logo, .site-header");
+    const projectFrame = img.closest(".project-detail-frame");
+    const firstProject = projectFrame && !projectFrame.previousElementSibling;
+    if ((inHero && !img.closest(".hero-slide-split, .hero-slide-forest")) || firstProject) {
+      if (!img.hasAttribute("fetchpriority")) img.setAttribute("fetchpriority", "high");
+      return;
+    }
+    if (!img.hasAttribute("loading")) img.loading = "lazy";
   });
 
-  lenis.on("scroll", ScrollTrigger.update);
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
-
-  const resumeScroll = () => {
-    if (document.body.classList.contains("lead-open") || document.body.classList.contains("menu-open")) return;
-    lenis.start();
-    lenis.resize();
-  };
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") resumeScroll();
-  });
-  window.addEventListener("focus", resumeScroll);
-  window.addEventListener("pageshow", resumeScroll);
-
-  const sticky = document.querySelector(".sticky-header");
-  lenis.on("scroll", ({ scroll }) => {
-    if (!sticky) return;
-    sticky.classList.toggle("is-visible", scroll > 80);
-  });
+  let lenis;
+  if (isMobile) {
+    lenis = { start() {}, stop() {}, resize() {}, raf() {}, on() {} };
+    const stickyHeader = document.querySelector(".sticky-header");
+    const onWinScroll = () => {
+      if (!stickyHeader) return;
+      stickyHeader.classList.toggle("is-visible", window.scrollY > 80);
+    };
+    window.addEventListener("scroll", onWinScroll, { passive: true });
+    onWinScroll();
+  } else {
+    lenis = new Lenis({
+      autoRaf: false,
+      smoothWheel: true,
+      lerp: 0.1,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.2,
+    });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    const resumeScroll = () => {
+      if (document.body.classList.contains("lead-open") || document.body.classList.contains("menu-open")) return;
+      lenis.start();
+      lenis.resize();
+    };
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") resumeScroll();
+    });
+    window.addEventListener("focus", resumeScroll);
+    window.addEventListener("pageshow", resumeScroll);
+    const sticky = document.querySelector(".sticky-header");
+    lenis.on("scroll", ({ scroll }) => {
+      if (!sticky) return;
+      sticky.classList.toggle("is-visible", scroll > 80);
+    });
+  }
 
   const menuBtns = document.querySelectorAll("[data-open-menu]");
   const closeBtns = document.querySelectorAll("[data-close-menu]");
@@ -54,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.querySelector(".lead-popup.is-open")) return;
     if (mobileMenu && mobileMenu.classList.contains("is-open")) closeMenu();
   });
+  if (mobileMenu) {
   mobileMenu.querySelectorAll(".mobile-nav-toggle").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -70,27 +96,23 @@ document.addEventListener("DOMContentLoaded", () => {
       if (a.getAttribute("href") && a.getAttribute("href") !== "#") closeMenu();
     });
   });
+  }
 
-  if (document.querySelector(".hero-swiper")) {
+  if (typeof Swiper !== "undefined" && document.querySelector(".hero-swiper")) {
     new Swiper(".hero-swiper", {
       effect: "fade",
       fadeEffect: { crossFade: true },
-      loop: true,
-      speed: 900,
-      autoplay: { delay: 5000, disableOnInteraction: false },
+      loop: !isMobile,
+      speed: isMobile ? 500 : 900,
+      autoplay: isMobile ? false : { delay: 5000, disableOnInteraction: false },
       pagination: { el: ".hero-pagination", type: "progressbar" },
     });
   }
 
   const reviewSwipers = [];
-  const ytWarmup = document.createElement("div");
-  ytWarmup.id = "yt-warmup";
-  ytWarmup.hidden = true;
-  ytWarmup.setAttribute("aria-hidden", "true");
-  document.body.appendChild(ytWarmup);
   const ytPlayers = new Map();
   const ytEmbed = (id) =>
-    `https://www.youtube.com/embed/${id}?enablejsapi=1&rel=0&modestbranding=1&playsinline=1&autoplay=0&origin=${encodeURIComponent(window.location.origin)}`;
+    `https://www.youtube.com/embed/${id}?enablejsapi=1&rel=0&modestbranding=1&playsinline=1&autoplay=1&origin=${encodeURIComponent(window.location.origin)}`;
   const ytCommand = (iframe, func) => {
     iframe.contentWindow?.postMessage(JSON.stringify({ event: "command", func, args: [] }), "*");
   };
@@ -101,18 +123,15 @@ document.addEventListener("DOMContentLoaded", () => {
     iframe.title = "YouTube review";
     iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
     iframe.setAttribute("allowfullscreen", "");
+    iframe.loading = "lazy";
     iframe.referrerPolicy = "strict-origin-when-cross-origin";
     iframe.dataset.ytReady = "0";
     iframe.addEventListener("load", () => {
       iframe.dataset.ytReady = "1";
     }, { once: true });
-    ytWarmup.appendChild(iframe);
     ytPlayers.set(id, iframe);
     return iframe;
   };
-  [...new Set(
-    [...document.querySelectorAll(".review-video-card[data-yt]")].map((card) => card.dataset.yt).filter(Boolean)
-  )].forEach((id) => getYtIframe(id));
   const stopReviewVideos = () => {
     document.querySelectorAll(".review-video-card video").forEach((video) => video.pause());
     document.querySelectorAll(".review-video-card[data-yt]").forEach((card) => {
@@ -120,17 +139,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     ytPlayers.forEach((iframe) => {
       ytCommand(iframe, "pauseVideo");
-      ytWarmup.appendChild(iframe);
+      iframe.remove();
     });
   };
   const anyReviewPlaying = () =>
     [...document.querySelectorAll(".review-video-card video")].some((v) => !v.paused) ||
     !!document.querySelector(".review-video-card.is-playing iframe");
   document.querySelectorAll(".review-video-swiper, .ig-reel-swiper").forEach((el) => {
+    if (typeof Swiper === "undefined") return;
     const wrapper = el.querySelector(".swiper-wrapper");
     if (!wrapper) return;
     const originals = [...wrapper.querySelectorAll(".swiper-slide")];
-    for (let i = 0; i < 5; i += 1) {
+    const copies = isMobile ? 1 : 5;
+    for (let i = 0; i < copies; i += 1) {
       originals.forEach((slide) => {
         const clone = slide.cloneNode(true);
         clone.setAttribute("aria-hidden", "true");
@@ -142,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
       slidesPerView: 1,
       spaceBetween: isIg ? 28 : 16,
       loop: true,
-      loopAdditionalSlides: 8,
+      loopAdditionalSlides: isMobile ? 2 : 8,
       speed: isIg ? 6500 : 7000,
       grabCursor: true,
       allowTouchMove: true,
@@ -163,6 +184,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     swiper.autoplay?.start();
     reviewSwipers.push(swiper);
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (!anyReviewPlaying()) swiper.autoplay?.start();
+          } else {
+            swiper.autoplay?.stop();
+          }
+        });
+      }, { threshold: 0.12 });
+      io.observe(el);
+    }
   });
   const pauseReviewCarousels = () => reviewSwipers.forEach((s) => s.autoplay?.stop());
   const resumeReviewCarousels = () => {
@@ -227,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const teamEl = document.querySelector(".team-swiper");
-  if (teamEl) {
+  if (typeof Swiper !== "undefined" && teamEl) {
     const teamSwiper = new Swiper(teamEl, {
       slidesPerView: 1,
       spaceBetween: 15,
@@ -243,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const testimonialEl = document.querySelector(".testimonial-swiper");
-  if (testimonialEl) {
+  if (typeof Swiper !== "undefined" && testimonialEl) {
     const originals = [...testimonialEl.querySelectorAll(".swiper-slide")];
     originals.forEach((slide) => {
       const clone = slide.cloneNode(true);
@@ -280,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  if (document.querySelector(".project-swiper")) {
+  if (typeof Swiper !== "undefined" && document.querySelector(".project-swiper")) {
     new Swiper(".project-swiper", {
       slidesPerView: 1,
       spaceBetween: 16,
@@ -299,7 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  if (document.querySelector(".history-swiper")) {
+  if (typeof Swiper !== "undefined" && document.querySelector(".history-swiper")) {
     new Swiper(".history-swiper", {
       slidesPerView: 1.15,
       spaceBetween: 16,
@@ -313,6 +346,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll("[data-skill]").forEach((el) => {
     const pct = Number(el.dataset.skill);
+    if (isMobile || !hasGsap) {
+      el.style.width = pct + "%";
+      return;
+    }
     ScrollTrigger.create({
       trigger: el,
       start: "top 85%",
@@ -345,6 +382,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-counter]").forEach((el) => {
     const end = Number(el.dataset.counter);
     const decimals = (String(el.dataset.counter).split(".")[1] || "").length;
+    if (isMobile || !hasGsap) {
+      el.textContent = decimals ? end.toFixed(decimals) : String(end);
+      return;
+    }
     const obj = { val: decimals ? 0 : 1 };
     ScrollTrigger.create({
       trigger: el,
@@ -363,6 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  if (hasGsap && !isMobile) {
   gsap.utils.toArray(".js-fade").forEach((el) => {
     const y = Number(el.dataset.y || 50);
     const delay = Number(el.dataset.delay || 0);
@@ -397,10 +439,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     );
   });
+  }
 
   const track = document.querySelector(".service-track");
   const stage = document.querySelector(".services-stage");
   if (track && stage) {
+    const startMarquee = () => {
+      if (track.querySelector("[data-marquee-clone]")) return;
+      [...track.children].forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        clone.dataset.marqueeClone = "true";
+        track.appendChild(clone);
+      });
+      stage.classList.add("is-marquee");
+    };
+    if (isMobile || !hasGsap) {
+      startMarquee();
+    } else {
     ScrollTrigger.matchMedia({
       "(min-width: 768px)": function () {
         const fromX = () => window.innerWidth;
@@ -424,23 +480,18 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       "(max-width: 767px)": function () {
         gsap.set(track, { clearProps: "transform,x" });
-        const clones = [...track.children].map((card) => {
-          const clone = card.cloneNode(true);
-          clone.setAttribute("aria-hidden", "true");
-          clone.dataset.marqueeClone = "true";
-          track.appendChild(clone);
-          return clone;
-        });
-        stage.classList.add("is-marquee");
+        startMarquee();
         return () => {
           stage.classList.remove("is-marquee");
-          clones.forEach((clone) => clone.remove());
+          track.querySelectorAll("[data-marquee-clone]").forEach((clone) => clone.remove());
           gsap.set(track, { clearProps: "transform,x" });
         };
       },
     });
+    }
   }
 
+  if (hasGsap && !isMobile) {
   gsap.utils.toArray(".process-card").forEach((card, i) => {
     gsap.from(card, {
       x: 130,
@@ -451,6 +502,7 @@ document.addEventListener("DOMContentLoaded", () => {
       scrollTrigger: { trigger: ".process-cards", start: "top 80%" },
     });
   });
+  }
 
   const newsForm = document.querySelector(".news-form");
   if (newsForm) {
@@ -655,10 +707,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  ScrollTrigger.addEventListener("refresh", () => lenis.resize());
-  ScrollTrigger.refresh();
+  if (hasGsap) {
+    ScrollTrigger.addEventListener("refresh", () => lenis.resize());
+    if (!isMobile) ScrollTrigger.refresh();
+  }
   window.addEventListener("load", () => {
     lenis.resize();
-    ScrollTrigger.refresh();
+    if (hasGsap && !isMobile) ScrollTrigger.refresh();
   });
+
+  const igMount = document.querySelector(".ig-feed-embed, [class*='elfsight-app-']");
+  if (igMount) {
+    const loadIg = () => {
+      if (document.querySelector("script[src*='elfsightcdn.com']")) return;
+      const s = document.createElement("script");
+      s.src = "https://elfsightcdn.com/platform.js";
+      s.async = true;
+      document.body.appendChild(s);
+    };
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          loadIg();
+          io.disconnect();
+        }
+      }, { rootMargin: "800px" });
+      io.observe(igMount);
+    } else {
+      window.addEventListener("load", loadIg, { once: true });
+    }
+  }
 });

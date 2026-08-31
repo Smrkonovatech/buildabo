@@ -28,8 +28,8 @@
   function logo() {
     return (
       '<a href="index.html" class="logo" aria-label="buildabo — interior designers and home construction in Bangalore">' +
-      '<img class="logo-mark" src="assets/logo-mark.png" alt="" />' +
-      '<img class="logo-word" src="assets/buildabo.svg" alt="buildabo" />' +
+      '<img class="logo-mark" src="assets/logo-mark.png" alt="" width="36" height="36" decoding="async" />' +
+      '<img class="logo-word" src="assets/buildabo.svg" alt="buildabo" width="120" height="22" decoding="async" />' +
       "</a>"
     );
   }

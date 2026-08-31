@@ -20,31 +20,10 @@
   <meta property="og:image" content="https://buildabo.in/assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink: "#2F3A1C",
-            body: "#4F4C43",
-            line: "#4F4C43",
-            mute: "#D7C3A4",
-            plaster: "#F2EBD9",
-            terracotta: "#AB5830",
-            forest: "#2F3A1C",
-            sandstone: "#D7C3A4",
-            ochre: "#C48A3A",
-          },
-          fontFamily: { satoshi: ["Satoshi", "sans-serif"], serif: ["DM Serif Display", "serif"], barlow: ["Satoshi", "sans-serif"], dm: ["Satoshi", "sans-serif"] },
-        },
-      },
-    };
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="css/style.css?v=adform17" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" /></noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.css" media="(min-width: 768px)" />
+  <link rel="stylesheet" href="css/style.css?v=adform20" />
 </head>
 <body class="font-dm page-shell text-body">
   <div data-chrome="sticky"></div>
@@ -73,12 +52,11 @@
     <footer data-chrome="footer"></footer>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="js/projects.js?v=vinayka3"></script>
-  <script src="js/chrome.js?v=adform11"></script>
-  <script src="js/main.js?v=form6"></script>
+  <script>
+  (function(){var m=window.matchMedia("(max-width:767px)").matches;window.__buildaboMobile=m;function s(u){document.write('<script src="'+u+'"><\/script>');}if(!m){s("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js");s("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js");s("https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js");}if(document.querySelector(".swiper"))s("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js");})();
+  </script>
+  <script src="js/projects.js?v=vinayka4"></script>
+  <script src="js/chrome.js?v=adform12"></script>
+  <script src="js/main.js?v=form8"></script>
 </body>
 </html>
