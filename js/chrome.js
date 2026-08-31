@@ -231,7 +231,11 @@
       slot.outerHTML = impactHTML();
     });
     const hasBar = document.querySelector(".impact-bar");
-    const skipImpact = pageFile() === "privacy.html" || pageFile() === "index.html";
+    const skipImpact =
+      pageFile() === "privacy.html" ||
+      pageFile() === "index.html" ||
+      pageFile() === "portfolio.html" ||
+      pageFile() === "contact.html";
     const footerBlock = (hasBar || skipImpact ? "" : impactHTML()) + footerHTML();
     mount('[data-chrome="footer"]', footerBlock, ".site-footer");
     injectWidgets();
