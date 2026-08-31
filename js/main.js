@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const isMobile = window.__buildaboMobile === true || window.matchMedia("(max-width: 767px)").matches;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const skipAnim = isMobile || reduceMotion;
   const hasGsap = typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined";
   if (hasGsap) {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.ticker.lagSmoothing(isMobile ? 500 : 0);
+    if (isMobile) gsap.ticker.lagSmoothing(500, 33);
+    else gsap.ticker.lagSmoothing(0);
   }
 
   document.querySelectorAll("img").forEach((img) => {
@@ -18,8 +21,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!img.hasAttribute("loading")) img.loading = "lazy";
   });
 
+  document.querySelectorAll(".stats-left, .services-stage").forEach((el) => {
+    const revealBg = () => el.classList.add("is-bg-ready");
+    if (!("IntersectionObserver" in window)) {
+      revealBg();
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        revealBg();
+        io.disconnect();
+      }
+    }, { rootMargin: "480px 0px" });
+    io.observe(el);
+  });
+
   let lenis;
-  if (isMobile) {
+  if (isMobile || reduceMotion || typeof Lenis === "undefined") {
     lenis = { start() {}, stop() {}, resize() {}, raf() {}, on() {} };
     const stickyHeader = document.querySelector(".sticky-header");
     const onWinScroll = () => {
@@ -36,10 +54,18 @@ document.addEventListener("DOMContentLoaded", () => {
       wheelMultiplier: 1,
       touchMultiplier: 1.2,
     });
-    lenis.on("scroll", ScrollTrigger.update);
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+    if (hasGsap) {
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+    } else {
+      const tick = (time) => {
+        lenis.raf(time);
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
     const resumeScroll = () => {
       if (document.body.classList.contains("lead-open") || document.body.classList.contains("menu-open")) return;
       lenis.start();
@@ -102,9 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
     new Swiper(".hero-swiper", {
       effect: "fade",
       fadeEffect: { crossFade: true },
-      loop: !isMobile,
+      loop: !skipAnim,
       speed: isMobile ? 500 : 900,
-      autoplay: isMobile ? false : { delay: 5000, disableOnInteraction: false },
+      autoplay: skipAnim ? false : { delay: 5000, disableOnInteraction: false },
       pagination: { el: ".hero-pagination", type: "progressbar" },
     });
   }
@@ -150,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const wrapper = el.querySelector(".swiper-wrapper");
     if (!wrapper) return;
     const originals = [...wrapper.querySelectorAll(".swiper-slide")];
-    const copies = isMobile ? 1 : 5;
+    const copies = 1;
     for (let i = 0; i < copies; i += 1) {
       originals.forEach((slide) => {
         const clone = slide.cloneNode(true);
@@ -163,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
       slidesPerView: 1,
       spaceBetween: isIg ? 28 : 16,
       loop: true,
-      loopAdditionalSlides: isMobile ? 2 : 8,
+      loopAdditionalSlides: 2,
       speed: isIg ? 6500 : 7000,
       grabCursor: true,
       allowTouchMove: true,
@@ -182,9 +208,9 @@ document.addEventListener("DOMContentLoaded", () => {
         1025: { slidesPerView: 2, spaceBetween: isIg ? 56 : 40 },
       },
     });
-    swiper.autoplay?.start();
     reviewSwipers.push(swiper);
     if ("IntersectionObserver" in window) {
+      swiper.autoplay?.stop();
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -346,7 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll("[data-skill]").forEach((el) => {
     const pct = Number(el.dataset.skill);
-    if (isMobile || !hasGsap) {
+    if (skipAnim || !hasGsap) {
       el.style.width = pct + "%";
       return;
     }
@@ -382,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-counter]").forEach((el) => {
     const end = Number(el.dataset.counter);
     const decimals = (String(el.dataset.counter).split(".")[1] || "").length;
-    if (isMobile || !hasGsap) {
+    if (skipAnim || !hasGsap) {
       el.textContent = decimals ? end.toFixed(decimals) : String(end);
       return;
     }
@@ -404,7 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  if (hasGsap && !isMobile) {
+  if (hasGsap && !skipAnim) {
   gsap.utils.toArray(".js-fade").forEach((el) => {
     const y = Number(el.dataset.y || 50);
     const delay = Number(el.dataset.delay || 0);
@@ -454,7 +480,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       stage.classList.add("is-marquee");
     };
-    if (isMobile || !hasGsap) {
+    if (isMobile || reduceMotion || !hasGsap) {
       startMarquee();
     } else {
     ScrollTrigger.matchMedia({
@@ -491,7 +517,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  if (hasGsap && !isMobile) {
+  if (hasGsap && !skipAnim) {
   gsap.utils.toArray(".process-card").forEach((card, i) => {
     gsap.from(card, {
       x: 130,
@@ -709,11 +735,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (hasGsap) {
     ScrollTrigger.addEventListener("refresh", () => lenis.resize());
-    if (!isMobile) ScrollTrigger.refresh();
+    if (!skipAnim) ScrollTrigger.refresh();
   }
   window.addEventListener("load", () => {
     lenis.resize();
-    if (hasGsap && !isMobile) ScrollTrigger.refresh();
+    if (hasGsap && !skipAnim) ScrollTrigger.refresh();
   });
 
   const igMount = document.querySelector(".ig-feed-embed, [class*='elfsight-app-']");
@@ -731,7 +757,7 @@ document.addEventListener("DOMContentLoaded", () => {
           loadIg();
           io.disconnect();
         }
-      }, { rootMargin: "800px" });
+      }, { rootMargin: "400px" });
       io.observe(igMount);
     } else {
       window.addEventListener("load", loadIg, { once: true });

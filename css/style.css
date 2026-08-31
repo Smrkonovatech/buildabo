@@ -91,6 +91,18 @@ html.lenis,
 html.lenis body {
   height: auto;
 }
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
 
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
@@ -1017,11 +1029,20 @@ body.lead-open { overflow: hidden; }
 .stats-left {
   flex: 1 1 58%;
   min-width: 0;
-  background: center / cover no-repeat url("../assets/stats-bg.webp?v=theme1");
+  background-color: #2a241c;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 50px 36px;
+}
+@media (min-width: 768px) {
+  .stats-left { background-image: url("../assets/stats-bg.webp?v=theme1"); }
+}
+.stats-left.is-bg-ready {
+  background-image: url("../assets/stats-bg.webp?v=theme1");
 }
 .stat-circle {
   width: 243px;
@@ -1202,7 +1223,16 @@ body.lead-open { overflow: hidden; }
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: center / cover no-repeat url("../assets/about-history-1.webp?v=pdf1");
+  background-color: #1c2414;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media (min-width: 768px) {
+  .services-stage { background-image: url("../assets/about-history-1.webp?v=pdf1"); }
+}
+.services-stage.is-bg-ready {
+  background-image: url("../assets/about-history-1.webp?v=pdf1");
 }
 .services-stage::before {
   content: "";
@@ -1511,6 +1541,11 @@ body.lead-open { overflow: hidden; }
   background: var(--sandstone) url("../assets/process-bg-l.webp") left bottom / auto no-repeat;
   position: relative;
 }
+.process-wrap .container-site {
+  position: relative;
+  z-index: 1;
+  padding-top: 150px;
+}
 .process-wrap::after {
   content: "";
   position: absolute;
@@ -1663,7 +1698,19 @@ body.lead-open { overflow: hidden; }
 .nav-circle:hover { background: var(--terracotta); color: var(--plaster); }
 
 /* FAQ */
-.faq-section { background: var(--forest); color: var(--plaster); position: relative; overflow: hidden; }
+.faq-section {
+  background: var(--forest);
+  color: var(--plaster);
+  position: relative;
+  overflow: hidden;
+  padding: 150px 0;
+}
+.faq-section > div {
+  position: relative;
+  z-index: 1;
+  width: min(733px, calc(100% - 72px));
+  margin-inline: auto;
+}
 .faq-section h2 { color: var(--plaster); }
 .acc-item { border-bottom: 1px solid rgba(217,217,217,.25); }
 .acc-btn {
@@ -1699,10 +1746,12 @@ body.lead-open { overflow: hidden; }
 .acc-item.is-open .acc-btn span::after { opacity: 0; }
 .acc-body { display: none; color: var(--sandstone); padding: 0 0 22px; max-width: 520px; }
 .acc-item.is-open .acc-body { display: block; }
-.faq-float { position: absolute; width: 20vw; bottom: 0; left: 0; }
+.faq-float { position: absolute; z-index: 0; width: 20vw; bottom: 0; left: 0; pointer-events: none; }
 .faq-float.right { width: 15vw; left: auto; right: 40px; top: 40px; bottom: auto; }
 
 @media (max-width: 1199px) {
+  .faq-section { padding: 100px 0; }
+  .process-wrap .container-site { padding-top: 100px; }
   .process-card { width: 260px; padding: 36px 28px; }
   .process-card:nth-child(n+2) { margin-left: -32px; }
   .process-card h3 { font-size: 16px; margin-top: 20px; }
@@ -1715,6 +1764,8 @@ body.lead-open { overflow: hidden; }
 }
 @media (max-width: 767px) {
   .tabs-nav { flex-direction: column; gap: 0; }
+  .faq-section { padding: 70px 0; }
+  .process-wrap .container-site { padding-top: 70px; }
   .process-cards { flex-direction: column; align-items: center; }
   .process-card,
   .process-card:nth-child(2),
@@ -4079,6 +4130,7 @@ select.lead-card-input option {
   place-items: center;
 }
 .lead-card-trust-icon svg { width: 22px; height: 22px; }
+
 @media (max-width: 767px) {
   .clients-section .review-video-swiper,
   .ad-quotes .review-video-swiper { margin-top: 36px; }
@@ -4094,10 +4146,6 @@ select.lead-card-input option {
     -webkit-backdrop-filter: none;
   }
   .services-stage::before { backdrop-filter: none; }
-  .about-values,
-  .about-craft,
-  .faq-section,
-  .process-wrap,
   .values-section,
   .ad-services,
   .ad-why,
@@ -4108,7 +4156,9 @@ select.lead-card-input option {
   .ad-area,
   .ad-enquiry,
   .social-presence-section,
-  .clients-section {
+  .clients-section,
+  .about-craft,
+  .about-values {
     content-visibility: auto;
     contain-intrinsic-size: 1px 720px;
   }

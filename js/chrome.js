@@ -235,6 +235,7 @@
       pageFile() === "privacy.html" ||
       pageFile() === "index.html" ||
       pageFile() === "portfolio.html" ||
+      pageFile() === "project.html" ||
       pageFile() === "contact.html";
     const footerBlock = (hasBar || skipImpact ? "" : impactHTML()) + footerHTML();
     mount('[data-chrome="footer"]', footerBlock, ".site-footer");
@@ -348,9 +349,5 @@
     document.body.insertAdjacentHTML("beforeend", whatsappHTML() + popupHTML());
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
+  init();
 })();
