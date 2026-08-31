@@ -25,11 +25,6 @@
     return document.body.classList.contains("ad-page");
   }
 
-  function ctaHref() {
-    if (isAdPage()) return "#enquiry";
-    return pageFile() === "contact.html" ? "#get-in-touch" : "contact.html";
-  }
-
   function logo() {
     return (
       '<a href="index.html" class="logo" aria-label="buildabo — interior designers and home construction in Bangalore">' +
@@ -41,13 +36,9 @@
 
   function startBtn(extraClass) {
     return (
-      '<a href="' +
-      ctaHref() +
-      '" class="btn ' +
+      '<a href="#" class="btn ' +
       extraClass +
-      '"' +
-      (isAdPage() ? " data-open-lead" : "") +
-      '><span>Start a Project</span></a>'
+      '" data-open-lead><span>Start a Project</span></a>'
     );
   }
 
@@ -137,7 +128,7 @@
       '<div class="max-w-xl">' +
       logo() +
       '<p class="mt-5 font-serif text-[22px] leading-snug text-[var(--plaster)]">Crafting homes and spaces that stand the test of time.</p>' +
-      '<p class="mt-3 max-w-md">buildabo is a residential construction company in Bangalore. We offer home construction and work as home interior designers, from foundation to final finish.</p>' +
+      '<p class="mt-3 max-w-md">buildabo is a house construction company in Bangalore. We offer home construction in Bangalore and work as interior designers and home interior designers, from foundation to final finish.</p>' +
       "</div></div>" +
       '<div class="h-px bg-white/20 my-12"></div>' +
       '<div class="foot-grid">' +
@@ -196,6 +187,35 @@
     if (existing) existing.outerHTML = html;
   }
 
+  function impactHTML() {
+    const icon = (svg) => '<span class="impact-icon" aria-hidden="true">' + svg + "</span>";
+    return (
+      '<section class="impact-bar" aria-label="buildabo at a glance">' +
+      '<div class="container-site impact-bar-grid">' +
+      "<article>" +
+      icon('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.2 12 4l8 7.2"/><path d="M6.5 10.2V20h11V10.2"/><circle cx="9.2" cy="13.6" r="1.15"/><path d="M7.6 19.5v-3.1h3.2v3.1"/></svg>') +
+      '<h3><span data-counter="100">1</span>+ Projects</h3>' +
+      "<p>Built and handed over</p>" +
+      "</article>" +
+      "<article>" +
+      icon('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V9h5v11"/><path d="M9 20V5h6v15"/><path d="M15 20v-7h5v7"/><path d="M3 20h18"/></svg>') +
+      "<h3>Bangalore</h3>" +
+      "<p>Operational presence</p>" +
+      "</article>" +
+      "<article>" +
+      icon('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>') +
+      '<h3><span data-counter="10">1</span>+ Years</h3>' +
+      "<p>Of craft</p>" +
+      "</article>" +
+      "<article>" +
+      icon('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h11l3 3v13H5V4z"/><path d="M16 4v4h4"/><path d="M8 12h8M8 15h6"/><path d="M14.2 18.2 18 21l1.4-1.4-3.5-2.4z"/></svg>') +
+      '<h3><span data-counter="124">1</span> Designs</h3>' +
+      "<p>Ready-to-build options</p>" +
+      "</article>" +
+      "</div></section>"
+    );
+  }
+
   function init() {
     mount('[data-chrome="sticky"]', stickyHTML(), ".sticky-header");
     mount('[data-chrome="mobile"]', mobileHTML(), ".mobile-menu");
@@ -207,7 +227,13 @@
       heroNav.innerHTML = desktopNav();
     }
 
-    mount('[data-chrome="footer"]', footerHTML(), ".site-footer");
+    document.querySelectorAll('[data-chrome="impact"]').forEach((slot) => {
+      slot.outerHTML = impactHTML();
+    });
+    const hasBar = document.querySelector(".impact-bar");
+    const skipImpact = pageFile() === "privacy.html" || pageFile() === "index.html";
+    const footerBlock = (hasBar || skipImpact ? "" : impactHTML()) + footerHTML();
+    mount('[data-chrome="footer"]', footerBlock, ".site-footer");
     injectWidgets();
     document.querySelectorAll('.foot-social a[href="#"]').forEach((a) => {
       a.addEventListener("click", (e) => e.preventDefault());
@@ -231,6 +257,30 @@
   const LEAD_FLAG =
     '<svg class="lead-card-flag" viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.33" fill="#FF9933"/><rect y="5.33" width="24" height="5.34" fill="#fff"/><rect y="10.67" width="24" height="5.33" fill="#138808"/><circle cx="12" cy="8" r="1.7" fill="none" stroke="#000080" stroke-width=".75"/></svg>';
 
+  const PLOT_LOCATIONS = [
+    "North Bangalore",
+    "Sarjapur",
+    "KR Puram",
+    "Hoskote",
+    "Chandapura",
+    "Devanahalli",
+    "Vidyaranyapura",
+    "Other areas in Bangalore",
+  ];
+
+  function locationSelectHTML(id) {
+    return (
+      '<select class="lead-card-input" id="' +
+      id +
+      '" name="location" required aria-label="Location of your plot">' +
+      '<option value="" disabled selected>Location of your plot*</option>' +
+      PLOT_LOCATIONS.map(function (name) {
+        return '<option value="' + name + '">' + name + "</option>";
+      }).join("") +
+      "</select>"
+    );
+  }
+
   function simpleLeadFields(idPrefix, submitLabel) {
     return (
       '<input class="lead-card-input" id="' + idPrefix + '-name" type="text" name="name" required maxlength="120" placeholder="Full Name*" autocomplete="name" />' +
@@ -239,7 +289,7 @@
       " +91</span>" +
       '<input id="' + idPrefix + '-phone" type="tel" name="phone" required maxlength="15" placeholder="Mobile Number*" inputmode="numeric" autocomplete="tel-national" />' +
       "</div>" +
-      '<input class="lead-card-input" id="' + idPrefix + '-location" type="text" name="location" required maxlength="160" placeholder="Location of your plot*" />' +
+      locationSelectHTML(idPrefix + "-location") +
       '<button type="submit" class="contact-submit">' + submitLabel + "</button>" +
       '<p class="lead-card-legal">*By submitting, you agree to our <a href="privacy.html">Privacy Policy</a>, allowing us to use your information as outlined.</p>' +
       '<p class="contact-form-status" role="status" aria-live="polite" hidden></p>'
@@ -264,9 +314,9 @@
         simpleLeadFields("popup", "Get a Free Consultation") +
         "</form>" +
         '<div class="lead-card-trust">' +
-        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 11a3 3 0 1 0-2-5.2A3 3 0 1 0 8 11"/><path d="M3.5 20a5.5 5.5 0 0 1 8.5-4.6A5.5 5.5 0 0 1 20.5 20"/></svg></span><strong>100+</strong><span>Projects</span></div>' +
+        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11.2 12 4l8 7.2"/><path d="M6.5 10.2V20h11V10.2"/></svg></span><strong>100+</strong><span>Projects</span></div>' +
+        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h11l3 3v13H5V4z"/><path d="M16 4v4h4"/><path d="M8 12h8M8 15h6"/></svg></span><strong>124</strong><span>Designs</span></div>' +
         '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><strong>10+</strong><span>Years</span></div>' +
-        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 2.1 5.3H20l-4.4 3.3 1.7 5.4L12 14.7 6.7 17l1.7-5.4L4 8.3h5.9z"/></svg></span><strong>4.9</strong><span>Rating</span></div>' +
         "</div></div></div>"
       );
     }
@@ -291,9 +341,7 @@
 
   function injectWidgets() {
     if (document.querySelector(".whatsapp-fab")) return;
-    let html = whatsappHTML();
-    if (!/^(contact\.html|privacy\.html)$/.test(pageFile())) html += popupHTML();
-    document.body.insertAdjacentHTML("beforeend", html);
+    document.body.insertAdjacentHTML("beforeend", whatsappHTML() + popupHTML());
   }
 
   if (document.readyState === "loading") {

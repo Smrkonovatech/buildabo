@@ -164,8 +164,14 @@
     };
   }
 
+  function cardImage(project) {
+    const src = String(project.images[0] || "");
+    const name = src.split("/").pop();
+    return name ? "assets/portfolio/" + name : src;
+  }
+
   function projectCard(project) {
-    const image = project.images[0];
+    const image = cardImage(project);
     return (
       '<a href="' +
       escapeHtml(projectUrl(project.id)) +
@@ -174,7 +180,7 @@
       '">' +
       '<div class="portfolio-card-media"><img src="' +
       escapeHtml(image) +
-      '" alt="' +
+      '" width="1600" height="1200" alt="' +
       escapeHtml(project.title) +
       " in " +
       escapeHtml(project.location) +
@@ -260,9 +266,9 @@
     const pair = neighbors(list, project.id);
     const summary = project.about[0] || "";
 
-    document.title = project.title + " | buildabo — " + locationLine(project);
-    setMeta('meta[name="description"]', summary + " Home construction and interior designers in Bangalore by buildabo.", "content");
-    setMeta('meta[property="og:title"]', project.title + " | buildabo", "content");
+    document.title = project.title + " | Home Construction in Bangalore | buildabo";
+    setMeta('meta[name="description"]', summary + " Home construction in Bangalore by buildabo, a house construction company and interior designers.", "content");
+    setMeta('meta[property="og:title"]', project.title + " | Home Construction in Bangalore | buildabo", "content");
     setMeta('meta[property="og:description"]', summary, "content");
     setMeta('meta[property="og:image"]', HOST + project.images[0], "content");
     setCanonical("project.html?id=" + encodeURIComponent(project.id));

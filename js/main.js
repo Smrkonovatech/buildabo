@@ -511,7 +511,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && leadPopup.classList.contains("is-open")) closeLeadPopup(true);
     });
-    if (!isAdPage && sessionStorage.getItem("buildabo-lead-dismissed") !== "1") {
+    const page = (window.location.pathname.replace(/\\/g, "/").split("/").pop() || "index.html").toLowerCase();
+    const skipAutoLead = isAdPage || page === "contact.html" || page === "privacy.html";
+    if (!skipAutoLead && sessionStorage.getItem("buildabo-lead-dismissed") !== "1") {
       window.setTimeout(() => openLeadPopup(false), 10000);
     }
   }
