@@ -264,8 +264,8 @@
         simpleLeadFields("popup", "Get a Free Consultation") +
         "</form>" +
         '<div class="lead-card-trust">' +
-        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 11a3 3 0 1 0-2-5.2A3 3 0 1 0 8 11"/><path d="M3.5 20a5.5 5.5 0 0 1 8.5-4.6A5.5 5.5 0 0 1 20.5 20"/></svg></span><strong>25+</strong><span>Projects</span></div>' +
-        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><strong>5+</strong><span>Years</span></div>' +
+        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 11a3 3 0 1 0-2-5.2A3 3 0 1 0 8 11"/><path d="M3.5 20a5.5 5.5 0 0 1 8.5-4.6A5.5 5.5 0 0 1 20.5 20"/></svg></span><strong>100+</strong><span>Projects</span></div>' +
+        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><strong>10+</strong><span>Years</span></div>' +
         '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 2.1 5.3H20l-4.4 3.3 1.7 5.4L12 14.7 6.7 17l1.7-5.4L4 8.3h5.9z"/></svg></span><strong>4.9</strong><span>Rating</span></div>' +
         "</div></div></div>"
       );
