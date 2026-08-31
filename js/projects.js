@@ -266,9 +266,12 @@
     const pair = neighbors(list, project.id);
     const summary = project.about[0] || "";
 
-    document.title = project.title + " | Home Construction in Bangalore | buildabo";
-    setMeta('meta[name="description"]', summary + " Home construction in Bangalore by buildabo, a house construction company and interior designers.", "content");
-    setMeta('meta[property="og:title"]', project.title + " | Home Construction in Bangalore | buildabo", "content");
+    document.title = project.title + " | " + (project.category === "interior" ? "Home Interior Design Bangalore" : "House Construction in Bangalore") + " | buildabo";
+    const seoBit = project.category === "interior"
+      ? " Home interior design in Bangalore by interior designers at buildabo."
+      : " House construction in Bangalore by residential builders at buildabo.";
+    setMeta('meta[name="description"]', summary + seoBit, "content");
+    setMeta('meta[property="og:title"]', document.title, "content");
     setMeta('meta[property="og:description"]', summary, "content");
     setMeta('meta[property="og:image"]', HOST + project.images[0], "content");
     setCanonical("project.html?id=" + encodeURIComponent(project.id));

@@ -128,7 +128,7 @@
       '<div class="max-w-xl">' +
       logo() +
       '<p class="mt-5 font-serif text-[22px] leading-snug text-[var(--plaster)]">Crafting homes and spaces that stand the test of time.</p>' +
-      '<p class="mt-3 max-w-md">buildabo is a house construction company in Bangalore. We offer home construction in Bangalore and work as interior designers and home interior designers, from foundation to final finish.</p>' +
+      '<p class="mt-3 max-w-md">buildabo is an interior design company in Bangalore and a house construction company. Interior designers, home interior designers, and residential builders — house construction and home interior design from foundation to finish.</p>' +
       "</div></div>" +
       '<div class="h-px bg-white/20 my-12"></div>' +
       '<div class="foot-grid">' +
