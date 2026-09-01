@@ -152,6 +152,9 @@
       "<li><a href=\"contact.html\"" +
       currentAttr("contact.html") +
       ">Contact</a></li>" +
+       '<li><a href="privacy.html"' +
+      currentAttr("privacy.html") +
+      ">Privacy Policy</a></li>" +
       "</ul></div>" +
       "<div><h6>CONTACT</h6>" +
       '<p class="mb-1">Company Address</p>' +
@@ -164,16 +167,11 @@
       '<p><a href="tel:+919663635559">9663635559</a> / <a href="tel:+919663656669">9663656669</a></p>' +
       "</div></div>" +
       '<div class="foot-bottom">' +
-      "<p>© 2026 buildabo. All rights reserved.</p>" +
+      "<p>© 2026 buildabo. All rights reserved. | Designed and Developed By <a href='https://www.smrkonova.com/'>Smrkonova</a></p>" +
       '<div class="foot-social">' +
       '<a href="#" aria-label="LinkedIn"><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg></a>' +
       '<a href="https://www.instagram.com/buildabo/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>' +
-      '<a href="#" aria-label="Facebook"><svg viewBox="0 0 320 512" fill="currentColor" aria-hidden="true"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg></a>' +
-      "</div>" +
-      '<p><a href="privacy.html"' +
-      currentAttr("privacy.html") +
-      ">Privacy Policy</a></p>" +
-      "</div></div></footer>"
+      '<a href="#" aria-label="Facebook"><svg viewBox="0 0 320 512" fill="currentColor" aria-hidden="true"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg></a></footer>'
     );
   }
 
@@ -194,7 +192,7 @@
       '<div class="container-site impact-bar-grid">' +
       "<article>" +
       icon('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.2 12 4l8 7.2"/><path d="M6.5 10.2V20h11V10.2"/><circle cx="9.2" cy="13.6" r="1.15"/><path d="M7.6 19.5v-3.1h3.2v3.1"/></svg>') +
-      '<h3><span data-counter="100">1</span>+ Projects</h3>' +
+      '<h3><span data-counter="25">1</span>+ Projects</h3>' +
       "<p>Built and handed over</p>" +
       "</article>" +
       "<article>" +
@@ -204,7 +202,7 @@
       "</article>" +
       "<article>" +
       icon('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>') +
-      '<h3><span data-counter="10">1</span>+ Years</h3>' +
+      '<h3><span data-counter="5">1</span>+ Years</h3>' +
       "<p>Of craft</p>" +
       "</article>" +
       "<article>" +
