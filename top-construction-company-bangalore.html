@@ -38,6 +38,61 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/style.css?v=adform24" />
 </head>
+<style>
+  .trustedSwiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+    background: #c7c7c7;
+  }
+
+  .trustedSwiper .swiper-pagination-bullet-active {
+    background: #e21f2f;
+  }
+
+  #slidetrust {
+    height: 30vh;
+    width: 100%;
+  }
+
+  .trustedSwiper {
+    height: 70%;
+  }
+
+  #trustheader {
+    margin-bottom: 1.2rem;
+    
+  }
+
+  #trustheader > h2{
+    font-size: 32px !important;
+  }
+
+  .trustedSwiper>.swiper-wrapper>.swiper-slide>#trust-img {
+    height: 50%;
+  }
+
+  #trust-img>img {
+    height: 60px;
+    width: 100px;
+    opacity: 100%;
+  }
+
+  @media (max-width:450px) {
+    .trustedSwiper>.swiper-wrapper>.swiper-slide>#trust-img {
+      height: 60%;
+    }
+
+    #slidetrust {
+      height: 40vh;
+      width: 100%;
+    }
+
+    .swiper-pagination {
+      margin-top: 2rem;
+    }
+  }
+</style>
 <body class="font-dm page-shell text-body ad-page">
   <div data-chrome="sticky"></div>
   <div data-chrome="mobile"></div>
@@ -216,6 +271,117 @@
         <p class="ad-projects-more js-fade"><a href="portfolio.html">View all projects →</a></p>
       </div>
     </section>
+  
+    <section class="w-full bg-white py-20 " id="slidetrust">
+
+
+      <div class="text-center mb-20" id="trustheader">
+        <h2 >
+          Our trusted partners
+        </h2>
+      </div>
+
+
+      <div class="swiper trustedSwiper w-full px-8 md:px-20 h-auto">
+
+        <div class="swiper-wrapper h-full">
+
+
+          <div class="swiper-slide flex flex-col items-center justify-center">
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/idecorwala_logo-16686907256593d20f975ccf2.webp" alt="iDecorwala"
+                class="max-h-full max-w-full object-contain" />
+            </div>
+
+            <p class="mt-5 text-base text-gray-700">
+              Idecorwala
+            </p>
+          </div>
+
+
+
+          <div class="swiper-slide flex flex-col items-center justify-center">
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/artisan_final_logo-1668690725659e8af8f27042d.webp" alt="Artisan"
+                class="max-h-full max-w-full object-contain" />
+            </div>
+
+            <p class="mt-5 text-base text-gray-700">
+              Artisan
+            </p>
+          </div>
+
+
+          <!-- Partner 3 -->
+          <div class="swiper-slide flex flex-col items-center justify-center">
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/nippon_paint_logo-1668690725659656321db4e39.webp" alt="Nippon Paint"
+                class="max-h-full max-w-full object-contain" />
+            </div>
+
+            <p class="mt-5 text-base text-gray-700">
+              Nippon Paint
+            </p>
+          </div>
+
+
+          <!-- Partner 4 -->
+          <div class="swiper-slide flex flex-col items-center justify-center">
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/D Partners logo184x83-08.webp" alt="Urban Ladder" class="max-h-full max-w-full object-contain" />
+            </div>
+
+            <p class="mt-5 text-base text-gray-700">
+              Urban Ladder
+            </p>
+          </div>
+
+
+          <!-- Partner 5 -->
+          <div class="swiper-slide flex flex-col items-center justify-center">
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/D Partners logo184x83-12.webp" alt="Spitze"
+                class="max-h-full max-w-full object-contain" />
+            </div>
+
+            <p class="mt-5 text-base text-gray-700">
+              Spitze
+            </p>
+          </div>
+
+
+          <!-- Partner 6 -->
+          <div class="swiper-slide flex flex-col items-center justify-center">
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/fev02.webp" alt="Fevicol" class="max-h-full max-w-full object-contain" />
+            </div>
+
+            <p class="mt-5 text-base text-gray-700">
+              Fevicol
+            </p>
+          </div>
+
+
+          <!-- More partners -->
+          <div class="swiper-slide flex flex-col items-center justify-center">
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/Rehau.webp" alt="Partner"
+                class="max-h-full max-w-full object-contain" />
+            </div>
+
+            <p class="mt-5 text-base text-gray-700">
+              Rehau
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination " id="trustpage"></div>
+
+      </div>
+
+    </section>
 
     <section class="ad-process">
       <div class="container-site">
@@ -389,6 +555,42 @@
       "home interior designers in Bangalore"
     ]
   }
+  </script>
+
+   <script>
+    const trustedSwiper = new Swiper(".trustedSwiper", {
+      slidesPerView: 6,
+      spaceBetween: 30,
+
+      loop: true,
+
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+
+      breakpoints: {
+        0: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+
+        640: {
+          slidesPerView: 3,
+          spaceBetween: 25,
+        },
+
+        1024: {
+          slidesPerView: 6,
+          spaceBetween: 30,
+        },
+      },
+    });
   </script>
 </body>
 </html>
