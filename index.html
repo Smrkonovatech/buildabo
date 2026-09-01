@@ -44,7 +44,9 @@
  
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   
-
+  <script>
+    (function () { var m = window.matchMedia("(max-width:767px)").matches; window.__buildaboMobile = m; function p(h) { var l = document.createElement("link"); l.rel = "preload"; l.as = "script"; l.href = h; document.head.appendChild(l); } if (!m) { p("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"); p("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"); p("https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"); } })();
+  </script>
   <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/style.css?v=adform24" />
@@ -918,9 +920,7 @@ decoding="async"/>
     <footer data-chrome="footer"></footer>
   </div>
 
-  <script>
-    (function () { var m = window.matchMedia("(max-width:767px)").matches; window.__buildaboMobile = m; function s(u) { document.write('<script src="' + u + '"><\/script>'); } if (!m) { s("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"); s("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"); s("https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"); } if (document.querySelector(".swiper")) s("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"); })();
-  </script>
+
   <script defer src="js/projects.js?v=vinayka6"></script>
 <script defer src="js/chrome.js?v=adform15"></script>
 <script defer src="js/main.js?v=form10"></script>
