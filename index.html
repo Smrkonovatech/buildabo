@@ -65,15 +65,44 @@
   .trustedSwiper .swiper-pagination-bullet-active {
     background: #e21f2f;
   }
-  #slidetrust{
+
+  #slidetrust {
     height: 30vh;
     width: 100%;
   }
-  .trustedSwiper{
+
+  .trustedSwiper {
     height: 70%;
   }
-  #trustheader{
+
+  #trustheader {
     margin-bottom: 1.2rem;
+  }
+
+  .trustedSwiper>.swiper-wrapper>.swiper-slide>#trust-img {
+    height: 50%;
+  }
+
+  #trust-img>img {
+    height: 60px;
+    width: 100px;
+    opacity: 100%;
+  }
+
+  @media (max-width:450px) {
+    .trustedSwiper>.swiper-wrapper>.swiper-slide>#trust-img {
+      height: 60%;
+    }
+
+    #slidetrust {
+      height: 40vh;
+      width: 100%;
+    }
+
+    .swiper-pagination {
+      height: auto;
+      margin-top: 2rem;
+    }
   }
 </style>
 
@@ -582,22 +611,23 @@
 
     <section class="w-full bg-white py-20 " id="slidetrust">
 
-      
+
       <div class="text-center mb-20" id="trustheader">
         <h2 class="text-4xl md:text-5xl font-medium text-gray-800">
           Our trusted partners
         </h2>
       </div>
 
-  
+
       <div class="swiper trustedSwiper w-full px-8 md:px-20 h-auto">
 
         <div class="swiper-wrapper h-full">
 
-     
+
           <div class="swiper-slide flex flex-col items-center justify-center">
-            <div class="h-30 w-40 flex items-center justify-center">
-              <img src="./assets/favicon-32.png" alt="iDecorwala" class="max-h-full max-w-full object-contain" />
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/idecorwala_logo-16686907256593d20f975ccf2.webp" alt="iDecorwala"
+                class="max-h-full max-w-full object-contain" />
             </div>
 
             <p class="mt-5 text-base text-gray-700">
@@ -606,10 +636,11 @@
           </div>
 
 
-      
+
           <div class="swiper-slide flex flex-col items-center justify-center">
-            <div class="h-30 w-40 flex items-center justify-center">
-              <img src="./assets/favicon-32.png" alt="Artisan" class="max-h-full max-w-full object-contain" />
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/artisan_final_logo-1668690725659e8af8f27042d.webp" alt="Artisan"
+                class="max-h-full max-w-full object-contain" />
             </div>
 
             <p class="mt-5 text-base text-gray-700">
@@ -620,8 +651,9 @@
 
           <!-- Partner 3 -->
           <div class="swiper-slide flex flex-col items-center justify-center">
-            <div class="h-30 w-40 flex items-center justify-center">
-              <img src="./assets/favicon-32.png" alt="Nippon Paint" class="max-h-full max-w-full object-contain" />
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/nippon_paint_logo-1668690725659656321db4e39.webp" alt="Nippon Paint"
+                class="max-h-full max-w-full object-contain" />
             </div>
 
             <p class="mt-5 text-base text-gray-700">
@@ -632,8 +664,8 @@
 
           <!-- Partner 4 -->
           <div class="swiper-slide flex flex-col items-center justify-center">
-            <div class="h-30 w-40 flex items-center justify-center">
-              <img src="./assets/favicon-32.png" alt="Urban Ladder" class="max-h-full max-w-full object-contain" />
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/Rehau.webp" alt="Urban Ladder" class="max-h-full max-w-full object-contain" />
             </div>
 
             <p class="mt-5 text-base text-gray-700">
@@ -644,8 +676,9 @@
 
           <!-- Partner 5 -->
           <div class="swiper-slide flex flex-col items-center justify-center">
-            <div class="h-30 w-40 flex items-center justify-center">
-              <img src="./assets/favicon-32.png" alt="Spitze" class="max-h-full max-w-full object-contain" />
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/D Partners logo184x83-08.webp" alt="Spitze"
+                class="max-h-full max-w-full object-contain" />
             </div>
 
             <p class="mt-5 text-base text-gray-700">
@@ -656,8 +689,8 @@
 
           <!-- Partner 6 -->
           <div class="swiper-slide flex flex-col items-center justify-center">
-            <div class="h-30 w-40 flex items-center justify-center">
-              <img src="./assets/favicon-32.png" alt="Fevicol" class="max-h-full max-w-full object-contain" />
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/fev02.webp" alt="Fevicol" class="max-h-full max-w-full object-contain" />
             </div>
 
             <p class="mt-5 text-base text-gray-700">
@@ -668,19 +701,20 @@
 
           <!-- More partners -->
           <div class="swiper-slide flex flex-col items-center justify-center">
-            <div class="h-30 w-40 flex items-center justify-center">
-              <img src="./assets/favicon-32.png" alt="Partner" class="max-h-full max-w-full object-contain" />
+            <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
+              <img src="./assets/D Partners logo184x83-12.webp" alt="Partner"
+                class="max-h-full max-w-full object-contain" />
             </div>
 
             <p class="mt-5 text-base text-gray-700">
-              Partner Name
+              Steel
             </p>
           </div>
 
         </div>
 
         <!-- Pagination -->
-        <div class="swiper-pagination !static mt-12"></div>
+        <div class="swiper-pagination " id="trustpage"></div>
 
       </div>
 
