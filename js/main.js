@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let lenis;
   if (isMobile || reduceMotion || typeof Lenis === "undefined") {
-    lenis = { start() {}, stop() {}, resize() {}, raf() {}, on() {} };
+    lenis = { start() { }, stop() { }, resize() { }, raf() { }, on() { } };
     const stickyHeader = document.querySelector(".sticky-header");
     const onWinScroll = () => {
       if (!stickyHeader) return;
@@ -106,22 +106,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mobileMenu && mobileMenu.classList.contains("is-open")) closeMenu();
   });
   if (mobileMenu) {
-  mobileMenu.querySelectorAll(".mobile-nav-toggle").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const item = btn.closest(".has-children");
-      if (!item) return;
-      const open = !item.classList.contains("is-open");
-      item.classList.toggle("is-open", open);
-      btn.setAttribute("aria-expanded", String(open));
+    mobileMenu.querySelectorAll(".mobile-nav-toggle").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const item = btn.closest(".has-children");
+        if (!item) return;
+        const open = !item.classList.contains("is-open");
+        item.classList.toggle("is-open", open);
+        btn.setAttribute("aria-expanded", String(open));
+      });
     });
-  });
-  mobileMenu.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => {
-      if (a.getAttribute("href") && a.getAttribute("href") !== "#") closeMenu();
+    mobileMenu.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        if (a.getAttribute("href") && a.getAttribute("href") !== "#") closeMenu();
+      });
     });
-  });
   }
 
   if (typeof Swiper !== "undefined" && document.querySelector(".hero-swiper")) {
@@ -262,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggle = () => {
       if (video.paused) {
         stopReviewVideos();
-        video.play().catch(() => {});
+        video.play().catch(() => { });
       } else {
         video.pause();
       }
@@ -431,40 +431,40 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if (hasGsap && !skipAnim) {
-  gsap.utils.toArray(".js-fade").forEach((el) => {
-    const y = Number(el.dataset.y || 50);
-    const delay = Number(el.dataset.delay || 0);
-    gsap.from(el, {
-      y,
-      opacity: 0,
-      duration: Number(el.dataset.dur || 0.75),
-      delay,
-      ease: el.dataset.ease || "power3.out",
-      scrollTrigger: { trigger: el, start: "top 88%" },
+    gsap.utils.toArray(".js-fade").forEach((el) => {
+      const y = Number(el.dataset.y || 50);
+      const delay = Number(el.dataset.delay || 0);
+      gsap.from(el, {
+        y,
+        opacity: 0,
+        duration: Number(el.dataset.dur || 0.75),
+        delay,
+        ease: el.dataset.ease || "power3.out",
+        scrollTrigger: { trigger: el, start: "top 88%" },
+      });
     });
-  });
 
-  gsap.utils.toArray(".reveal").forEach((wrap) => {
-    const img = wrap.querySelector("img");
-    if (!img) return;
-    const dir = wrap.dataset.dir || "top";
-    const clipFrom =
-      dir === "left" ? "inset(0 100% 0 0)" :
-      dir === "center" ? "inset(20% 20% 20% 20%)" :
-      "inset(100% 0 0 0)";
-    gsap.fromTo(
-      img,
-      { clipPath: clipFrom, scale: 1.12 },
-      {
-        clipPath: "inset(0% 0% 0% 0%)",
-        scale: 1,
-        duration: Number(wrap.dataset.dur || 1.2),
-        delay: Number(wrap.dataset.delay || 0),
-        ease: "power3.out",
-        scrollTrigger: { trigger: wrap, start: "top 85%" },
-      }
-    );
-  });
+    gsap.utils.toArray(".reveal").forEach((wrap) => {
+      const img = wrap.querySelector("img");
+      if (!img) return;
+      const dir = wrap.dataset.dir || "top";
+      const clipFrom =
+        dir === "left" ? "inset(0 100% 0 0)" :
+          dir === "center" ? "inset(20% 20% 20% 20%)" :
+            "inset(100% 0 0 0)";
+      gsap.fromTo(
+        img,
+        { clipPath: clipFrom, scale: 1.12 },
+        {
+          clipPath: "inset(0% 0% 0% 0%)",
+          scale: 1,
+          duration: Number(wrap.dataset.dur || 1.2),
+          delay: Number(wrap.dataset.delay || 0),
+          ease: "power3.out",
+          scrollTrigger: { trigger: wrap, start: "top 85%" },
+        }
+      );
+    });
   }
 
   const track = document.querySelector(".service-track");
@@ -483,51 +483,51 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isMobile || reduceMotion || !hasGsap) {
       startMarquee();
     } else {
-    ScrollTrigger.matchMedia({
-      "(min-width: 768px)": function () {
-        const fromX = () => window.innerWidth;
-        const toX = () => -(track.scrollWidth - window.innerWidth * 0.12);
-        const tween = gsap.fromTo(track, {
-          x: fromX,
-        }, {
-          x: toX,
-          ease: "none",
-          scrollTrigger: {
-            trigger: stage,
-            start: "top top",
-            end: () => "+=" + Math.max(track.scrollWidth + window.innerWidth, window.innerHeight * 2),
-            scrub: 1,
-            pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-        return () => tween.kill();
-      },
-      "(max-width: 767px)": function () {
-        gsap.set(track, { clearProps: "transform,x" });
-        startMarquee();
-        return () => {
-          stage.classList.remove("is-marquee");
-          track.querySelectorAll("[data-marquee-clone]").forEach((clone) => clone.remove());
+      ScrollTrigger.matchMedia({
+        "(min-width: 768px)": function () {
+          const fromX = () => window.innerWidth;
+          const toX = () => -(track.scrollWidth - window.innerWidth * 0.12);
+          const tween = gsap.fromTo(track, {
+            x: fromX,
+          }, {
+            x: toX,
+            ease: "none",
+            scrollTrigger: {
+              trigger: stage,
+              start: "top top",
+              end: () => "+=" + Math.max(track.scrollWidth + window.innerWidth, window.innerHeight * 2),
+              scrub: 1,
+              pin: true,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+            },
+          });
+          return () => tween.kill();
+        },
+        "(max-width: 767px)": function () {
           gsap.set(track, { clearProps: "transform,x" });
-        };
-      },
-    });
+          startMarquee();
+          return () => {
+            stage.classList.remove("is-marquee");
+            track.querySelectorAll("[data-marquee-clone]").forEach((clone) => clone.remove());
+            gsap.set(track, { clearProps: "transform,x" });
+          };
+        },
+      });
     }
   }
 
   if (hasGsap && !skipAnim) {
-  gsap.utils.toArray(".process-card").forEach((card, i) => {
-    gsap.from(card, {
-      x: 130,
-      opacity: 0,
-      duration: 1,
-      delay: 0.75 - i * 0.2,
-      ease: "power3.out",
-      scrollTrigger: { trigger: ".process-cards", start: "top 80%" },
+    gsap.utils.toArray(".process-card").forEach((card, i) => {
+      gsap.from(card, {
+        x: 130,
+        opacity: 0,
+        duration: 1,
+        delay: 0.75 - i * 0.2,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".process-cards", start: "top 80%" },
+      });
     });
-  });
   }
 
   const newsForm = document.querySelector(".news-form");
@@ -555,46 +555,108 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const leadPopup = document.querySelector(".lead-popup");
-  const isAdPage = document.body.classList.contains("ad-page");
-  const openLeadPopup = (force) => {
-    if (!leadPopup) return;
-    if (!force && sessionStorage.getItem("buildabo-lead-dismissed") === "1") return;
-    if (mobileMenu && mobileMenu.classList.contains("is-open")) closeMenu();
-    stopReviewVideos();
-    leadPopup.classList.add("is-open");
-    leadPopup.setAttribute("aria-hidden", "false");
-    document.body.classList.add("lead-open");
-    lenis.stop();
-    window.setTimeout(() => leadPopup.querySelector("input, select, textarea")?.focus(), 50);
-  };
-  const closeLeadPopup = (dismiss) => {
-    if (!leadPopup) return;
-    leadPopup.classList.remove("is-open");
-    leadPopup.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("lead-open");
-    if (!document.body.classList.contains("menu-open")) lenis.start();
-    if (dismiss) sessionStorage.setItem("buildabo-lead-dismissed", "1");
-  };
-  document.addEventListener("click", (e) => {
-    const opener = e.target.closest("[data-open-lead]");
-    if (!opener) return;
-    e.preventDefault();
-    openLeadPopup(true);
-  });
-  if (leadPopup) {
+
+
+  function initLeadPopup() {
+    console.log("initLeadPopup started");
+    const leadPopup = document.querySelector(".lead-popup");
+
+    console.log("POPUP ELEMENT =", leadPopup);
+
+    if (!leadPopup) {
+      console.log("❌ Lead popup not found");
+      return;
+    }
+
+    console.log("✅ Lead popup found");
+
+
+
+    const isAdPage = document.body.classList.contains("ad-page");
+
+    const openLeadPopup = (force) => {
+      if (!force && sessionStorage.getItem("buildabo-lead-dismissed") === "1") {
+        return;
+      }
+
+      if (mobileMenu && mobileMenu.classList.contains("is-open")) {
+        closeMenu();
+      }
+
+      stopReviewVideos();
+
+      leadPopup.classList.add("is-open");
+      leadPopup.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lead-open");
+
+      lenis.stop();
+
+      window.setTimeout(() => {
+        leadPopup.querySelector("input, select, textarea")?.focus();
+      }, 50);
+    };
+
+    const closeLeadPopup = (dismiss) => {
+      leadPopup.classList.remove("is-open");
+      leadPopup.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("lead-open");
+
+      if (!document.body.classList.contains("menu-open")) {
+        lenis.start();
+      }
+
+      if (dismiss) {
+        sessionStorage.setItem("buildabo-lead-dismissed", "1");
+      }
+    };
+
+    document.addEventListener("click", (e) => {
+      const opener = e.target.closest("[data-open-lead]");
+
+      if (!opener) return;
+
+      e.preventDefault();
+
+      openLeadPopup(true);
+    });
+
     leadPopup.querySelectorAll("[data-close-lead]").forEach((el) => {
-      el.addEventListener("click", () => closeLeadPopup(true));
+      el.addEventListener("click", () => {
+        closeLeadPopup(true);
+      });
     });
+
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && leadPopup.classList.contains("is-open")) closeLeadPopup(true);
+      if (
+        e.key === "Escape" &&
+        leadPopup.classList.contains("is-open")
+      ) {
+        closeLeadPopup(true);
+      }
     });
-    const page = (window.location.pathname.replace(/\\/g, "/").split("/").pop() || "index.html").toLowerCase();
-    const skipAutoLead = isAdPage || page === "contact.html" || page === "privacy.html";
-    if (!skipAutoLead && sessionStorage.getItem("buildabo-lead-dismissed") !== "1") {
-      window.setTimeout(() => openLeadPopup(false), 10000);
+
+    const page = (
+      window.location.pathname
+        .replace(/\\/g, "/")
+        .split("/")
+        .pop() || "index.html"
+    ).toLowerCase();
+
+    const skipAutoLead =
+      page === "contact.html" ||
+      page === "privacy.html";
+
+    if (
+      !skipAutoLead &&
+      sessionStorage.getItem("buildabo-lead-dismissed") !== "1"
+    ) {
+      window.setTimeout(() => {
+        openLeadPopup(false);
+      }, 1000);
     }
   }
+
+  initLeadPopup();
 
   document.querySelectorAll(".contact-form").forEach((form) => {
     const status = form.querySelector(".contact-form-status");
@@ -643,14 +705,14 @@ document.addEventListener("DOMContentLoaded", () => {
           if (type.includes("json")) {
             try {
               return JSON.parse(text);
-            } catch (err) {}
+            } catch (err) { }
           }
           const start = text.indexOf("{");
           const end = text.lastIndexOf("}");
           if (start >= 0 && end > start) {
             try {
               return JSON.parse(text.slice(start, end + 1));
-            } catch (err) {}
+            } catch (err) { }
           }
           return {};
         };
@@ -670,14 +732,14 @@ document.addEventListener("DOMContentLoaded", () => {
               const result = await parseJsonish(phpRes);
               sent = isSentFlag(result.success, result.message);
             }
-          } catch (err) {}
+          } catch (err) { }
         }
 
         if (!sent && /netlify/i.test(window.location.hostname)) {
           try {
             const netlifyRes = await fetch("/", { method: "POST", headers, body });
             sent = netlifyRes.ok;
-          } catch (err) {}
+          } catch (err) { }
         }
 
         if (!sent) {
@@ -700,7 +762,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             const fsResult = await parseJsonish(fsRes);
             sent = isSentFlag(fsResult.success, fsResult.message);
-          } catch (err) {}
+          } catch (err) { }
         }
 
         if (!sent) {
@@ -722,8 +784,8 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         setStatus(
           "We couldn’t confirm the email just now, but you can still reach us: Email <a href=\"mailto:info@buildabo.in\">info@buildabo.in</a>, WhatsApp <a href=\"https://wa.me/919663635559?text=" +
-            waText +
-            '">9663635559</a>, or call <a href="tel:+919663635559">9663635559</a>.',
+          waText +
+          '">9663635559</a>, or call <a href="tel:+919663635559">9663635559</a>.',
           true,
           true
         );
@@ -764,3 +826,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+

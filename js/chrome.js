@@ -342,10 +342,15 @@
     );
   }
 
-  function injectWidgets() {
-    if (document.querySelector(".whatsapp-fab")) return;
-    document.body.insertAdjacentHTML("beforeend", whatsappHTML() + popupHTML());
+ function injectWidgets() {
+  if (!document.querySelector(".whatsapp-fab")) {
+    document.body.insertAdjacentHTML("beforeend", whatsappHTML());
   }
+
+  if (!document.querySelector("#lead-popup")) {
+    document.body.insertAdjacentHTML("beforeend", popupHTML());
+  }
+}
 
   init();
 })();
