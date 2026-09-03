@@ -27,7 +27,7 @@
 
   function logo() {
     return (
-      '<a href="index.html" class="logo" aria-label="buildabo — interior designers and home construction in Bangalore">' +
+      '<a href="index.html" class="logo" aria-label="buildabo — house construction in Bangalore and interior designer in Bangalore">' +
       '<img class="logo-mark" src="assets/logo-mark.png" alt="" width="36" height="36" decoding="async" />' +
       '<img class="logo-word" src="assets/buildabo.svg" alt="buildabo" width="120" height="22" decoding="async" />' +
       "</a>"
@@ -121,16 +121,22 @@
   }
 
   function footerHTML() {
+    const isHome = pageFile() === "index.html" || pageFile() === "";
+    const brandBlock = isHome
+      ? '<div class="foot-divider"></div>'
+      : (
+        '<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-10">' +
+        '<div class="max-w-xl">' +
+        logo() +
+        '<p class="mt-5 font-serif text-[22px] leading-snug text-[var(--plaster)]">Crafting homes and spaces that stand the test of time.</p>' +
+        '<p class="mt-3 max-w-md">buildabo provides house construction in Bangalore and interior designer in Bangalore. Residential builders and interior designers — delivering complete house construction in Bangalore and interior design from foundation to finish.</p>' +
+        "</div></div>" +
+        '<div class="foot-divider"></div>'
+      );
     return (
       '<footer class="site-footer" id="contact">' +
       '<div class="container-site">' +
-      '<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-10">' +
-      '<div class="max-w-xl">' +
-      logo() +
-      '<p class="mt-5 font-serif text-[22px] leading-snug text-[var(--plaster)]">Crafting homes and spaces that stand the test of time.</p>' +
-      '<p class="mt-3 max-w-md">buildabo is an interior design company in Bangalore and a house construction company. Interior designers, home interior designers, and residential builders — house construction and home interior design from foundation to finish.</p>' +
-      "</div></div>" +
-      '<div class="h-px bg-white/20 my-12"></div>' +
+      brandBlock +
       '<div class="foot-grid">' +
       "<div>" +
       '<h6 class="!normal-case !tracking-normal !text-[22px] !mb-6 font-serif">interested in our projects<br />and design approach?</h6>' +
@@ -207,7 +213,7 @@
       "</article>" +
       "<article>" +
       icon('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h11l3 3v13H5V4z"/><path d="M16 4v4h4"/><path d="M8 12h8M8 15h6"/><path d="M14.2 18.2 18 21l1.4-1.4-3.5-2.4z"/></svg>') +
-      '<h3><span data-counter="124">1</span> Designs</h3>' +
+      '<h3><span data-counter="125">1</span> Designs</h3>' +
       "<p>Ready-to-build options</p>" +
       "</article>" +
       "</div></section>"
@@ -317,9 +323,9 @@
         simpleLeadFields("popup", "Get a Free Consultation") +
         "</form>" +
         '<div class="lead-card-trust">' +
-        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11.2 12 4l8 7.2"/><path d="M6.5 10.2V20h11V10.2"/></svg></span><strong>100+</strong><span>Projects</span></div>' +
-        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h11l3 3v13H5V4z"/><path d="M16 4v4h4"/><path d="M8 12h8M8 15h6"/></svg></span><strong>124</strong><span>Designs</span></div>' +
-        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><strong>10+</strong><span>Years</span></div>' +
+        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11.2 12 4l8 7.2"/><path d="M6.5 10.2V20h11V10.2"/></svg></span><strong>25+</strong><span>Projects</span></div>' +
+        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h11l3 3v13H5V4z"/><path d="M16 4v4h4"/><path d="M8 12h8M8 15h6"/></svg></span><strong>125+</strong><span>Designs</span></div>' +
+        '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><strong>5+</strong><span>Years</span></div>' +
         "</div></div></div>"
       );
     }

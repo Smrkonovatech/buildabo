@@ -71,7 +71,7 @@
     },
     {
       id: "kbr-residence",
-      title: "Vinay Residence",
+      title: "Krishnegowda Interior",
       category: "interior",
       tags: "Interior",
       location: "Kamakshipalya",
@@ -86,10 +86,10 @@
     },
     {
       id: "home-interiors",
-      title: "Vinayka Residence",
+      title: "Lakshmi Interiors",
       category: "interior",
       tags: "Interior",
-      location: "Varalakshmi, Kengeri",
+      location: "Kengeri",
       area: "Full-home interior",
       year: "2026",
       about: [
@@ -101,7 +101,7 @@
     },
     {
       id: "vinay-residence",
-      title: "Rammana Residence",
+      title: "Vinay Residence",
       category: "residential",
       tags: "Residential",
       location: "Kamakshipalya",
@@ -266,9 +266,9 @@
     const pair = neighbors(list, project.id);
     const summary = project.about[0] || "";
 
-    document.title = project.title + " | " + (project.category === "interior" ? "Home Interior Design Bangalore" : "House Construction in Bangalore") + " | buildabo";
+    document.title = project.title + " | " + (project.category === "interior" ? "Interior Designer in Bangalore" : "House Construction in Bangalore") + " | buildabo";
     const seoBit = project.category === "interior"
-      ? " Home interior design in Bangalore by interior designers at buildabo."
+      ? " Interior designer in Bangalore by buildabo."
       : " House construction in Bangalore by residential builders at buildabo.";
     setMeta('meta[name="description"]', summary + seoBit, "content");
     setMeta('meta[property="og:title"]', document.title, "content");
