@@ -121,22 +121,16 @@
   }
 
   function footerHTML() {
-    const isHome = pageFile() === "index.html" || pageFile() === "";
-    const brandBlock = isHome
-      ? '<div class="foot-divider"></div>'
-      : (
-        '<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-10">' +
-        '<div class="max-w-xl">' +
-        logo() +
-        '<p class="mt-5 font-serif text-[22px] leading-snug text-[var(--plaster)]">Crafting homes and spaces that stand the test of time.</p>' +
-        '<p class="mt-3 max-w-md">buildabo provides house construction in Bangalore and interior designer in Bangalore. Residential builders and interior designers — delivering complete house construction in Bangalore and interior design from foundation to finish.</p>' +
-        "</div></div>" +
-        '<div class="foot-divider"></div>'
-      );
     return (
       '<footer class="site-footer" id="contact">' +
       '<div class="container-site">' +
-      brandBlock +
+      '<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-10">' +
+      '<div class="max-w-xl">' +
+      logo() +
+      '<p class="mt-5 font-serif text-[22px] leading-snug text-[var(--plaster)]">Crafting homes and spaces that stand the test of time.</p>' +
+      '<p class="mt-3 max-w-md">buildabo provides house construction in Bangalore and interior designer in Bangalore. Residential builders and interior designers — delivering complete house construction in Bangalore and interior design from foundation to finish.</p>' +
+      "</div></div>" +
+      '<div class="h-px bg-white/20 my-12"></div>' +
       '<div class="foot-grid">' +
       "<div>" +
       '<h6 class="!normal-case !tracking-normal !text-[22px] !mb-6 font-serif">interested in our projects<br />and design approach?</h6>' +
