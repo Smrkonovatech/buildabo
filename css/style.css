@@ -2093,7 +2093,7 @@ body.lead-open { overflow: hidden; }
   height: 52px;
   border: 0;
   border-radius: 0;
-  padding: 0 16px;
+  padding: 0 16px 0 4px;
   background: transparent;
 }
 .contact-form select {
@@ -4045,12 +4045,12 @@ body.lead-open { overflow: hidden; }
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 0 10px 0 12px;
+  padding: 0 8px 0 14px;
   font-size: 13px;
   font-weight: var(--weight-medium);
   color: var(--heading);
-  border-right: 1px solid #d8d2c6;
-  background: var(--plaster);
+  border-right: 0;
+  background: transparent;
   white-space: nowrap;
 }
 .lead-card-flag { width: 22px; height: 14px; display: block; flex: none; }
@@ -4061,7 +4061,7 @@ body.lead-open { overflow: hidden; }
   height: 48px;
   border: 0;
   background: transparent;
-  padding: 0 14px;
+  padding: 0 14px 0 4px;
   font: inherit;
   color: var(--heading);
 }
