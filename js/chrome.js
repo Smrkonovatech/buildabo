@@ -22,7 +22,10 @@
   }
 
   function isAdPage() {
-    return document.body.classList.contains("ad-page");
+    return (
+      document.body.classList.contains("ad-page") ||
+      pageFile() === "top-construction-company-bangalore.html"
+    );
   }
 
   function logo() {
@@ -35,10 +38,17 @@
   }
 
   function startBtn(extraClass) {
+    if (isAdPage()) {
+      return (
+        '<a href="#" class="btn ' +
+        extraClass +
+        '" data-open-lead><span>Start a Project</span></a>'
+      );
+    }
     return (
-      '<a href="#" class="btn ' +
+      '<a href="contact.html" class="btn ' +
       extraClass +
-      '" data-open-lead><span>Start a Project</span></a>'
+      '"><span>Start a Project</span></a>'
     );
   }
 

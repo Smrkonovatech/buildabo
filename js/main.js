@@ -557,25 +557,70 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+  let closeLeadPopup;
+  let openLeadPopup;
+
   function initLeadPopup() {
-    console.log("initLeadPopup started");
     const leadPopup = document.querySelector(".lead-popup");
 
-    console.log("POPUP ELEMENT =", leadPopup);
-
     if (!leadPopup) {
-      console.log("❌ Lead popup not found");
       return;
     }
 
-    console.log("✅ Lead popup found");
+    try {
+      sessionStorage.removeItem("buildabo-lead-dismissed");
+    } catch (err) { }
 
+    const page = (
+      window.location.pathname
+        .replace(/\\/g, "/")
+        .split("/")
+        .pop() || "index.html"
+    ).toLowerCase();
 
+    const isContactPage = page === "contact.html";
+    const isAdPage =
+      document.body.classList.contains("ad-page") ||
+      page === "top-construction-company-bangalore.html";
 
-    const isAdPage = document.body.classList.contains("ad-page");
+    const AUTO_POPUP_DELAY = 8000;
 
-    const openLeadPopup = (force) => {
-      if (!force && sessionStorage.getItem("buildabo-lead-dismissed") === "1") {
+    let autoLeadTimer = null;
+
+    const clearAutoLead = () => {
+      if (autoLeadTimer) {
+        clearTimeout(autoLeadTimer);
+        autoLeadTimer = null;
+      }
+    };
+
+    const scheduleAutoLead = (delay = AUTO_POPUP_DELAY) => {
+      clearAutoLead();
+      if (isContactPage) {
+        return;
+      }
+      if (sessionStorage.getItem("buildabo-lead-submitted") === "1") {
+        return;
+      }
+      autoLeadTimer = window.setTimeout(() => {
+        if (!leadPopup.classList.contains("is-open")) {
+          openLeadPopup(false);
+        }
+      }, delay);
+    };
+
+    openLeadPopup = (force) => {
+      if (!force && isContactPage) {
+        return;
+      }
+
+      if (!force && sessionStorage.getItem("buildabo-lead-submitted") === "1") {
+        return;
+      }
+
+      clearAutoLead();
+
+      if (leadPopup.classList.contains("is-open")) {
         return;
       }
 
@@ -596,7 +641,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 50);
     };
 
-    const closeLeadPopup = (dismiss) => {
+    closeLeadPopup = () => {
       leadPopup.classList.remove("is-open");
       leadPopup.setAttribute("aria-hidden", "true");
       document.body.classList.remove("lead-open");
@@ -605,8 +650,10 @@ document.addEventListener("DOMContentLoaded", () => {
         lenis.start();
       }
 
-      if (dismiss) {
-        sessionStorage.setItem("buildabo-lead-dismissed", "1");
+      // Do not store in sessionStorage when cancel/close is clicked.
+      // Automatically show again after 1 minute (except on contact page).
+      if (!isContactPage) {
+        scheduleAutoLead(AUTO_POPUP_DELAY);
       }
     };
 
@@ -615,6 +662,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!opener) return;
 
+      // On pages other than top-construction-company-bangalore (ad page),
+      // redirect Start a Project / lead clicks to contact.html
+      if (!isAdPage) {
+        e.preventDefault();
+        window.location.href = "contact.html";
+        return;
+      }
+
       e.preventDefault();
 
       openLeadPopup(true);
@@ -622,7 +677,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     leadPopup.querySelectorAll("[data-close-lead]").forEach((el) => {
       el.addEventListener("click", () => {
-        closeLeadPopup(true);
+        closeLeadPopup();
       });
     });
 
@@ -631,28 +686,13 @@ document.addEventListener("DOMContentLoaded", () => {
         e.key === "Escape" &&
         leadPopup.classList.contains("is-open")
       ) {
-        closeLeadPopup(true);
+        closeLeadPopup();
       }
     });
 
-    const page = (
-      window.location.pathname
-        .replace(/\\/g, "/")
-        .split("/")
-        .pop() || "index.html"
-    ).toLowerCase();
-
-    const skipAutoLead =
-      page === "contact.html" ||
-      page === "privacy.html";
-
-    if (
-      !skipAutoLead &&
-      sessionStorage.getItem("buildabo-lead-dismissed") !== "1"
-    ) {
-      window.setTimeout(() => {
-        openLeadPopup(false);
-      }, 5000);
+    // Show popup after 1 minute on all pages except contact page
+    if (!isContactPage) {
+      scheduleAutoLead(AUTO_POPUP_DELAY);
     }
   }
 
@@ -775,8 +815,14 @@ document.addEventListener("DOMContentLoaded", () => {
         form.reset();
         setStatus("Thanks. Your enquiry has been sent. We’ll reply within 24 hours.", false);
         if (isPopup) {
-          sessionStorage.setItem("buildabo-lead-dismissed", "1");
-          window.setTimeout(() => closeLeadPopup(true), 1400);
+          try {
+            sessionStorage.setItem("buildabo-lead-submitted", "1");
+          } catch (err) { }
+          window.setTimeout(() => {
+            if (typeof closeLeadPopup === "function") {
+              closeLeadPopup();
+            }
+          }, 1400);
         }
       } catch (err) {
         const waText = encodeURIComponent(
