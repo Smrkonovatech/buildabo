@@ -266,9 +266,9 @@
     const pair = neighbors(list, project.id);
     const summary = project.about[0] || "";
 
-    document.title = project.title + " | " + (project.category === "interior" ? "Interior Designer in Bangalore" : "House Construction in Bangalore") + " | buildabo";
+    document.title = project.title + " | " + (project.category === "interior" ? "Interior Designers in Bangalore" : "House Construction in Bangalore") + " | buildabo";
     const seoBit = project.category === "interior"
-      ? " Interior designer in Bangalore by buildabo."
+      ? " Interior designers in Bangalore by buildabo."
       : " House construction in Bangalore by residential builders at buildabo.";
     setMeta('meta[name="description"]', summary + seoBit, "content");
     setMeta('meta[property="og:title"]', document.title, "content");

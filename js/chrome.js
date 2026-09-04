@@ -30,7 +30,7 @@
 
   function logo() {
     return (
-      '<a href="index.html" class="logo" aria-label="buildabo — house construction in Bangalore and interior designer in Bangalore">' +
+      '<a href="index.html" class="logo" aria-label="buildabo — house construction and interior designers in Bangalore">' +
       '<img class="logo-mark" src="assets/logo-mark.png" alt="" width="36" height="36" decoding="async" />' +
       '<img class="logo-word" src="assets/buildabo.svg" alt="buildabo" width="120" height="22" decoding="async" />' +
       "</a>"
@@ -138,7 +138,7 @@
       '<div class="max-w-xl">' +
       logo() +
       '<p class="mt-5 font-serif text-[22px] leading-snug text-[var(--plaster)]">Crafting homes and spaces that stand the test of time.</p>' +
-      '<p class="mt-3 max-w-md">buildabo provides house construction in Bangalore and interior designer in Bangalore. Residential builders and interior designers — delivering complete house construction in Bangalore and interior design from foundation to finish.</p>' +
+      '<p class="mt-3 max-w-md">buildabo provides house construction and interior designers in Bangalore. Residential builders and interior designers — delivering complete house construction in Bangalore and interior design from foundation to finish.</p>' +
       "</div></div>" +
       '<div class="h-px bg-white/20 my-12"></div>' +
       '<div class="foot-grid">' +
