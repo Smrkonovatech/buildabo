@@ -583,7 +583,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.contains("ad-page") ||
       page === "top-construction-company-bangalore.html";
 
-    const AUTO_POPUP_DELAY = 8000;
+    const AUTO_POPUP_DELAY = 10000;
 
     let autoLeadTimer = null;
 
