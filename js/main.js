@@ -850,25 +850,120 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hasGsap && !skipAnim) ScrollTrigger.refresh();
   });
 
-  const igMount = document.querySelector(".ig-feed-embed, [class*='elfsight-app-']");
-  if (igMount) {
-    const loadIg = () => {
-      if (document.querySelector("script[src*='elfsightcdn.com']")) return;
-      const s = document.createElement("script");
-      s.src = "https://elfsightcdn.com/platform.js";
-      s.async = true;
-      document.body.appendChild(s);
+  const initIgSwiper = () => {
+    if (typeof Swiper === "undefined") return;
+    document.querySelectorAll(".ig-swiper").forEach((el) => {
+      if (el.swiper) {
+        el.swiper.update();
+        return;
+      }
+      const wrap = el.closest(".ig-slider-wrap") || el.parentElement || el;
+      new Swiper(el, {
+        slidesPerView: 1.25,
+        spaceBetween: 14,
+        loop: true,
+        grabCursor: true,
+        speed: 600,
+        autoplay: {
+          delay: 3200,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+        navigation: {
+          nextEl: wrap.querySelector(".ig-next"),
+          prevEl: wrap.querySelector(".ig-prev"),
+        },
+        breakpoints: {
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 16,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 18,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 22,
+          },
+        },
+      });
+    });
+  };
+
+  // Initialize Swiper on page load
+  if (typeof Swiper !== "undefined") {
+    initIgSwiper();
+  } else {
+    window.addEventListener("load", initIgSwiper);
+  }
+
+  const igContainers = document.querySelectorAll(".ig-swiper .swiper-wrapper, #ig-feed-container");
+  if (igContainers.length > 0) {
+    let feedLoaded = false;
+    const fetchAndRenderIg = async () => {
+      if (feedLoaded) return;
+      feedLoaded = true;
+
+      try {
+        let res;
+        try {
+          res = await fetch("instagram-feed.php");
+          if (!res.ok) throw new Error("PHP status " + res.status);
+        } catch (phpErr) {
+          // If running locally without a PHP server, load the cache directly
+          res = await fetch("instagram_cache.json");
+        }
+        const data = await res.json();
+        const posts = data && data.posts ? data.posts : [];
+
+        if (!posts.length) return;
+
+        const html = posts.map(post => {
+          const img = post.image_url || "";
+          const link = post.permalink || "https://www.instagram.com/buildabo/";
+          const rawCap = post.caption || "View on Instagram";
+          const cap = rawCap.replace(/"/g, '&quot;');
+
+          return `
+            <div class="swiper-slide">
+              <a href="${link}" target="_blank" rel="noopener noreferrer" class="ig-card" aria-label="Instagram post">
+                <img src="${img}" alt="${cap}" class="ig-card-img" loading="lazy" referrerpolicy="no-referrer" />
+                <div class="ig-card-overlay">
+                  <svg class="ig-card-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                  <p class="ig-card-caption">${cap}</p>
+                </div>
+              </a>
+            </div>
+          `;
+        }).join("");
+
+        igContainers.forEach(container => {
+          container.innerHTML = html;
+        });
+
+        // Re-initialize swiper with new slides
+        document.querySelectorAll(".ig-swiper").forEach((el) => {
+          if (el.swiper) {
+            el.swiper.destroy(true, true);
+          }
+        });
+        initIgSwiper();
+      } catch (e) {
+        console.warn("Instagram feed load error:", e);
+      }
     };
+
     if ("IntersectionObserver" in window) {
       const io = new IntersectionObserver((entries) => {
         if (entries.some((e) => e.isIntersecting)) {
-          loadIg();
+          fetchAndRenderIg();
           io.disconnect();
         }
-      }, { rootMargin: "400px" });
-      io.observe(igMount);
+      }, { rootMargin: "300px" });
+      document.querySelectorAll(".ig-feed-embed").forEach(el => io.observe(el));
     } else {
-      window.addEventListener("load", loadIg, { once: true });
+      window.addEventListener("load", fetchAndRenderIg, { once: true });
     }
   }
 });
