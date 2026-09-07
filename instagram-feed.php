@@ -109,16 +109,19 @@ if ($http_code === 200 && $raw_response) {
         $link = !empty($code) ? "https://www.instagram.com/p/{$code}/" : "https://www.instagram.com/{$username}/";
         $caption_text = $item['caption']['text'] ?? $item['caption'] ?? 'View on Instagram';
 
+        $is_video = !empty($item['video_versions']) || ($item['media_type'] ?? 0) === 2 || ($item['is_video'] ?? false);
+
         if (!empty($img)) {
             $posts[] = [
                 'id'        => $item['id'] ?? uniqid('ig_'),
                 'permalink' => $link,
                 'image_url' => $img,
                 'caption'   => $caption_text,
+                'is_video'  => $is_video,
             ];
         }
 
-        if (count($posts) >= 8) break;
+        if (count($posts) >= 24) break;
     }
 }
 

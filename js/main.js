@@ -906,17 +906,29 @@ document.addEventListener("DOMContentLoaded", () => {
       feedLoaded = true;
 
       try {
-        let res;
+        let data = null;
         try {
-          res = await fetch("instagram-feed.php");
-          if (!res.ok) throw new Error("PHP status " + res.status);
-        } catch (phpErr) {
-          // If running locally without a PHP server, load the cache directly
-          res = await fetch("instagram_cache.json");
-        }
-        const data = await res.json();
-        const posts = data && data.posts ? data.posts : [];
+          const res = await fetch("instagram-feed.php");
+          if (res.ok) {
+            const text = await res.text();
+            if (!text.trim().startsWith("<?php") && !text.trim().startsWith("<!DOCTYPE") && !text.trim().startsWith("<html")) {
+              data = JSON.parse(text);
+            }
+          }
+        } catch (_) {}
 
+        if (!data || !data.posts || !data.posts.length) {
+          try {
+            const cacheRes = await fetch("instagram_cache.json?v=" + Date.now());
+            if (cacheRes.ok) {
+              data = await cacheRes.json();
+            }
+          } catch (cacheErr) {
+            console.warn("Could not load instagram_cache.json", cacheErr);
+          }
+        }
+
+        const posts = data && data.posts ? data.posts : [];
         if (!posts.length) return;
 
         const html = posts.map(post => {
@@ -924,10 +936,17 @@ document.addEventListener("DOMContentLoaded", () => {
           const link = post.permalink || "https://www.instagram.com/buildabo/";
           const rawCap = post.caption || "View on Instagram";
           const cap = rawCap.replace(/"/g, '&quot;');
+          const isVideo = !!post.is_video;
 
           return `
             <div class="swiper-slide">
               <a href="${link}" target="_blank" rel="noopener noreferrer" class="ig-card" aria-label="Instagram post">
+                ${isVideo ? `
+                  <span class="ig-reel-badge" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <span>Reel</span>
+                  </span>
+                ` : ''}
                 <img src="${img}" alt="${cap}" class="ig-card-img" loading="lazy" referrerpolicy="no-referrer" />
                 <div class="ig-card-overlay">
                   <svg class="ig-card-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>

@@ -3613,6 +3613,35 @@ body.lead-open { overflow: hidden; }
 .ig-card:hover .ig-card-img {
   transform: scale(1.06);
 }
+.ig-reel-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 4px 9px 4px 7px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: opacity 0.25s ease;
+}
+.ig-card:hover .ig-reel-badge {
+  opacity: 0.92;
+}
+.ig-reel-badge svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
 .ig-card-overlay {
   position: absolute;
   inset: 0;
