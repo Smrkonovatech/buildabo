@@ -530,7 +530,7 @@
     /* Ambient Handwritten Script */
     .ty-script-brand {
       position: absolute;
-      bottom: 44px;
+      bottom: 36px;
       left: 48px;
       font-family: 'Caveat', cursive;
       font-size: 32px;
@@ -551,12 +551,33 @@
       opacity: 0.85;
       margin-top: 2px;
     }
+    @media (max-width: 1200px) {
+      .ty-script-brand {
+        bottom: 24px;
+        left: 28px;
+        font-size: 26px;
+      }
+      .ty-script-underline {
+        width: 105px;
+      }
+    }
+    @media (max-width: 1024px) {
+      .ty-script-brand {
+        display: none;
+      }
+    }
     @media (max-width: 768px) {
       .ty-script-brand {
+        display: block;
         position: static;
-        margin: 20px 0 16px;
+        margin: 20px auto 0;
         transform: rotate(-6deg);
-        font-size: 28px;
+        font-size: 26px;
+        text-align: center;
+        width: fit-content;
+      }
+      .ty-script-underline {
+        margin: 2px auto 0;
       }
     }
 
@@ -814,13 +835,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="ty-stats-tagline">TRUSTED BY HOMEOWNERS ACROSS BANGALORE</p>
       </div>
 
-      <!-- Handwritten Script Accent -->
-      <div class="ty-script-brand">
-        Homes<br />for a Better<br />Tomorrow
-        <span class="ty-script-underline"></span>
-      </div>
-
     </div>
+
+    <!-- Handwritten Script Accent (anchored to bottom-left of stage, outside content card) -->
+    <div class="ty-script-brand" aria-hidden="true">
+      Homes<br />for a Better<br />Tomorrow
+      <span class="ty-script-underline"></span>
+    </div>
+
   </main>
 
   <!-- 4. Footer -->

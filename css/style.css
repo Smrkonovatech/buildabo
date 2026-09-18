@@ -5264,12 +5264,26 @@ select.lead-card-input option {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: linear-gradient(90deg, rgba(8, 11, 10, 0.8) 0%, rgba(8, 11, 10, 0.6) 44%, rgba(8, 11, 10, 0.18) 72%, rgba(8, 11, 10, 0.5) 100%),
-              linear-gradient(180deg, rgba(8, 11, 10, 0.4) 0%, transparent 30%, rgba(8, 11, 10, 0.75) 100%);
+  pointer-events: none;
+  background:
+    /* Left dark gradient behind headline, price, subtitle & buttons (fades out completely before the center house) */
+    linear-gradient(90deg, rgba(6, 9, 8, 0.86) 0%, rgba(6, 9, 8, 0.65) 18%, rgba(6, 9, 8, 0.12) 28%, transparent 34%),
+    /* Bottom dark gradient behind road, car wheels & location text */
+    linear-gradient(0deg, rgba(6, 9, 8, 0.96) 0%, rgba(6, 9, 8, 0.45) 8%, transparent 16%),
+    /* Subtle top edge gradient under header */
+    linear-gradient(180deg, rgba(6, 9, 8, 0.20) 0%, transparent 6%),
+    /* Right dark gradient behind estimate card & 4 icons (leaves center house clear) */
+    linear-gradient(270deg, rgba(6, 9, 8, 0.60) 0%, rgba(6, 9, 8, 0.15) 16%, transparent 25%);
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .ad-hero-overlay {
-    background: linear-gradient(180deg, rgba(8, 11, 10, 0.82) 0%, rgba(8, 11, 10, 0.56) 40%, rgba(8, 11, 10, 0.88) 100%);
+    background:
+      /* Soft shadow behind the top-left headline while keeping top-right sky completely clear */
+      linear-gradient(110deg, rgba(6, 9, 8, 0.72) 0%, rgba(6, 9, 8, 0.28) 26%, transparent 42%),
+      /* Diagonal downwards gradient: top-to-right (upwards) is completely clear, darkens downwards towards bottom-left */
+      linear-gradient(215deg, transparent 0%, transparent 35%, rgba(6, 9, 8, 0.45) 52%, rgba(6, 9, 8, 0.90) 74%, rgba(6, 9, 8, 0.98) 100%),
+      /* Bottom road & footer darkness */
+      linear-gradient(0deg, rgba(6, 9, 8, 0.98) 0%, rgba(6, 9, 8, 0.85) 16%, transparent 28%);
   }
 }
 .ad-hero-container {
@@ -5278,140 +5292,101 @@ select.lead-card-input option {
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 40px 24px 36px;
+  padding: 32px 20px 28px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: 28px;
   align-items: center;
 }
 @media (min-width: 1025px) {
   .ad-hero-container {
-    grid-template-columns: minmax(0, 1.25fr) minmax(360px, 420px);
-    gap: 56px;
-    padding: 52px 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 32px 48px 24px;
+    gap: 24px;
+    box-sizing: border-box;
+  }
+  .ad-hero-left {
+    max-width: 380px;
+    width: 100%;
+    flex-shrink: 0;
+    z-index: 4;
+  }
+  .ad-offer-badge-img {
+    width: 135px;
+  }
+  .ad-hero-title {
+    font-size: clamp(26px, 2.2vw, 36px) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 12px !important;
+  }
+  .ad-hero-price-row {
+    margin-bottom: 12px;
+  }
+  .ad-price-value {
+    font-size: clamp(32px, 2.6vw, 42px) !important;
+  }
+  .ad-hero-sub {
+    font-size: 13.5px;
+    line-height: 1.45;
+    margin-bottom: 18px;
+    max-width: 360px;
+  }
+  .ad-hero-ctas {
+    max-width: 330px;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .ad-cta-btn {
+    padding: 10.5px 20px;
+    font-size: 14px;
+  }
+  .ad-location-skyline-row {
+    max-width: 360px;
+    margin-bottom: 8px;
+  }
+  .ad-location-text {
+    font-size: 10.5px;
+  }
+  .ad-skyline-img {
+    height: 28px;
+  }
+  .ad-hero-disclaimer {
+    font-size: 9px;
+    max-width: 360px;
+  }
+}
+@media (min-width: 1440px) {
+  .ad-hero-container {
+    padding: 36px 64px 28px;
   }
 }
 
 /* 4. September Offer Badge */
 .ad-offer-badge-wrap {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   display: inline-block;
+  transform: rotate(-3.5deg);
+  transform-origin: left center;
 }
-.ad-offer-badge {
-  position: relative;
-  display: inline-flex;
-  flex-direction: column;
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 0;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-  border: 2px solid #ffffff;
-  overflow: visible;
-  user-select: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.ad-offer-badge-img {
+  width: 155px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.42));
+  transition: transform 0.25s ease;
 }
-.ad-offer-badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.42);
+.ad-offer-badge-img:hover {
+  transform: scale(1.05) rotate(-1deg);
 }
-.ad-badge-loudspeaker {
-  position: absolute;
-  top: -14px;
-  left: -14px;
-  width: 44px;
-  height: 44px;
-  z-index: 10;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
-  transform: rotate(-8deg);
-}
-.ad-badge-loudspeaker svg {
-  width: 100%;
-  height: 100%;
-}
-.ad-badge-header {
-  background: #e02f14;
-  background: linear-gradient(135deg, #e73418 0%, #c92109 100%);
-  color: #ffffff;
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  padding: 6px 14px 5px 28px;
-  border-radius: 10px 10px 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  text-transform: uppercase;
-}
-.ad-badge-rays {
-  display: inline-flex;
-  gap: 2px;
-  opacity: 0.9;
-}
-.ad-badge-ray {
-  width: 2px;
-  height: 6px;
-  background: #ffeb3b;
-  border-radius: 1px;
-  transform: rotate(25deg);
-}
-.ad-badge-body {
-  background: #ffffff;
-  padding: 7px 16px 5px;
-  text-align: center;
-}
-.ad-badge-value {
-  color: #d6230b;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 26px;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 3px;
-}
-.ad-badge-currency {
-  font-size: 20px;
-  font-weight: 800;
-}
-.ad-badge-amount {
-  font-size: 26px;
-  font-weight: 900;
-}
-.ad-badge-off {
-  font-size: 19px;
-  font-weight: 900;
-  margin-left: 2px;
-}
-.ad-badge-unit {
-  color: #1a1e21;
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  margin-top: 1px;
-  text-transform: uppercase;
-}
-.ad-badge-footer {
-  background: #fca800;
-  background: linear-gradient(180deg, #ffb515 0%, #f69f00 100%);
-  color: #241a0e;
-  padding: 4px 12px;
-  border-radius: 0 0 10px 10px;
-  font-size: 9.5px;
-  font-weight: 750;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  letter-spacing: 0.02em;
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-}
-.ad-badge-footer svg {
-  width: 12px;
-  height: 12px;
-  flex-shrink: 0;
+@media (max-width: 768px) {
+  .ad-offer-badge-img {
+    width: 135px;
+  }
 }
 
 /* 5. Hero Typography, Price & Subtitle */
@@ -5422,6 +5397,7 @@ select.lead-card-input option {
   color: #ffffff;
   margin: 0 0 16px;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 .ad-highlight-gold {
   color: #f6d59e;
@@ -5468,12 +5444,11 @@ select.lead-card-input option {
 .ad-features-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  align-items: start;
-  gap: 8px;
-  padding: 14px 0;
-  margin: 20px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  align-items: center;
+  gap: 0;
+  padding: 8px 0;
+  margin: 16px 0;
+  border: none;
 }
 .ad-feature-item {
   display: flex;
@@ -5487,30 +5462,34 @@ select.lead-card-input option {
   content: "";
   position: absolute;
   right: 0;
-  top: 15%;
-  bottom: 15%;
+  top: 10%;
+  bottom: 10%;
   width: 1px;
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.35);
 }
 .ad-feature-icon {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   margin-bottom: 6px;
-  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.ad-feature-icon svg {
-  width: 100%;
-  height: 100%;
-  stroke-width: 1.75;
+.ad-feature-icon-img {
+  max-width: 24px;
+  max-height: 24px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.85));
 }
 .ad-feature-label {
   font-size: 11px;
   font-weight: 600;
   line-height: 1.25;
-  color: rgba(255, 255, 255, 0.95);
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
 }
 
 .ad-features-desk {
@@ -5527,14 +5506,23 @@ select.lead-card-input option {
   }
   .ad-features-desk {
     display: grid;
-    margin: 18px 0 0;
-    padding: 12px 0 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.22);
-    border-bottom: none;
+    margin: 10px 0 0;
+    padding: 6px 0 0;
+    border-top: none;
     width: 100%;
   }
+  .ad-features-desk .ad-feature-icon {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 3px;
+  }
+  .ad-features-desk .ad-feature-icon-img {
+    max-width: 18px;
+    max-height: 18px;
+  }
   .ad-features-desk .ad-feature-label {
-    font-size: 10.5px;
+    font-size: 9.5px;
+    line-height: 1.2;
   }
 }
 
@@ -5656,43 +5644,46 @@ select.lead-card-input option {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 335px;
     width: 100%;
+    flex-shrink: 0;
+    z-index: 4;
   }
 }
 .ad-estimate-card {
   background: #ffffff;
-  border-radius: 16px;
-  padding: 26px 24px;
+  border-radius: 14px;
+  padding: 18px 20px 16px;
   width: 100%;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.38);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
   color: #222222;
   position: relative;
 }
 .ad-card-head {
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 .ad-card-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 800;
-  line-height: 1.22;
+  line-height: 1.2;
   color: #1b2024;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
 }
 .ad-card-accent {
   color: #b84824;
   display: block;
 }
 .ad-card-sub {
-  font-size: 12px;
-  line-height: 1.45;
+  font-size: 11px;
+  line-height: 1.35;
   color: #5d676e;
   margin: 0;
 }
 .ad-card-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 9px;
 }
 .ad-input-group {
   position: relative;
@@ -5701,7 +5692,7 @@ select.lead-card-input option {
 }
 .ad-input-icon {
   position: absolute;
-  left: 14px;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
   color: #7b8893;
@@ -5709,8 +5700,8 @@ select.lead-card-input option {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   z-index: 2;
 }
 .ad-input-icon svg {
@@ -5721,12 +5712,12 @@ select.lead-card-input option {
 .ad-estimate-card .ad-card-input,
 .ad-input-group .ad-card-input {
   width: 100%;
-  height: 48px;
+  height: 40px;
   border: 1px solid #d9e0e5;
-  border-radius: 8px;
+  border-radius: 7px;
   background: #fafbfc;
-  padding: 0 38px 0 44px !important;
-  font-size: 14px;
+  padding: 0 32px 0 38px !important;
+  font-size: 13px;
   font-family: inherit;
   color: #202428;
   line-height: normal;
@@ -5747,7 +5738,7 @@ select.lead-card-input option {
   -moz-appearance: none !important;
   background-image: none !important;
   cursor: pointer;
-  padding-right: 38px !important;
+  padding-right: 32px !important;
 }
 .ad-card-form select.ad-card-input:invalid,
 .ad-card-form input.ad-card-input::placeholder {
@@ -5759,9 +5750,9 @@ select.lead-card-input option {
 .ad-phone-wrap {
   display: flex;
   width: 100%;
-  height: 48px;
+  height: 40px;
   border: 1px solid #d9e0e5;
-  border-radius: 8px;
+  border-radius: 7px;
   background: #fafbfc;
   overflow: hidden;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -5774,18 +5765,18 @@ select.lead-card-input option {
 .ad-phone-prefix {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 0 12px;
+  gap: 5px;
+  padding: 0 10px;
   background: #f1f4f6;
   border-right: 1px solid #d9e0e5;
-  font-size: 13.5px;
+  font-size: 12.5px;
   font-weight: 600;
   color: #3b4247;
   flex-shrink: 0;
 }
 .ad-flag-icon {
-  width: 18px;
-  height: 12px;
+  width: 16px;
+  height: 11px;
   border-radius: 1px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
 }
@@ -5793,8 +5784,8 @@ select.lead-card-input option {
   flex: 1;
   border: none !important;
   background: transparent !important;
-  padding: 0 14px !important;
-  font-size: 14px;
+  padding: 0 12px !important;
+  font-size: 13px;
   font-family: inherit;
   color: #202428;
   height: 100% !important;
@@ -5807,7 +5798,7 @@ select.lead-card-input option {
 }
 .ad-select-arrow {
   position: absolute;
-  right: 14px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   color: #7b8893;
@@ -5819,27 +5810,27 @@ select.lead-card-input option {
 }
 .ad-card-submit-btn {
   width: 100%;
-  height: 46px;
+  height: 40px;
   background: #b84824;
   background: linear-gradient(135deg, #bf4c27 0%, #a63e1d 100%);
   color: #ffffff;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   border: none;
-  border-radius: 8px;
+  border-radius: 7px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(184, 72, 36, 0.3);
-  margin-top: 4px;
+  box-shadow: 0 3px 10px rgba(184, 72, 36, 0.28);
+  margin-top: 2px;
 }
 .ad-card-submit-btn:hover {
   background: linear-gradient(135deg, #cb522b 0%, #b24320 100%);
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(184, 72, 36, 0.4);
+  box-shadow: 0 5px 14px rgba(184, 72, 36, 0.38);
 }
 .ad-card-submit-btn:active {
   transform: translateY(0);
@@ -5848,15 +5839,14 @@ select.lead-card-input option {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 11.5px;
-  color: #647480;
-  margin: 8px 0 0;
+  gap: 5px;
+  font-size: 10.5px;
+  color: #7b8893;
+  margin: 6px 0 0;
 }
 .ad-card-safe-notice svg {
-  width: 14px;
-  height: 14px;
-  color: #7b8893;
+  width: 13px;
+  height: 13px;
 }
 
 /* ====================================================
