@@ -724,9 +724,64 @@ function initMain() {
 
   initLeadPopup();
 
+  function getSubmitModal() {
+    let modal = document.getElementById("adSubmitModal");
+    if (!modal) {
+      modal = document.createElement("div");
+      modal.className = "ad-submit-modal";
+      modal.id = "adSubmitModal";
+      modal.setAttribute("role", "dialog");
+      modal.setAttribute("aria-modal", "true");
+      modal.innerHTML =
+        '<div class="ad-submit-modal-backdrop" id="adSubmitModalBackdrop"></div>' +
+        '<div class="ad-submit-modal-card">' +
+        '  <div class="ad-submit-modal-head">' +
+        '    <div class="ad-submit-logo">' +
+        '      <img src="assets/logo-mark.png" alt="" class="ad-submit-logo-mark" width="26" height="26" />' +
+        '      <div class="ad-submit-brand-text">' +
+        '        <span class="ad-submit-brand-name">buildabo</span>' +
+        '        <span class="ad-submit-brand-sub">HOMES FOR A BETTER TOMORROW</span>' +
+        '      </div>' +
+        '    </div>' +
+        '    <button type="button" class="ad-submit-modal-close" aria-label="Close" id="adSubmitModalClose">' +
+        '      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">' +
+        '        <line x1="18" y1="6" x2="6" y2="18"></line>' +
+        '        <line x1="6" y1="6" x2="18" y2="18"></line>' +
+        '      </svg>' +
+        '    </button>' +
+        '  </div>' +
+        '  <div class="ad-submit-modal-body">' +
+        '    <div class="ad-submit-spinner-wrap">' +
+        '      <div class="ad-submit-spinner"></div>' +
+        '    </div>' +
+        '    <h3 class="ad-submit-modal-title">Submitting your details...</h3>' +
+        '    <p class="ad-submit-modal-sub">Please wait a moment.</p>' +
+        '  </div>' +
+        '</div>';
+      document.body.appendChild(modal);
+
+      const closeBtn = modal.querySelector("#adSubmitModalClose");
+      const backdrop = modal.querySelector("#adSubmitModalBackdrop");
+      const hide = () => modal.classList.remove("is-active");
+      if (closeBtn) closeBtn.addEventListener("click", hide);
+      if (backdrop) backdrop.addEventListener("click", hide);
+    }
+    return modal;
+  }
+
+  function showSubmitModal() {
+    const modal = getSubmitModal();
+    modal.classList.add("is-active");
+  }
+
+  function hideSubmitModal() {
+    const modal = document.getElementById("adSubmitModal");
+    if (modal) modal.classList.remove("is-active");
+  }
+
   document.querySelectorAll(".contact-form").forEach((form) => {
     const status = form.querySelector(".contact-form-status");
-    const submit = form.querySelector(".contact-submit");
+    const submit = form.querySelector(".contact-submit, .ad-card-submit-btn");
     const isPopup = Boolean(form.closest(".lead-popup"));
 
     function setStatus(message, isError, asHtml) {
@@ -743,7 +798,7 @@ function initMain() {
       const name = String(data.get("name") || "").trim();
       const email = String(data.get("email") || "").trim();
       let phone = String(data.get("phone") || "").trim().replace(/\s+/g, "");
-      if (form.querySelector(".lead-card-phone") && phone && !phone.startsWith("+")) {
+      if ((form.querySelector(".lead-card-phone") || form.querySelector(".ad-phone-wrap")) && phone && !phone.startsWith("+")) {
         phone = "+91" + phone.replace(/^0+/, "");
         data.set("phone", phone);
       }
@@ -758,6 +813,9 @@ function initMain() {
 
       if (submit) submit.disabled = true;
       setStatus("Sending your enquiry…", false);
+      showSubmitModal();
+      const submitStartTime = Date.now();
+      const MIN_LOADER_TIME = 1500;
 
       const isLocalPreview = /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
 
@@ -820,6 +878,7 @@ function initMain() {
                 "Project type": String(data.get("interest") || ""),
                 Budget: String(data.get("budget") || ""),
                 Location: String(data.get("location") || ""),
+                "Built-up area": String(data.get("builtup_area") || ""),
                 message: String(data.get("message") || ""),
                 _subject: String(data.get("subject") || `Project enquiry from ${name}`),
                 _template: "table",
@@ -833,24 +892,32 @@ function initMain() {
 
         if (!sent) {
           if (isLocalPreview) {
-            setStatus("This local preview cannot send email. On the live website, this form emails info@buildabo.in.", false);
+            const elapsed = Date.now() - submitStartTime;
+            if (elapsed < MIN_LOADER_TIME) {
+              await new Promise((resolve) => setTimeout(resolve, MIN_LOADER_TIME - elapsed));
+            }
+            form.reset();
+            try {
+              sessionStorage.setItem("buildabo-lead-submitted", "1");
+            } catch (err) { }
+            window.location.href = "thank-you.html";
             return;
           }
           throw new Error("Could not send");
         }
-        form.reset();
-        setStatus("Thanks. Your enquiry has been sent. We’ll reply within 24 hours.", false);
-        if (isPopup) {
-          try {
-            sessionStorage.setItem("buildabo-lead-submitted", "1");
-          } catch (err) { }
-          window.setTimeout(() => {
-            if (typeof closeLeadPopup === "function") {
-              closeLeadPopup();
-            }
-          }, 1400);
+
+        const elapsed = Date.now() - submitStartTime;
+        if (elapsed < MIN_LOADER_TIME) {
+          await new Promise((resolve) => setTimeout(resolve, MIN_LOADER_TIME - elapsed));
         }
+
+        form.reset();
+        try {
+          sessionStorage.setItem("buildabo-lead-submitted", "1");
+        } catch (err) { }
+        window.location.href = "thank-you.html";
       } catch (err) {
+        hideSubmitModal();
         const waText = encodeURIComponent(
           `Hi buildabo, I'm ${name || "a website visitor"}. ${phone ? "Phone: " + phone + ". " : ""}${email ? "Email: " + email + ". " : ""}I'd like to talk about a project.`
         );
@@ -1011,6 +1078,137 @@ function initMain() {
       window.addEventListener("load", fetchAndRenderIg, { once: true });
     }
   }
+
+  // Scroll-triggered autoplay and custom video player controls for "Delivered by BuildAbo"
+  function initDeliveredVideo() {
+    const video = document.getElementById("deliveredVideo");
+    const videoCard = document.getElementById("deliveredVideoCard");
+    if (!video || !videoCard) return;
+
+    const centerBtn = document.getElementById("deliveredCenterPlayBtn");
+    const playToggle = document.getElementById("deliveredPlayToggle");
+    const muteToggle = document.getElementById("deliveredMuteToggle");
+    const fullscreenBtn = document.getElementById("deliveredFullscreenBtn");
+    const timeDisplay = document.getElementById("deliveredTime");
+    const progressBar = document.getElementById("deliveredProgressBar");
+    const progressContainer = document.getElementById("deliveredProgressContainer");
+
+    const formatTime = (sec) => {
+      if (isNaN(sec) || !isFinite(sec)) return "0:00";
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${s < 10 ? "0" : ""}${s}`;
+    };
+
+    const updatePlayState = () => {
+      if (video.paused) {
+        videoCard.classList.remove("is-playing");
+      } else {
+        videoCard.classList.add("is-playing");
+      }
+    };
+
+    video.addEventListener("play", updatePlayState);
+    video.addEventListener("pause", updatePlayState);
+    video.addEventListener("ended", () => {
+      videoCard.classList.remove("is-playing");
+    });
+
+    video.addEventListener("timeupdate", () => {
+      const total = video.duration || 45;
+      const current = video.currentTime || 0;
+      const pct = Math.min(100, Math.max(0, (current / total) * 100));
+      if (progressBar) progressBar.style.width = pct + "%";
+      if (timeDisplay) {
+        timeDisplay.textContent = `${formatTime(current)} / ${formatTime(total)}`;
+      }
+    });
+
+    // Toggle Play/Pause
+    const togglePlay = (e) => {
+      if (e) e.stopPropagation();
+      if (video.paused) {
+        const p = video.play();
+        if (p !== undefined) p.catch((err) => console.log("[buildabo] Play error:", err));
+      } else {
+        video.pause();
+      }
+    };
+
+    if (centerBtn) centerBtn.addEventListener("click", togglePlay);
+    if (playToggle) playToggle.addEventListener("click", togglePlay);
+    video.addEventListener("click", togglePlay);
+
+    // Mute / Unmute Toggle
+    if (muteToggle) {
+      muteToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        if (video.muted) {
+          videoCard.classList.remove("is-unmuted");
+        } else {
+          videoCard.classList.add("is-unmuted");
+        }
+      });
+    }
+
+    // Progress Bar Click Seek
+    if (progressContainer) {
+      progressContainer.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const rect = progressContainer.getBoundingClientRect();
+        const clickRatio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        const total = video.duration || 45;
+        video.currentTime = clickRatio * total;
+      });
+    }
+
+    // Fullscreen Toggle
+    if (fullscreenBtn) {
+      fullscreenBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (!document.fullscreenElement) {
+          if (videoCard.requestFullscreen) {
+            videoCard.requestFullscreen();
+          } else if (video.webkitEnterFullscreen) {
+            video.webkitEnterFullscreen();
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      });
+    }
+
+    // Scroll-triggered Autoplay: play on scroll in, pause on scroll out
+    if ("IntersectionObserver" in window) {
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+            if (video.paused) {
+              const playPromise = video.play();
+              if (playPromise !== undefined) {
+                playPromise.catch((err) => {
+                  console.info("[buildabo] Video scroll autoplay prevented:", err);
+                });
+              }
+            }
+          } else if (entry.intersectionRatio < 0.15) {
+            if (!video.paused) {
+              video.pause();
+            }
+          }
+        });
+      }, {
+        threshold: [0, 0.15, 0.3, 0.6]
+      });
+
+      scrollObserver.observe(videoCard);
+    }
+  }
+
+  initDeliveredVideo();
 }
 
 if (document.readyState === "loading") {
