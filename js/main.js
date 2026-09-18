@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initMain() {
   const isMobile = window.__buildaboMobile === true || window.matchMedia("(max-width: 767px)").matches;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const skipAnim = isMobile || reduceMotion;
@@ -561,138 +561,164 @@ document.addEventListener("DOMContentLoaded", () => {
   let openLeadPopup;
 
   function initLeadPopup() {
-    const leadPopup = document.querySelector(".lead-popup");
+    function setupPopup(leadPopup) {
+      try {
+        sessionStorage.removeItem("buildabo-lead-dismissed");
+      } catch (err) { }
 
-    if (!leadPopup) {
-      return;
-    }
+      const page = (
+        window.location.pathname
+          .replace(/\\/g, "/")
+          .split("/")
+          .pop() || "index.html"
+      ).toLowerCase();
 
-    try {
-      sessionStorage.removeItem("buildabo-lead-dismissed");
-    } catch (err) { }
+      const isContactPage = page === "contact.html";
+      const isAdPage =
+        document.body.classList.contains("ad-page") ||
+        page === "top-construction-company-bangalore.html";
 
-    const page = (
-      window.location.pathname
-        .replace(/\\/g, "/")
-        .split("/")
-        .pop() || "index.html"
-    ).toLowerCase();
+      const AUTO_POPUP_DELAY = 1 * 60 * 1000; // 1 minute (60 seconds)
 
-    const isContactPage = page === "contact.html";
-    const isAdPage =
-      document.body.classList.contains("ad-page") ||
-      page === "top-construction-company-bangalore.html";
+      let autoLeadTimer = null;
 
-    const AUTO_POPUP_DELAY = 10000;
-
-    let autoLeadTimer = null;
-
-    const clearAutoLead = () => {
-      if (autoLeadTimer) {
-        clearTimeout(autoLeadTimer);
-        autoLeadTimer = null;
-      }
-    };
-
-    const scheduleAutoLead = (delay = AUTO_POPUP_DELAY) => {
-      clearAutoLead();
-      if (isContactPage) {
-        return;
-      }
-      if (sessionStorage.getItem("buildabo-lead-submitted") === "1") {
-        return;
-      }
-      autoLeadTimer = window.setTimeout(() => {
-        if (!leadPopup.classList.contains("is-open")) {
-          openLeadPopup(false);
+      const clearAutoLead = () => {
+        if (autoLeadTimer) {
+          clearTimeout(autoLeadTimer);
+          autoLeadTimer = null;
         }
-      }, delay);
-    };
+      };
 
-    openLeadPopup = (force) => {
-      if (!force && isContactPage) {
-        return;
-      }
+      const scheduleAutoLead = (delay = AUTO_POPUP_DELAY) => {
+        clearAutoLead();
+        if (isContactPage) {
+          return;
+        }
+        if (sessionStorage.getItem("buildabo-lead-submitted") === "1") {
+          console.info("[buildabo] Popup auto-open skipped: lead already submitted in this session.");
+          return;
+        }
+        console.info(`[buildabo] Popup scheduled to appear in ${Math.round(delay / 1000)}s`);
+        autoLeadTimer = window.setTimeout(() => {
+          if (!leadPopup.classList.contains("is-open")) {
+            openLeadPopup(false);
+          }
+        }, delay);
+      };
 
-      if (!force && sessionStorage.getItem("buildabo-lead-submitted") === "1") {
-        return;
-      }
+      openLeadPopup = (force) => {
+        if (!force && isContactPage) {
+          return;
+        }
 
-      clearAutoLead();
+        if (!force && sessionStorage.getItem("buildabo-lead-submitted") === "1") {
+          return;
+        }
 
-      if (leadPopup.classList.contains("is-open")) {
-        return;
-      }
+        clearAutoLead();
 
-      if (mobileMenu && mobileMenu.classList.contains("is-open")) {
-        closeMenu();
-      }
+        if (leadPopup.classList.contains("is-open")) {
+          return;
+        }
 
-      stopReviewVideos();
+        if (mobileMenu && mobileMenu.classList.contains("is-open")) {
+          closeMenu();
+        }
 
-      leadPopup.classList.add("is-open");
-      leadPopup.setAttribute("aria-hidden", "false");
-      document.body.classList.add("lead-open");
+        stopReviewVideos();
 
-      lenis.stop();
+        leadPopup.classList.add("is-open");
+        leadPopup.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lead-open");
 
-      window.setTimeout(() => {
-        leadPopup.querySelector("input, select, textarea")?.focus();
-      }, 50);
-    };
+        lenis.stop();
 
-    closeLeadPopup = () => {
-      leadPopup.classList.remove("is-open");
-      leadPopup.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("lead-open");
+        window.setTimeout(() => {
+          leadPopup.querySelector("input, select, textarea")?.focus();
+        }, 50);
+      };
 
-      if (!document.body.classList.contains("menu-open")) {
-        lenis.start();
-      }
+      closeLeadPopup = () => {
+        leadPopup.classList.remove("is-open");
+        leadPopup.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lead-open");
 
-      // Do not store in sessionStorage when cancel/close is clicked.
-      // Automatically show again after 1 minute (except on contact page).
+        if (!document.body.classList.contains("menu-open")) {
+          lenis.start();
+        }
+
+        // Do not store in sessionStorage when cancel/close is clicked.
+        // Automatically show again after 1 minute (except on contact page).
+        if (!isContactPage) {
+          scheduleAutoLead(AUTO_POPUP_DELAY);
+        }
+      };
+
+      window.openLeadPopup = openLeadPopup;
+      window.closeLeadPopup = closeLeadPopup;
+
+      document.addEventListener("click", (e) => {
+        const opener = e.target.closest("[data-open-lead]");
+
+        if (!opener) return;
+
+        // On pages other than top-construction-company-bangalore (ad page),
+        // redirect Start a Project / lead clicks to contact.html
+        if (!isAdPage) {
+          if (isContactPage) {
+            const formSection = document.getElementById("get-in-touch") || document.querySelector("form.contact-form");
+            if (formSection) {
+              e.preventDefault();
+              formSection.scrollIntoView({ behavior: "smooth" });
+              return;
+            }
+          }
+          e.preventDefault();
+          window.location.href = "contact.html";
+          return;
+        }
+
+        e.preventDefault();
+
+        openLeadPopup(true);
+      });
+
+      leadPopup.querySelectorAll("[data-close-lead]").forEach((el) => {
+        el.addEventListener("click", () => {
+          closeLeadPopup();
+        });
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Escape" &&
+          leadPopup.classList.contains("is-open")
+        ) {
+          closeLeadPopup();
+        }
+      });
+
+      // Show popup after 1 minute on all pages except contact page
       if (!isContactPage) {
         scheduleAutoLead(AUTO_POPUP_DELAY);
       }
-    };
+    }
 
-    document.addEventListener("click", (e) => {
-      const opener = e.target.closest("[data-open-lead]");
-
-      if (!opener) return;
-
-      // On pages other than top-construction-company-bangalore (ad page),
-      // redirect Start a Project / lead clicks to contact.html
-      if (!isAdPage) {
-        e.preventDefault();
-        window.location.href = "contact.html";
-        return;
-      }
-
-      e.preventDefault();
-
-      openLeadPopup(true);
-    });
-
-    leadPopup.querySelectorAll("[data-close-lead]").forEach((el) => {
-      el.addEventListener("click", () => {
-        closeLeadPopup();
-      });
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (
-        e.key === "Escape" &&
-        leadPopup.classList.contains("is-open")
-      ) {
-        closeLeadPopup();
-      }
-    });
-
-    // Show popup after 1 minute on all pages except contact page
-    if (!isContactPage) {
-      scheduleAutoLead(AUTO_POPUP_DELAY);
+    const existingPopup = document.querySelector(".lead-popup");
+    if (existingPopup) {
+      setupPopup(existingPopup);
+    } else {
+      let attempts = 0;
+      const retryTimer = setInterval(() => {
+        const popup = document.querySelector(".lead-popup");
+        attempts++;
+        if (popup) {
+          clearInterval(retryTimer);
+          setupPopup(popup);
+        } else if (attempts > 60) {
+          clearInterval(retryTimer);
+        }
+      }, 50);
     }
   }
 
@@ -915,7 +941,7 @@ document.addEventListener("DOMContentLoaded", () => {
               data = JSON.parse(text);
             }
           }
-        } catch (_) {}
+        } catch (_) { }
 
         if (!data || !data.posts || !data.posts.length) {
           try {
@@ -947,7 +973,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <span>Reel</span>
                   </span>
                 ` : ''}
-                <img src="${img}" alt="${cap}" class="ig-card-img" loading="lazy" referrerpolicy="no-referrer" />
+                <img src="${img}" alt="${cap}" class="ig-card-img" loading="lazy" onerror="this.onerror=null;this.src='assets/hero-1.webp';" />
                 <div class="ig-card-overlay">
                   <svg class="ig-card-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                   <p class="ig-card-caption">${cap}</p>
@@ -985,6 +1011,12 @@ document.addEventListener("DOMContentLoaded", () => {
       window.addEventListener("load", fetchAndRenderIg, { once: true });
     }
   }
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initMain);
+} else {
+  initMain();
+}
 
 
