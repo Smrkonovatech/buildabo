@@ -3234,6 +3234,7 @@ body.lead-open { overflow: hidden; }
   background: #ffffff;
   border-bottom: 1px solid #f0eae1;
   position: relative;
+  opacity: 1;
 }
 
 .ad-delivered-grid {
@@ -3703,10 +3704,130 @@ body.lead-open { overflow: hidden; }
   }
 }
 
-@media (max-width: 1199px) and (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1024px) {
+  .ad-delivered-section {
+    padding: 40px 0;
+  }
   .ad-delivered-grid {
-    grid-template-columns: 380px 1fr;
+    grid-template-columns: 360px 1fr;
+    gap: 36px;
+  }
+  .ad-delivered-video-card {
+    max-width: 360px;
+  }
+}
+
+/* Desktop Video Section: Compact to fit the screen viewport */
+@media (min-width: 1025px) {
+  .ad-delivered-section {
+    width: 100%;
+    max-width: 1440px;
+    height: auto;
+    min-height: auto;
+    opacity: 1;
+    margin: 0 auto;
+    padding: clamp(20px, 3.2vh, 36px) 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .ad-delivered-section .container-site {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .ad-delivered-grid {
+    display: grid;
+    grid-template-columns: 310px 1fr;
     gap: 40px;
+    align-items: center;
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .ad-delivered-video-col {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ad-delivered-video-card {
+    width: 100%;
+    max-width: 310px;
+    max-height: min(68vh, 480px);
+    aspect-ratio: 9 / 14;
+    border-radius: 18px;
+  }
+
+  .ad-delivered-content-col {
+    padding-left: 8px;
+  }
+
+  .ad-delivered-header {
+    margin-bottom: 12px;
+  }
+
+  .ad-delivered-title {
+    font-size: clamp(28px, 2.3vw, 35px);
+    line-height: 1.15;
+    margin: 0 0 6px;
+  }
+
+  .ad-delivered-subtitle {
+    font-size: 14px;
+  }
+
+  .ad-delivered-stats-card {
+    padding: 10px 8px;
+    border-radius: 13px;
+    margin-bottom: 14px;
+  }
+
+  .ad-stat-icon-wrap {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 4px;
+  }
+
+  .ad-stat-val {
+    font-size: 13.5px;
+  }
+
+  .ad-stat-lbl {
+    font-size: 8.5px;
+  }
+
+  .ad-delivered-promise {
+    font-size: 19px;
+    margin: 0 0 4px;
+  }
+
+  .ad-delivered-story {
+    font-size: 13px;
+    margin: 0 0 8px;
+  }
+
+  .ad-delivered-spec {
+    font-size: 14px;
+    margin: 0 0 10px;
+  }
+
+  .ad-delivered-action-row {
+    margin-bottom: 12px;
+  }
+
+  .ad-delivered-link {
+    font-size: 14px;
+  }
+
+  .ad-delivered-cta-btn {
+    font-size: 14px;
+    padding: 11px 28px;
   }
 }
 
