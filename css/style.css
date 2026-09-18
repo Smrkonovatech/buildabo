@@ -3238,7 +3238,7 @@ body.lead-open { overflow: hidden; }
 
 .ad-delivered-grid {
   display: grid;
-  grid-template-columns: 310px 1fr;
+  grid-template-columns: 320px 1fr;
   gap: 44px;
   align-items: center;
   max-width: 1120px;
@@ -3253,8 +3253,8 @@ body.lead-open { overflow: hidden; }
 .ad-delivered-video-card {
   position: relative;
   width: 100%;
-  max-width: 310px;
-  max-height: min(68vh, 485px);
+  max-width: 320px;
+  max-height: min(70vh, 500px);
   margin: 0 auto;
   aspect-ratio: 9 / 14;
   border-radius: 18px;
@@ -3756,7 +3756,7 @@ body.lead-open { overflow: hidden; }
   }
 
   .ad-delivered-video-card {
-    max-width: 290px;
+    max-width: 300px;
     border-radius: 16px;
   }
 
@@ -5307,9 +5307,9 @@ select.lead-card-input option {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 32px 48px 24px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 32px 58px 24px;
     gap: 24px;
     box-sizing: border-box;
   }
@@ -5365,7 +5365,7 @@ select.lead-card-input option {
 }
 @media (min-width: 1440px) {
   .ad-hero-container {
-    padding: 36px 64px 28px;
+    padding: 36px 74px 28px;
   }
 }
 

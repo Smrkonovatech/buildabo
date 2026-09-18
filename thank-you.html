@@ -530,12 +530,12 @@
     /* Ambient Handwritten Script */
     .ty-script-brand {
       position: absolute;
-      bottom: 36px;
-      left: 48px;
+      bottom: clamp(36px, 6vh, 64px);
+      left: clamp(210px, 19vw, 320px);
       font-family: 'Caveat', cursive;
       font-size: 32px;
       font-weight: 700;
-      color: #727a71;
+      color: #556259;
       transform: rotate(-7deg);
       line-height: 1.1;
       pointer-events: none;
@@ -554,7 +554,7 @@
     @media (max-width: 1200px) {
       .ty-script-brand {
         bottom: 24px;
-        left: 28px;
+        left: clamp(160px, 16vw, 220px);
         font-size: 26px;
       }
       .ty-script-underline {
