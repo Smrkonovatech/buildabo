@@ -8134,28 +8134,38 @@ input.ad-estimate-input::placeholder {
   }
 
   .ad-estimate-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-left: 16px;
-    padding-right: 16px;
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 100%;
-    gap: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 0 !important;
+    margin: 0 auto !important;
   }
 
   .ad-estimate-left {
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 20px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 auto 22px !important;
   }
 
   .ad-estimate-kicker-row {
-    justify-content: center;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     gap: 10px;
-    margin-bottom: 12px;
+    margin: 0 auto 12px !important;
   }
 
   .ad-estimate-kicker-line {
@@ -8171,32 +8181,34 @@ input.ad-estimate-input::placeholder {
   }
 
   .ad-estimate-title {
-    text-align: center;
+    text-align: center !important;
     font-size: clamp(26px, 7.2vw, 36px);
     line-height: 1.15;
     letter-spacing: -0.02em;
-    margin: 0 0 10px;
+    margin: 0 auto 10px !important;
+    width: 100% !important;
   }
 
   .ad-estimate-subtitle {
-    text-align: center;
+    text-align: center !important;
     font-size: clamp(13.5px, 3.6vw, 15.5px);
     color: #615a53;
     line-height: 1.4;
-    margin: 0 0 18px;
+    margin: 0 auto 18px !important;
+    width: 100% !important;
   }
 
-  /* Badges Row on Mobile: Always Side-by-Side in 1 Row */
+  /* Badges Row on Mobile: Always Side-by-Side in 1 Row, perfectly centered */
   .ad-estimate-badges-row {
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
     gap: clamp(8px, 2.5vw, 16px);
-    width: auto;
-    max-width: 100%;
-    margin: 0 auto;
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
   }
 
   .ad-estimate-offer-badge {
@@ -8283,42 +8295,64 @@ input.ad-estimate-input::placeholder {
     display: none;
   }
 
-  /* Right / Card column on mobile */
+  /* Right / Card column on mobile - perfectly centered */
   .ad-estimate-right {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 auto !important;
   }
 
   .ad-estimate-card {
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
-    padding: clamp(22px, 5.5vw, 32px) clamp(16px, 4.5vw, 24px);
-    border-radius: 20px;
-    box-sizing: border-box;
-    box-shadow: 0 10px 32px rgba(45, 30, 15, 0.07);
-    border: 1px solid rgba(220, 210, 195, 0.6);
+    width: 100% !important;
+    max-width: 420px !important;
+    margin: 0 auto !important;
+    padding: clamp(22px, 5.5vw, 32px) clamp(16px, 4.5vw, 24px) !important;
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 10px 32px rgba(45, 30, 15, 0.07) !important;
+    border: 1px solid rgba(220, 210, 195, 0.6) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
   }
 
   .ad-estimate-card-title {
     font-size: clamp(20px, 5vw, 23px);
     font-weight: 800;
-    margin-bottom: 6px;
+    margin: 0 auto 6px !important;
+    text-align: center !important;
+    width: 100% !important;
   }
 
   .ad-estimate-card-subtitle {
     font-size: clamp(12px, 3vw, 13px);
-    margin-bottom: 18px;
+    margin: 0 auto 18px !important;
     line-height: 1.4;
+    text-align: center !important;
+    width: 100% !important;
   }
 
   .ad-estimate-form {
-    gap: 10px;
+    gap: 10px !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
   }
 
   .ad-estimate-input-group {
     border-radius: 10px;
+    width: 100% !important;
+    margin: 0 auto !important;
   }
 
   .contact-form input.ad-estimate-input,
@@ -8341,19 +8375,34 @@ input.ad-estimate-input::placeholder {
   }
 
   .ad-estimate-submit-btn {
-    padding: 13px 20px;
-    font-size: 14.5px;
-    border-radius: 10px;
-    margin-top: 4px;
+    padding: 13px 20px !important;
+    font-size: 14.5px !important;
+    border-radius: 10px !important;
+    margin: 4px auto 0 !important;
+    width: 100% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
   }
 
   .ad-estimate-wa-box {
-    margin-top: 14px;
-    padding-top: 12px;
+    margin: 14px auto 0 !important;
+    padding-top: 12px !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
   }
 
   .ad-estimate-wa-btn {
     gap: 10px;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    text-align: center !important;
   }
 
   .ad-estimate-wa-icon {
@@ -8366,12 +8415,21 @@ input.ad-estimate-input::placeholder {
     height: 18px;
   }
 
+  .ad-estimate-wa-copy {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
   .ad-estimate-wa-pre {
     font-size: 11.5px;
+    text-align: center !important;
   }
 
   .ad-estimate-wa-action {
     font-size: 12.5px;
+    text-align: center !important;
   }
 
   /* Show mobile villa wrap below the card */
