@@ -7575,25 +7575,25 @@ select.lead-card-input option {
 
 .ad-estimate-banner-section {
   position: relative;
-  background-color: #fcf8f3;
+  background-color: #fbf6ee;
   background-image: url('../assets/estimate-banner-bg.png');
   background-repeat: no-repeat;
-  background-position: left bottom;
+  background-position: center bottom;
   background-size: cover;
-  padding: 85px 0 60px;
-  min-height: 840px;
+  padding: clamp(34px, 3.6vw, 48px) 0 clamp(40px, 4.5vw, 60px);
+  min-height: clamp(580px, 48vw, 680px);
   overflow: hidden;
   font-family: inherit;
   color: #1a1a1a;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .ad-estimate-container {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  align-items: center;
-  gap: clamp(24px, 4vw, 56px);
+  grid-template-columns: 1.18fr 0.82fr;
+  align-items: flex-start;
+  gap: clamp(20px, 3.5vw, 48px);
   width: 100%;
   position: relative;
   z-index: 2;
@@ -7605,6 +7605,7 @@ select.lead-card-input option {
   flex-direction: column;
   align-items: flex-start;
   position: relative;
+  max-width: 530px;
 }
 
 /* Kicker Row */
@@ -7612,7 +7613,7 @@ select.lead-card-input option {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .ad-estimate-kicker-line {
@@ -7624,22 +7625,22 @@ select.lead-card-input option {
 
 .ad-estimate-kicker-text {
   font-family: var(--font-primary), sans-serif;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #797166;
 }
 
-/* Headline */
+/* Headline: compact & crisp to sit well above house roofline */
 .ad-estimate-title {
   font-family: var(--font-primary), sans-serif;
-  font-size: clamp(34px, 3.8vw, 52px);
+  font-size: clamp(28px, 2.7vw, 40px);
   font-weight: 800;
   color: #1a1a1a;
   line-height: 1.12;
   letter-spacing: -0.025em;
-  margin: 0 0 14px;
+  margin: 0 0 8px;
 }
 
 .ad-estimate-title-accent {
@@ -7649,34 +7650,37 @@ select.lead-card-input option {
 /* Subtitle */
 .ad-estimate-subtitle {
   font-family: var(--font-primary), sans-serif;
-  font-size: clamp(15px, 1.35vw, 17.5px);
+  font-size: clamp(14px, 1.2vw, 16px);
   color: #5c554e;
-  line-height: 1.45;
-  margin: 0 0 28px;
+  line-height: 1.35;
+  margin: 0 0 16px;
 }
 
 /* Badges Row */
 .ad-estimate-badges-row {
-  display: flex;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 18px;
 }
 
 /* Brown Offer Badge */
 .ad-estimate-offer-badge {
   background: #8d532b;
   color: #ffffff;
-  padding: 12px 22px;
-  border-radius: 14px;
+  padding: 8px 18px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 24px rgba(141, 83, 43, 0.25);
+  box-shadow: 0 6px 18px rgba(141, 83, 43, 0.25);
+  flex-shrink: 0;
 }
 
 .ad-estimate-offer-price {
   font-family: var(--font-primary), sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.01em;
@@ -7684,29 +7688,31 @@ select.lead-card-input option {
 
 .ad-estimate-offer-label {
   font-family: var(--font-primary), sans-serif;
-  font-size: 12.5px;
+  font-size: 11.5px;
   font-weight: 500;
   color: #f5eae0;
-  margin-top: 3px;
+  margin-top: 2px;
 }
 
 /* Divider */
 .ad-estimate-badge-divider {
   width: 1px;
-  height: 48px;
+  height: 42px;
   background: #d8cec3;
+  flex-shrink: 0;
 }
 
 /* Validity Badge */
 .ad-estimate-validity-badge {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .ad-estimate-validity-icon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   color: #8d532b;
   display: flex;
   align-items: center;
@@ -7715,8 +7721,8 @@ select.lead-card-input option {
 }
 
 .ad-estimate-validity-icon svg {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 }
 
 .ad-estimate-validity-text {
@@ -7726,24 +7732,24 @@ select.lead-card-input option {
 
 .ad-estimate-validity-label {
   font-family: var(--font-primary), sans-serif;
-  font-size: 12.5px;
+  font-size: 11.5px;
   color: #5c554e;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
 .ad-estimate-validity-date {
   font-family: var(--font-primary), sans-serif;
-  font-size: 14.5px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #1a1a1a;
   letter-spacing: -0.01em;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
-/* Desktop Script Text: placed below badges, hovering above the villa garden terrace */
+/* Desktop Script Text: placed below badges, hovering in sky above low terrace */
 .ad-estimate-script-desktop {
-  margin-top: clamp(60px, 9vw, 150px);
-  align-self: flex-end;
+  margin-top: clamp(40px, 6vw, 90px);
+  margin-left: auto;
   margin-right: clamp(10px, 3vw, 40px);
 }
 
@@ -7752,7 +7758,7 @@ select.lead-card-input option {
   flex-direction: column;
   align-items: flex-end;
   font-family: 'Caveat', cursive;
-  font-size: clamp(28px, 2.7vw, 38px);
+  font-size: clamp(26px, 2.4vw, 34px);
   font-weight: 700;
   color: #8d532b;
   line-height: 1.05;
@@ -7762,8 +7768,8 @@ select.lead-card-input option {
 }
 
 .ad-estimate-script-underline {
-  width: 120px;
-  height: 12px;
+  width: 110px;
+  height: 11px;
   margin-top: -2px;
 }
 
@@ -7776,30 +7782,31 @@ select.lead-card-input option {
 
 .ad-estimate-card {
   background: #ffffff;
-  border-radius: 24px;
-  padding: 38px 34px;
+  border-radius: 22px;
+  padding: 32px 28px;
   box-shadow: 0 16px 45px rgba(60, 40, 20, 0.08);
   border: 1px solid rgba(220, 210, 195, 0.55);
   width: 100%;
-  max-width: 480px;
+  max-width: 440px;
+  box-sizing: border-box;
 }
 
 .ad-estimate-card-title {
   font-family: var(--font-primary), sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   color: #1a1a1a;
   text-align: center;
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   letter-spacing: -0.02em;
 }
 
 .ad-estimate-card-subtitle {
   font-family: var(--font-primary), sans-serif;
-  font-size: 13.5px;
+  font-size: 13px;
   color: #6c6660;
   text-align: center;
-  margin: 0 0 24px;
+  margin: 0 0 20px;
   line-height: 1.45;
 }
 
@@ -7809,83 +7816,109 @@ select.lead-card-input option {
   gap: 12px;
 }
 
+/* Precision-tuned input group container */
 .ad-estimate-input-group {
-  position: relative;
-  display: flex;
-  align-items: center;
-  background: #fdfdfd;
-  border: 1.2px solid #e7e3dc;
-  border-radius: 12px;
-  transition: all 0.2s ease;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  background: #fdfdfd !important;
+  border: 1.2px solid #e7e3dc !important;
+  border-radius: 12px !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  height: 48px !important;
+  box-sizing: border-box !important;
 }
 
 .ad-estimate-input-group:focus-within {
-  border-color: #8d532b;
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(141, 83, 43, 0.12);
+  border-color: #8d532b !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(141, 83, 43, 0.12) !important;
 }
 
+/* Icon strictly on the left */
 .ad-estimate-input-icon {
-  position: absolute;
-  left: 14px;
-  width: 20px;
-  height: 20px;
-  color: #8c827a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
+  position: absolute !important;
+  left: 14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 19px !important;
+  height: 19px !important;
+  color: #8c827a !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
 }
 
 .ad-estimate-input-icon svg {
-  width: 19px;
-  height: 19px;
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
 }
 
-.ad-estimate-input {
-  width: 100%;
-  padding: 13px 14px 13px 44px;
-  font-size: 14.5px;
-  font-family: inherit;
-  color: #1a1a1a;
-  border: none;
-  background: transparent;
-  outline: none;
+/* Input text with generous left padding so placeholder NEVER touches icon */
+.contact-form .ad-estimate-form input.ad-estimate-input,
+.contact-form input.ad-estimate-input,
+.ad-estimate-form input.ad-estimate-input,
+input.ad-estimate-input {
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  padding: 0 14px 0 46px !important;
+  font-size: 14.5px !important;
+  font-family: inherit !important;
+  color: #1a1a1a !important;
+  border: none !important;
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  line-height: 48px !important;
 }
 
-.ad-estimate-input::placeholder {
-  color: #8c827a;
-  font-size: 14px;
+.contact-form input.ad-estimate-input::placeholder,
+.ad-estimate-form input.ad-estimate-input::placeholder,
+input.ad-estimate-input::placeholder {
+  color: #8c827a !important;
+  font-size: 14px !important;
+  opacity: 1 !important;
+  line-height: normal !important;
 }
 
+/* Submit button: Title Case, NOT uppercase */
+.contact-form .ad-estimate-submit-btn,
 .ad-estimate-submit-btn {
-  background: #8d532b;
-  color: #ffffff;
-  border: none;
-  border-radius: 12px;
-  padding: 15px 24px;
-  font-size: 16px;
-  font-weight: 700;
-  font-family: inherit;
+  background: #8d532b !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 14px 22px !important;
+  font-size: 15.5px !important;
+  font-weight: 700 !important;
+  font-family: inherit !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
   cursor: pointer;
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-top: 6px;
-  box-shadow: 0 6px 18px rgba(141, 83, 43, 0.28);
+  margin-top: 4px;
+  box-shadow: 0 6px 18px rgba(141, 83, 43, 0.28) !important;
   transition: all 0.25s ease;
+  width: 100% !important;
 }
 
 .ad-estimate-submit-btn:hover {
-  background: #784420;
+  background: #784420 !important;
   transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(141, 83, 43, 0.35);
+  box-shadow: 0 8px 22px rgba(141, 83, 43, 0.35) !important;
 }
 
 .ad-estimate-submit-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
   transition: transform 0.2s ease;
 }
 
@@ -7895,8 +7928,8 @@ select.lead-card-input option {
 
 /* WhatsApp CTA inside card */
 .ad-estimate-wa-box {
-  margin-top: 20px;
-  padding-top: 16px;
+  margin-top: 18px;
+  padding-top: 14px;
   border-top: 1px solid #f0ebe4;
   display: flex;
   justify-content: center;
@@ -7905,7 +7938,7 @@ select.lead-card-input option {
 .ad-estimate-wa-btn {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -7915,8 +7948,8 @@ select.lead-card-input option {
 }
 
 .ad-estimate-wa-icon {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   background: #dcfce7;
   color: #16a34a;
   border-radius: 50%;
@@ -7927,8 +7960,8 @@ select.lead-card-input option {
 }
 
 .ad-estimate-wa-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 19px;
+  height: 19px;
 }
 
 .ad-estimate-wa-copy {
@@ -7937,14 +7970,14 @@ select.lead-card-input option {
 }
 
 .ad-estimate-wa-pre {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: #1a1a1a;
   line-height: 1.2;
 }
 
 .ad-estimate-wa-action {
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   color: #16a34a;
   line-height: 1.2;
