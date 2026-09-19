@@ -6095,6 +6095,8 @@ select.lead-card-input option {
   object-fit: contain;
   opacity: 1;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
 }
 
