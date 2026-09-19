@@ -7364,7 +7364,7 @@ select.lead-card-input option {
 }
 
 .ad-speak-card-body {
-  padding: 20px 20px 24px;
+  padding: 32px 28px 30px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -7374,50 +7374,39 @@ select.lead-card-input option {
 .ad-speak-author-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
+  justify-content: space-between;
+  margin-bottom: 18px;
   position: relative;
-}
-
-.ad-speak-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #ede5d8;
-  flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .ad-speak-stars {
   color: #d49a37;
-  font-size: 15px;
-  letter-spacing: 2px;
+  font-size: 17px;
+  letter-spacing: 2.5px;
   display: inline-flex;
   gap: 1px;
 }
 
 .ad-speak-quote-mark {
   font-family: Georgia, serif;
-  font-size: 40px;
-  color: #e5dacb;
+  font-size: 46px;
+  color: #eeddc9;
   line-height: 1;
-  margin-left: auto;
   font-weight: 700;
 }
 
 .ad-speak-quote-text {
   font-family: var(--font-primary), sans-serif;
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: #4e4842;
-  margin: 0 0 16px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #443e39;
+  margin: 0 0 20px;
   flex: 1;
 }
 
 .ad-speak-author-info {
   border-top: 1px solid #f0eae1;
-  padding-top: 12px;
+  padding-top: 14px;
 }
 
 .ad-speak-author-name {
