@@ -1,16 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Calculator Body -->
-  <rect x="4" y="2.5" width="16" height="19" rx="2.5" fill="rgba(255,255,255,0.06)" />
-  <!-- Display Screen -->
-  <rect x="6.5" y="5" width="11" height="3.5" rx="0.75" fill="rgba(255,255,255,0.22)" stroke-width="1.4" />
-  <!-- Keypad Buttons -->
-  <circle cx="7.8" cy="11.5" r="0.9" fill="#ffffff" stroke="none" />
-  <circle cx="12" cy="11.5" r="0.9" fill="#ffffff" stroke="none" />
-  <circle cx="16.2" cy="11.5" r="0.9" fill="#ffffff" stroke="none" />
-  <circle cx="7.8" cy="14.8" r="0.9" fill="#ffffff" stroke="none" />
-  <circle cx="12" cy="14.8" r="0.9" fill="#ffffff" stroke="none" />
-  <circle cx="16.2" cy="14.8" r="0.9" fill="#ffffff" stroke="none" />
-  <circle cx="7.8" cy="18" r="0.9" fill="#ffffff" stroke="none" />
-  <circle cx="12" cy="18" r="0.9" fill="#ffffff" stroke="none" />
-  <line x1="15.2" y1="18" x2="17.2" y2="18" stroke-width="1.8" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 44" width="28.863948822021484" height="28.863948822021484" fill="none">
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAsCAYAAADvjwGMAAAEc0lEQVR4AcSYgVlbIRSF0QWqE6gTGCdQJ7CdwDiBdgJ1Au0ExgnUCWwnaJ1AnUA7gf1/EpDHS9R89b3k4wQeHLjnweVCshwmn5eXlx1wC55AH0k7Vxhan0gIUQwVx1TcgiVwCU57gHYG2LnH/hF5WKYwpHACTpeWlnbILY/IOwW2jsAGdhR1ho6BM7NPxQMNJ1So8J7nzoEtZ8SX1+YzNoeKsUJ1PIczvn6Cgx6ggAsmwfwGe3uKIQ8BpcmRbiCMPhsYWQPHYA/4wgpINqkKYweOpQ6/eNHklwpwJRTVsphnptXyuRUK0C/1DwXpuC0LfYkpDa+UD2W5LzF/MLrOcl2RbwN3K1kz9SKGzXCO2R9gC9wBgypZM5Vi3GJijzcYfjYw6+ykgKoPuaseqM8pi0G9QlQs8QJG13Bbf8dOTlmMNQg6B6uU9fZOoR1wja2cGmJSLSS3YadItsp8qpiS0Ge5IQan3QfeM8haybtHjBG0DIAHHVkrWa8/xCOGVu9IZK0kzytEft+GGGr1dr2+Pih1NB3bCAot6Nzm03gKdivb7ngKs3/J9dkNk8aR+3o2odtO4hKfqQ9KB/9LDw87sqCTz+IZ7hUkT/4j47kxyjEdT96bM+MAC0O9TAsTouFSjGto3SZL5uW8xFcavgCXiiym7Sk8/cqzJxL4kr82g7dJ+7sRWCf1cl7CA06xrjVjBHMNl5xU1l9sD3x0YJ9TW5n7gumGCbW6XOFodjby7tJaY4v2+CbkGpvF26A9RlZyd6aHYz2Wz6u0aw9T41Qu07gmBN8kTPnMqq+pNc8ZrTk+17zXrW0ra+t18DflcjpzmXa3vsFMnneS3Fb0MZi5BPJcyrd4ugRdxynPDIZU6rSlJXAZEpxq21NnjbkUqT3l8rxse+fVgqKdmdRe5vqL7fIishieNEYW7ljL+pB07d0Z7ig5Br1ZvEcIaSyKwaBXj6fviZLXXCZ7LhKTmVmkhFfbWYxLQ7Xre4j/+FO3hH7kOfMLjkmn9IQvObFMo0HPdorzpSxm0s2T1XXUsUoc0q4QnZZikKcPlZxU1me8vsqbCw0xzM41MGiRtdIONc5cINchB+TTkjydcy4hkhtiWJ4VcAQuKpzznLar/Ywh03j2a/Ai+YNfDTH0MeA53YbrEv5toiGDmEL8t0KUnFSWl+IRQ348ZTG8ub5ihPVPo3Xmv4RxRV9QlKN/48vLUsmJZeq9NBkUKc6Xshi6KYYsRL8I738UN4310f6tvqWYVmPfFf8jJs1krbmuT0dIzWs9K8bpXsFH3I7iGP/x50UJHbsOegbHkmNZnr+hPcs0ZmzyZ41tDdBo7NK/KAbHflSMgcxoqvO6IyQosIT/HBwg2H9A7awD+69CybEszw0QdxN8bwEGSNtq2N8/GLTrLh0pxg46nXcTd4R/iQ4ZqEYSYtB7pn0Wz/EUHAHPXVeP5bM8f6po1yA6WoasEGfEzk6lvyi9IHWNJwwqxBmL9p0Z31RlXnycfi89rnXX0M4uk5GPj38AAAD//9lYwFAAAAAGSURBVAMAOK4Ejj53oGkAAAAASUVORK5CYII=" x="0" y="0" width="35" height="44" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" />
 </svg>

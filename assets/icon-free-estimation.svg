@@ -1,11 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Chimney on right roof -->
-  <path d="M16.5 7.5V3.5h2.5v6" />
-  <!-- Roof Pitch -->
-  <path d="M2.5 10.5L12 3l9.5 7.5" />
-  <!-- House Body -->
-  <path d="M5 9.5V19.5a1.5 1.5 0 0 0 1.5 1.5h11a1.5 1.5 0 0 0 1.5-1.5V9.5" fill="rgba(255,255,255,0.08)" />
-  <!-- Arched Front Door -->
-  <path d="M9.5 21v-5.5a2.5 2.5 0 0 1 5 0V21" fill="rgba(255,255,255,0.18)" />
-  <circle cx="13" cy="16.5" r="0.6" fill="#ffffff" stroke="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 43" width="28.863948822021484" height="28.863948822021484" fill="none">
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAArCAYAAAADgWq5AAAEUElEQVR4AezZj1kUMRAF8IMGxArECtQKxA6gArACoAKgAqQCoAKxArACtAKwArECfL9Ilju4P8tyB/f5wZe5zc5OMi8vM9lkWew90d/19fVS5HdkXNmaBOfJAAfI0o2c5Lo3RK6iexcZW2YCOBQCN8rx9zw4GiJ/optYpg44YFfj9SLX08hy6nfLfhQXQ+RNdBPL1AAHnBgF5mu8/owAC/RG6r2FhYXLXA8iyuf89MtZ7oWEUEl1dJkK4IAt4OJG0mwH3ErqnyJAHOb5TurKDz95ftQv0f2KXEVnUKmOLo8GHDBAnseFuP0Up19SL4ym/iF1rO3GThi0mva0GVk6Aw4AIXCYnoWBKf0QgGdVn2sNhd3YYDuXnnrvMX+dAAeMKceqBBMCawF7dUcvFMhynhkQ0MfAxo7ejLh9kDwYcJwJgdMbL1gtIRA9punFrVDYjo0BSbz3AX0ZwboQcT1PG7Efs/alNWCdRwACTLYDexndcoTeQA4CquhzNRDAoQGuJF70wuItZcTyV/SptyqtAAdQDYH36dX0b8WxEMCg0KCXcEDH5F+JDVaBM0CJh20hYjUwmKKP9XqkVZkIOGAxikFrK/ZOopNw9HXNpRenQ50GuIFYd4UA0BvRWcaqXhjpEzFD+6jKkYADylRjT6emeiVOhAA2q17CFX3tcNQ1bb2OJR52JZ0BW/7osQ20wYwNkaGAA9YUASWTm6mOHnhsw4VVcareSgJaiAAt8bbSnxguIZJnQode6BT9sE4HAKcD02LkRl1DoK6tpt+zb+kI2PLWSv3BJeAkHla1lZCIwDb9GmUE21aTVG9LAzhgh021xBJX2HYVAiX+brvoVgtoA8Y2AvbjX5hg2/aTvgmdPDPTxVEDOHdGJyn20lmZ6hhiVAiIL6wWfWynUuJHiGDx3podB5g2KOwjK6perx+wBwx2AI0ASifhgDXi0mjaPwGOiP4QqUSZdQRivbhtAKeR0Wok8AFl3CRcsZ7hz41/iWdt5l8Y8G/mG88N4KpJQwa2e5gdubZW+2lf4x9Y3R6nfs//PcAs51n+H8CPZTlJuxqxlrYVMTvR7SwZlrSWo4WgGCeAsnON6fgyS8DFcxLHXmOkxMganEu7MnPA7WC0t3oB3J6rbpYvDHfjrX2rF4bbc9XNcoDhvJmc45ypXnXrbqqtPgaPvfJApw3gPLR5d7KwW2r11hnoafo33pROIfblTe8N4Ghsop0s7EltL6N61mJf7NPASsj06i5gCuAbhc/1Z3mVAl0ezsFPPWlsBqMI6C2mIgTQboPipDwHOAcg+BcDhu36ljC8mcc+MDuxCovczkcx2xFgHd3k1RbAqG71D5HnGkZA1wNwYdi5aV1oRDZIgFnW3ql3lfQhJ3qT2sfuY0Sx4a/+3ff7d4rG8BmGZaLYpfRFnXjoy6R6V9Ge40ntHXrZ9ft3r31taz32EedkEd0RcfI6Vpa0uZRgLPn1FwAA//9xqHraAAAABklEQVQDAHf1jd2FygofAAAAAElFTkSuQmCC" x="0" y="0" width="44" height="43" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" />
 </svg>

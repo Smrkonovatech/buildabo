@@ -5990,15 +5990,21 @@ select.lead-card-input option {
     width: 100%;
   }
   .ad-features-desk .ad-feature-icon {
-    width: 22px;
-    height: 22px;
-    margin-bottom: 3px;
+    width: 28.863948822021484px !important;
+    height: 28.863948822021484px !important;
+    margin-bottom: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
   .ad-features-desk .ad-feature-icon-img {
-    width: 18px;
-    height: 18px;
-    max-width: 18px;
-    max-height: 18px;
+    width: 28.863948822021484px !important;
+    height: 28.863948822021484px !important;
+    max-width: 28.863948822021484px !important;
+    max-height: 28.863948822021484px !important;
+    transform: rotate(0deg) !important;
+    opacity: 1 !important;
+    object-fit: contain !important;
   }
   .ad-features-desk .ad-feature-label {
     font-size: 9.5px;
