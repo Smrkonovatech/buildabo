@@ -5986,6 +5986,13 @@ select.lead-card-input option {
   display: flex;
   flex-direction: column;
   gap: 9px;
+  /* Override global .contact-form box — form sits inside the card already */
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  width: 100% !important;
 }
 .ad-input-group {
   position: relative;
