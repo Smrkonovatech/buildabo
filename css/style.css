@@ -227,10 +227,17 @@ p {
 }
 @media (max-width: 767px) {
   html, body, .page-shell {
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
   }
   .container-site { width: calc(100% - 40px); }
+}
+
+body.ad-page,
+.ad-page.page-shell,
+html:has(body.ad-page) {
+  overflow-x: clip !important;
+  overflow-y: visible !important;
 }
 
 /* Buttons */
@@ -5303,23 +5310,25 @@ select.lead-card-input option {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .mobile-bottom-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 58px;
-    background: #ffffff;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: stretch;
-    border-top: 1px solid #eaeaea;
-    box-shadow: 0 -3px 14px rgba(0, 0, 0, 0.08);
-    z-index: 85;
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-    box-sizing: content-box;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 58px !important;
+    background: #ffffff !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    align-items: stretch !important;
+    border-top: 1px solid #eaeaea !important;
+    box-shadow: 0 -3px 14px rgba(0, 0, 0, 0.1) !important;
+    z-index: 1500 !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+    box-sizing: content-box !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   body {
@@ -5424,11 +5433,12 @@ select.lead-card-input option {
 
 /* 1. Sticky Top Wrap (Offer Bar + Header) */
 .ad-sticky-top-wrap {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
@@ -5609,8 +5619,11 @@ select.lead-card-input option {
     height: auto !important;
   }
   .ad-hero-title {
-    font-size: clamp(21px, 5.8vw, 25px) !important;
-    line-height: 1.14 !important;
+    font-family: "Satoshi", var(--font-primary), sans-serif !important;
+    font-weight: 900 !important;
+    font-size: 31px !important;
+    line-height: 30.92px !important;
+    letter-spacing: 0px !important;
     margin: 0 0 4px !important;
   }
   .ad-hero-price-row {
@@ -5811,17 +5824,18 @@ select.lead-card-input option {
 
 /* 5. Hero Typography, Price & Subtitle */
 .ad-hero-title {
-  font-size: clamp(32px, 5.2vw, 54px);
-  font-weight: 800;
-  line-height: 1.12;
+  font-family: "Satoshi", var(--font-primary), sans-serif !important;
+  font-weight: 900 !important;
+  font-size: 31px;
+  line-height: 30.92px;
   color: #ffffff;
   margin: 0 0 16px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 .ad-highlight-gold {
   color: #f6d59e;
-  font-weight: 800;
+  font-weight: 900 !important;
 }
 .ad-hero-price-row {
   margin-bottom: 16px;
