@@ -73,6 +73,9 @@
   }
 
   function stickyHTML() {
+    if (isAdPage()) {
+      return "";
+    }
     return (
       '<header class="sticky-header">' +
       logo() +
@@ -88,6 +91,9 @@
   }
 
   function mobileHTML() {
+    if (isAdPage()) {
+      return "";
+    }
     return (
       '<div class="mobile-menu" aria-hidden="true">' +
       '<div class="mobile-menu-overlay" data-close-menu></div>' +
@@ -146,26 +152,28 @@
       '<h6 class="!normal-case !tracking-normal !text-[22px] !mb-6 font-serif">interested in our projects<br />and design approach?</h6>' +
       startBtn("btn-white") +
       "</div>" +
-      "<div><h6>NAVIGATION</h6><ul class=\"foot-list\">" +
-      "<li><a href=\"index.html\"" +
-      currentAttr("index.html") +
-      ">Home</a></li>" +
-      "<li><a href=\"about.html\"" +
-      currentAttr("about.html") +
-      ">About</a></li>" +
-      "<li><a href=\"services.html\"" +
-      currentAttr("services.html") +
-      ">Services</a></li>" +
-      "<li><a href=\"portfolio.html\"" +
-      currentAttr("portfolio.html") +
-      ">Projects</a></li>" +
-      "<li><a href=\"contact.html\"" +
-      currentAttr("contact.html") +
-      ">Contact</a></li>" +
-       '<li><a href="privacy.html"' +
-      currentAttr("privacy.html") +
-      ">Privacy Policy</a></li>" +
-      "</ul></div>" +
+      (isAdPage()
+        ? ""
+        : "<div><h6>NAVIGATION</h6><ul class=\"foot-list\">" +
+          "<li><a href=\"index.html\"" +
+          currentAttr("index.html") +
+          ">Home</a></li>" +
+          "<li><a href=\"about.html\"" +
+          currentAttr("about.html") +
+          ">About</a></li>" +
+          "<li><a href=\"services.html\"" +
+          currentAttr("services.html") +
+          ">Services</a></li>" +
+          "<li><a href=\"portfolio.html\"" +
+          currentAttr("portfolio.html") +
+          ">Projects</a></li>" +
+          "<li><a href=\"contact.html\"" +
+          currentAttr("contact.html") +
+          ">Contact</a></li>" +
+          '<li><a href="privacy.html"' +
+          currentAttr("privacy.html") +
+          ">Privacy Policy</a></li>" +
+          "</ul></div>") +
       "<div><h6>CONTACT</h6>" +
       '<p class="mb-1">Company Address</p>' +
       '<p class="mb-4"><a href="' +

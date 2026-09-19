@@ -8219,3 +8219,14 @@ input.ad-estimate-input::placeholder {
   }
 }
 
+/* Ad landing page: Remove navigation bar (sticky nav, desktop nav, mobile menu) */
+body.ad-page .sticky-header,
+body.ad-page .sticky-nav,
+body.ad-page .mobile-menu,
+body.ad-page .hero-nav,
+body.ad-page .site-header,
+body.ad-page .ad-proj-cta-wrap,
+body.ad-page .ad-speak-cta-btn {
+  display: none !important;
+}
+
