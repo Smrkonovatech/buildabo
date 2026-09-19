@@ -5756,12 +5756,14 @@ select.lead-card-input option {
 .ad-offer-badge-wrap {
   margin-bottom: 16px;
   display: inline-block;
-  transform: none;
+  transform: rotate(0deg);
+  opacity: 1;
 }
 .ad-offer-badge-img {
-  width: 160px;
-  height: auto;
+  width: 170.8px;
+  height: 113.87px;
   display: block;
+  opacity: 1;
   filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
   transition: transform 0.25s ease;
   image-rendering: -webkit-optimize-contrast;
@@ -5772,7 +5774,8 @@ select.lead-card-input option {
 }
 @media (max-width: 768px) {
   .ad-offer-badge-img {
-    width: 135px;
+    width: 142px;
+    height: auto;
   }
 }
 
