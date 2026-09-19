@@ -7578,10 +7578,10 @@ select.lead-card-input option {
   background-color: #fbf6ee;
   background-image: url('../assets/estimate-banner-bg.png');
   background-repeat: no-repeat;
-  background-position: center bottom;
+  background-position: left bottom;
   background-size: cover;
-  padding: clamp(34px, 3.6vw, 48px) 0 clamp(40px, 4.5vw, 60px);
-  min-height: clamp(580px, 48vw, 680px);
+  padding: clamp(34px, 3.5vw, 48px) 0 clamp(40px, 4.5vw, 60px);
+  min-height: clamp(660px, 48vw, 780px);
   overflow: hidden;
   font-family: inherit;
   color: #1a1a1a;
@@ -7591,12 +7591,15 @@ select.lead-card-input option {
 
 .ad-estimate-container {
   display: grid;
-  grid-template-columns: 1.18fr 0.82fr;
+  grid-template-columns: 1.15fr 0.85fr;
   align-items: flex-start;
-  gap: clamp(20px, 3.5vw, 48px);
+  gap: clamp(20px, 3vw, 48px);
   width: 100%;
   position: relative;
   z-index: 2;
+  padding-left: clamp(20px, 2.5vw, 32px);
+  padding-right: clamp(16px, 2vw, 28px);
+  box-sizing: border-box;
 }
 
 /* --- Left Column (Desktop) --- */
@@ -7606,6 +7609,7 @@ select.lead-card-input option {
   align-items: flex-start;
   position: relative;
   max-width: 530px;
+  padding-left: clamp(10px, 1.5vw, 18px);
 }
 
 /* Kicker Row */
@@ -7746,11 +7750,23 @@ select.lead-card-input option {
   line-height: 1.25;
 }
 
-/* Desktop Script Text: placed below badges, hovering in sky above low terrace */
+/* --- Right Column: Estimate Card & Script Text --- */
+.ad-estimate-right {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* Desktop Script Text: positioned right next to the left side of the form on plain background */
 .ad-estimate-script-desktop {
-  margin-top: clamp(40px, 6vw, 90px);
-  margin-left: auto;
-  margin-right: clamp(10px, 3vw, 40px);
+  position: absolute;
+  right: calc(100% + 20px);
+  bottom: clamp(90px, 11vw, 140px);
+  z-index: 3;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
 }
 
 .ad-estimate-script-text {
@@ -7758,26 +7774,17 @@ select.lead-card-input option {
   flex-direction: column;
   align-items: flex-end;
   font-family: 'Caveat', cursive;
-  font-size: clamp(26px, 2.4vw, 34px);
+  font-size: clamp(26px, 2.3vw, 34px);
   font-weight: 700;
   color: #8d532b;
   line-height: 1.05;
   transform: rotate(-6deg);
-  pointer-events: none;
-  user-select: none;
 }
 
 .ad-estimate-script-underline {
   width: 110px;
   height: 11px;
   margin-top: -2px;
-}
-
-/* --- Right Column: Estimate Card --- */
-.ad-estimate-right {
-  display: flex;
-  justify-content: center;
-  width: 100%;
 }
 
 .ad-estimate-card {
@@ -8190,9 +8197,12 @@ input.ad-estimate-input::placeholder {
     border-radius: 10px;
   }
 
+  .contact-form input.ad-estimate-input,
   .ad-estimate-input {
-    padding: 11px 12px 11px 40px;
-    font-size: 13.5px;
+    padding: 0 14px 0 44px !important;
+    height: 46px !important;
+    line-height: 46px !important;
+    font-size: 13.5px !important;
   }
 
   .ad-estimate-input-icon {
