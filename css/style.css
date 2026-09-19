@@ -5435,6 +5435,15 @@ select.lead-card-input option {
   position: relative;
   z-index: 95;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+.ad-top-offer-bar:hover {
+  filter: brightness(1.06);
+}
+.ad-top-offer-bar:active {
+  filter: brightness(0.96);
 }
 .ad-top-offer-content {
   display: inline-flex;
@@ -5442,11 +5451,6 @@ select.lead-card-input option {
   justify-content: center;
   gap: 4px;
   flex-wrap: wrap;
-}
-.ad-top-offer-content #ad-hero-timer {
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  letter-spacing: 0.04em;
 }
 
 /* 2. Warm Cream Header */
