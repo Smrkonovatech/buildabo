@@ -7672,6 +7672,7 @@ select.lead-card-input option {
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  padding-right: clamp(24px, 3vw, 48px);
 }
 
 /* Desktop Script Text: positioned right next to the left side of the form on plain background */
@@ -7739,6 +7740,13 @@ select.lead-card-input option {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  /* Override global .contact-form box look — form sits inside the card already */
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  width: 100% !important;
 }
 
 /* Precision-tuned input group container */
