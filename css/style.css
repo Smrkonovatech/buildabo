@@ -5766,8 +5766,6 @@ select.lead-card-input option {
   opacity: 1;
   filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
   transition: transform 0.25s ease;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
 }
 .ad-offer-badge-img:hover {
   transform: scale(1.04);
