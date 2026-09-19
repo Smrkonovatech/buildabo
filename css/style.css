@@ -5422,6 +5422,16 @@ select.lead-card-input option {
    REDESIGNED HERO SECTION (MOBILE & DESKTOP)
    ==================================================== */
 
+/* 1. Sticky Top Wrap (Offer Bar + Header) */
+.ad-sticky-top-wrap {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
 /* 1. Top Offer Announcement Bar */
 .ad-top-offer-bar {
   background: #ba4623;
