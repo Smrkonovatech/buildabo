@@ -7573,10 +7573,18 @@ select.lead-card-input option {
 .ad-footer-estimate-section {
   position: relative;
   background-color: #FAF5ED;
-  padding: 70px 0 0;
+  background-image: url('../assets/footer-villa.png');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: cover;
+  padding: 80px 0 0;
+  min-height: 840px;
   overflow: hidden;
   font-family: inherit;
   color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .ad-footer-estimate-container {
@@ -7712,43 +7720,30 @@ select.lead-card-input option {
   letter-spacing: -0.01em;
 }
 
-/* Villa Graphic Wrap */
-.ad-footer-villa-wrap {
-  position: relative;
-  width: 100%;
-  margin-top: 10px;
+/* Script Text Over Villa Background */
+.ad-footer-script-wrap {
+  margin-top: clamp(60px, 8vw, 130px);
+  align-self: flex-end;
+  margin-right: clamp(10px, 4vw, 40px);
 }
 
 .ad-footer-script-text {
-  position: absolute;
-  top: 18%;
-  right: 6%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   font-family: 'Caveat', cursive;
-  font-size: clamp(24px, 2.6vw, 34px);
+  font-size: clamp(28px, 2.6vw, 36px);
   font-weight: 700;
   color: #84532b;
   line-height: 1.05;
   transform: rotate(-6deg);
-  z-index: 3;
   pointer-events: none;
 }
 
 .ad-footer-script-underline {
-  width: 110px;
+  width: 120px;
   height: 12px;
   margin-top: -2px;
-}
-
-.ad-footer-villa-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  pointer-events: none;
-  user-select: none;
 }
 
 /* --- Right Column: Estimate Card --- */
@@ -7971,20 +7966,24 @@ select.lead-card-input option {
 /* Responsive Styles for Mobile / Tablet */
 @media (max-width: 991px) {
   .ad-footer-estimate-section {
-    padding: 50px 0 0;
+    background-size: 100% auto;
+    background-position: center bottom;
+    padding: 50px 0 clamp(220px, 52vw, 360px);
+    min-height: auto;
   }
 
   .ad-footer-estimate-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 28px;
   }
 
   .ad-footer-estimate-left {
     align-items: center;
     text-align: center;
     width: 100%;
+    order: 1;
   }
 
   .ad-footer-title {
@@ -7995,25 +7994,25 @@ select.lead-card-input option {
     justify-content: center;
   }
 
-  /* Reorder elements so villa is below the form card on mobile */
-  .ad-footer-villa-wrap {
-    order: 3;
-    margin-top: 24px;
-    max-width: 580px;
-  }
-
   .ad-footer-estimate-right {
     order: 2;
+    width: 100%;
   }
 
   .ad-footer-card {
     max-width: 500px;
+    margin: 0 auto;
     padding: 30px 22px;
   }
 
+  .ad-footer-script-wrap {
+    order: 3;
+    margin-top: 10px;
+    align-self: flex-end;
+    margin-right: 20px;
+  }
+
   .ad-footer-script-text {
-    top: 12%;
-    right: 8%;
     font-size: 26px;
   }
 }
