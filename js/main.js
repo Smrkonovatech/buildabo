@@ -906,6 +906,16 @@ function initMain() {
           throw new Error("Could not send");
         }
 
+        // Push successful conversion to Google Tag Manager dataLayer
+        try {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: "generate_lead",
+            form_name: form.getAttribute("name") || "enquiry",
+            lead_type: prefix
+          });
+        } catch (dataLayerErr) { }
+
         const elapsed = Date.now() - submitStartTime;
         if (elapsed < MIN_LOADER_TIME) {
           await new Promise((resolve) => setTimeout(resolve, MIN_LOADER_TIME - elapsed));
