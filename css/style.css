@@ -7679,7 +7679,7 @@ select.lead-card-input option {
 .ad-estimate-script-desktop {
   position: absolute;
   right: calc(100% + 24px);
-  top: clamp(48px, 6vw, 84px);
+  top: clamp(148px, 16vw, 234px);
   z-index: 3;
   pointer-events: none;
   user-select: none;
