@@ -8240,3 +8240,290 @@ body.ad-page .ad-speak-cta-btn {
   display: none !important;
 }
 
+/* ====================================================
+   PROJECT GALLERY LIGHTBOX MODAL OVERLAY
+   ==================================================== */
+body.ad-proj-modal-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+.ad-proj-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  color: #ffffff;
+  font-family: var(--font-primary), -apple-system, BlinkMacSystemFont, sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.ad-proj-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ad-proj-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  z-index: 1;
+}
+
+.ad-proj-modal-panel {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Top bar */
+.ad-proj-modal-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 5;
+  flex: none;
+}
+
+.ad-proj-modal-back-btn,
+.ad-proj-modal-close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.ad-proj-modal-back-btn:hover,
+.ad-proj-modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.ad-proj-modal-back-btn:active,
+.ad-proj-modal-close-btn:active {
+  transform: scale(0.92);
+}
+
+.ad-proj-modal-counter-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ad-proj-modal-counter {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.ad-proj-modal-proj-name {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 2px;
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Stage & Track */
+.ad-proj-modal-stage {
+  flex: 1 1 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.ad-proj-modal-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.ad-proj-modal-track::-webkit-scrollbar {
+  display: none;
+}
+
+.ad-proj-modal-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
+
+.ad-proj-modal-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+  user-select: none;
+}
+
+/* Desktop navigation arrows */
+.ad-proj-modal-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(30, 30, 30, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  transition: all 0.2s ease;
+}
+
+.ad-proj-modal-prev {
+  left: 18px;
+}
+
+.ad-proj-modal-next {
+  right: 18px;
+}
+
+.ad-proj-modal-nav-arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.ad-proj-modal-nav-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Bottom Actions Bar (matches user screenshot) */
+.ad-proj-modal-bottombar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px 24px;
+  background: #000000;
+  flex: none;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.ad-proj-modal-action-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #111111 !important;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 13px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.ad-proj-modal-action-btn:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.ad-proj-modal-action-btn:active {
+  transform: scale(0.97);
+}
+
+/* Project Card Click Cue */
+.ad-proj-card {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ad-proj-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.ad-proj-view-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.ad-proj-card:hover .ad-proj-view-badge {
+  background: rgba(171, 88, 48, 0.95);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 640px) {
+  .ad-proj-modal-nav-arrow {
+    display: none;
+  }
+  .ad-proj-modal-bottombar {
+    padding: 10px 14px 20px;
+    gap: 10px;
+  }
+  .ad-proj-modal-action-btn {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+}
+
+
