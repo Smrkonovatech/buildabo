@@ -3239,10 +3239,10 @@ body.lead-open { overflow: hidden; }
 
 .ad-delivered-grid {
   display: grid;
-  grid-template-columns: 440px 1fr;
+  grid-template-columns: 440px minmax(0, 480px);
   gap: 56px;
   align-items: center;
-  max-width: 1140px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -3525,10 +3525,8 @@ body.lead-open { overflow: hidden; }
 /* Right Content Column */
 .ad-delivered-content-col {
   padding-left: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  max-width: 480px;
+  width: 100%;
 }
 
 /* Header Elements */
@@ -3541,8 +3539,6 @@ body.lead-open { overflow: hidden; }
   align-items: center;
   gap: 12px;
   margin-bottom: 12px;
-  justify-content: center;
-  width: 100%;
 }
 
 .ad-kicker-line {
@@ -3580,7 +3576,6 @@ body.lead-open { overflow: hidden; }
   line-height: 1.45;
   color: #666666;
   font-weight: 500;
-  text-align: center;
 }
 
 /* Stats Card */
@@ -3644,11 +3639,6 @@ body.lead-open { overflow: hidden; }
 /* Secondary Details Section */
 .ad-delivered-details {
   margin-top: 2px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
 }
 
 .ad-delivered-promise {
@@ -3673,8 +3663,6 @@ body.lead-open { overflow: hidden; }
   background: #93562a;
   border-radius: 2px;
   margin-bottom: 16px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .ad-delivered-spec {
