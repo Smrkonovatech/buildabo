@@ -562,10 +562,6 @@ function initMain() {
 
   function initLeadPopup() {
     function setupPopup(leadPopup) {
-      try {
-        sessionStorage.removeItem("buildabo-lead-dismissed");
-      } catch (err) { }
-
       const page = (
         window.location.pathname
           .replace(/\\/g, "/")
@@ -578,7 +574,7 @@ function initMain() {
         document.body.classList.contains("ad-page") ||
         page === "top-construction-company-bangalore.html";
 
-      const AUTO_POPUP_DELAY = 1 * 60 * 1000; // 1 minute (60 seconds)
+      const AUTO_POPUP_DELAY = 45 * 1000; // 45 seconds
 
       let autoLeadTimer = null;
 
@@ -589,17 +585,46 @@ function initMain() {
         }
       };
 
+      const hasAutoLeadTriggered = () => {
+        try {
+          return (
+            sessionStorage.getItem("buildabo-lead-submitted") === "1" ||
+            sessionStorage.getItem("buildabo-lead-auto-shown") === "1" ||
+            sessionStorage.getItem("buildabo-lead-dismissed") === "1"
+          );
+        } catch (err) {
+          return false;
+        }
+      };
+
+      const markAutoLeadTriggered = () => {
+        try {
+          sessionStorage.setItem("buildabo-lead-auto-shown", "1");
+        } catch (err) { }
+      };
+
+      const markLeadDismissed = () => {
+        try {
+          sessionStorage.setItem("buildabo-lead-auto-shown", "1");
+          sessionStorage.setItem("buildabo-lead-dismissed", "1");
+        } catch (err) { }
+      };
+
       const scheduleAutoLead = (delay = AUTO_POPUP_DELAY) => {
         clearAutoLead();
         if (isContactPage) {
           return;
         }
-        if (sessionStorage.getItem("buildabo-lead-submitted") === "1") {
-          console.info("[buildabo] Popup auto-open skipped: lead already submitted in this session.");
+        if (hasAutoLeadTriggered()) {
+          console.info("[buildabo] Popup auto-open skipped: already shown, dismissed, or submitted in this session.");
           return;
         }
-        console.info(`[buildabo] Popup scheduled to appear in ${Math.round(delay / 1000)}s`);
+        console.info(`[buildabo] Popup scheduled to appear once in ${Math.round(delay / 1000)}s`);
         autoLeadTimer = window.setTimeout(() => {
+          if (hasAutoLeadTriggered()) {
+            return;
+          }
+          markAutoLeadTriggered();
           if (!leadPopup.classList.contains("is-open")) {
             openLeadPopup(false);
           }
@@ -632,11 +657,15 @@ function initMain() {
           return;
         }
 
-        if (!force && sessionStorage.getItem("buildabo-lead-submitted") === "1") {
+        if (!force && hasAutoLeadTriggered()) {
           return;
         }
 
         clearAutoLead();
+
+        if (!force) {
+          markAutoLeadTriggered();
+        }
 
         if (mode) {
           setLeadPopupMode(mode);
@@ -674,11 +703,9 @@ function initMain() {
           lenis.start();
         }
 
-        // Do not store in sessionStorage when cancel/close is clicked.
-        // Automatically show again after 1 minute (except on contact page).
-        if (!isContactPage) {
-          scheduleAutoLead(AUTO_POPUP_DELAY);
-        }
+        clearAutoLead();
+        markLeadDismissed();
+        // Popup appears only once and does not repeat after being closed
       };
 
       window.openLeadPopup = openLeadPopup;
