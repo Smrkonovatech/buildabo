@@ -3717,35 +3717,36 @@ body.lead-open { overflow: hidden; }
   }
 }
 
-/* Desktop Video Section: Compact to fit the screen viewport */
+/* Desktop Video Section: Full width w-full and full viewport height h-screen */
 @media (min-width: 1025px) {
   .ad-delivered-section {
-    width: 100%;
-    max-width: 1440px;
-    height: auto;
-    min-height: auto;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
     opacity: 1;
-    margin: 0 auto;
-    padding: clamp(20px, 3.2vh, 36px) 48px;
+    margin: 0 !important;
+    padding: 0 clamp(24px, 4vw, 64px) !important;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    background: #ffffff;
   }
 
   .ad-delivered-section .container-site {
     width: 100%;
-    max-width: 1140px;
+    max-width: 1360px;
     margin: 0 auto;
     padding: 0;
   }
 
   .ad-delivered-grid {
     display: grid;
-    grid-template-columns: 310px 1fr;
-    gap: 40px;
+    grid-template-columns: minmax(310px, 360px) 1fr;
+    gap: clamp(32px, 4vw, 60px);
     align-items: center;
-    max-width: 1140px;
+    max-width: 1360px;
     width: 100%;
     margin: 0 auto;
   }
@@ -3758,8 +3759,8 @@ body.lead-open { overflow: hidden; }
 
   .ad-delivered-video-card {
     width: 100%;
-    max-width: 310px;
-    max-height: min(68vh, 480px);
+    max-width: 340px;
+    max-height: min(76vh, 540px);
     aspect-ratio: 9 / 14;
     border-radius: 18px;
   }
