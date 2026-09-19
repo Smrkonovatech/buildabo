@@ -606,7 +606,28 @@ function initMain() {
         }, delay);
       };
 
-      openLeadPopup = (force) => {
+      const setLeadPopupMode = (mode) => {
+        const titleEl = leadPopup.querySelector("#lead-popup-title, .lead-card-title");
+        const subEl = leadPopup.querySelector(".lead-card-sub, .lead-popup-copy");
+        const submitBtn = leadPopup.querySelector(".contact-submit");
+        const subjectInput = leadPopup.querySelector('input[name="subject"]');
+
+        if (mode === "offer") {
+          leadPopup.dataset.leadType = "offer";
+          if (titleEl) titleEl.textContent = "Claim Your Offer";
+          if (subEl) subEl.textContent = "Claim ₹50/sq.ft savings & get a personalised construction plan";
+          if (submitBtn) submitBtn.textContent = "Claim Your Offer";
+          if (subjectInput) subjectInput.value = "Claim ₹50/sq.ft Offer lead from buildabo.in";
+        } else {
+          leadPopup.dataset.leadType = "estimate";
+          if (titleEl) titleEl.textContent = "Get Your Free Estimate";
+          if (subEl) subEl.textContent = "Build with clarity on cost, quality, & delivery";
+          if (submitBtn) submitBtn.textContent = "Get Free Estimate";
+          if (subjectInput) subjectInput.value = "Free Estimate lead from buildabo.in";
+        }
+      };
+
+      openLeadPopup = (force, mode) => {
         if (!force && isContactPage) {
           return;
         }
@@ -616,6 +637,12 @@ function initMain() {
         }
 
         clearAutoLead();
+
+        if (mode) {
+          setLeadPopupMode(mode);
+        } else if (!leadPopup.dataset.leadType) {
+          setLeadPopupMode("estimate");
+        }
 
         if (leadPopup.classList.contains("is-open")) {
           return;
@@ -680,7 +707,17 @@ function initMain() {
 
         e.preventDefault();
 
-        openLeadPopup(true);
+        let mode = opener.getAttribute("data-lead-mode");
+        if (!mode) {
+          const text = (opener.textContent || "").toLowerCase();
+          if (opener.id === "consultation-cta" || text.includes("claim") || text.includes("offer")) {
+            mode = "offer";
+          } else {
+            mode = "estimate";
+          }
+        }
+
+        openLeadPopup(true, mode);
       });
 
       leadPopup.querySelectorAll("[data-close-lead]").forEach((el) => {
@@ -802,8 +839,9 @@ function initMain() {
         phone = "+91" + phone.replace(/^0+/, "");
         data.set("phone", phone);
       }
+      const popupType = form.closest(".lead-popup")?.dataset.leadType;
       const prefix = isPopup
-        ? "Popup enquiry from"
+        ? (popupType === "offer" ? "Claim Offer lead from" : "Free Estimate popup lead from")
         : document.body.classList.contains("ad-page")
           ? "Ad landing enquiry from"
           : "Project enquiry from";

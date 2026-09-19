@@ -350,12 +350,12 @@
         '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.6"/></svg>' +
         "</button>" +
         '<form class="contact-form lead-card" name="enquiry" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">' +
-        '<h2 class="lead-card-title" id="lead-popup-title">Plan Your Project</h2>' +
+        '<h2 class="lead-card-title" id="lead-popup-title">Get Your Free Estimate</h2>' +
         '<p class="lead-card-sub">Build with clarity on cost, quality, &amp; delivery</p>' +
         '<input type="hidden" name="form-name" value="enquiry" />' +
         '<input type="hidden" name="subject" value="New popup enquiry from buildabo.in" />' +
         '<p class="contact-honeypot" aria-hidden="true"><label>Leave blank <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></p>' +
-        simpleLeadFields("popup", "Get a Free Consultation") +
+        simpleLeadFields("popup", "Get Free Estimate") +
         "</form>" +
         '<div class="lead-card-trust">' +
         '<div><span class="lead-card-trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11.2 12 4l8 7.2"/><path d="M6.5 10.2V20h11V10.2"/></svg></span><strong>25+</strong><span>Projects</span></div>' +
