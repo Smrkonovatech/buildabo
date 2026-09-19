@@ -7958,46 +7958,160 @@ select.lead-card-input option {
 /* Responsive Styles for Mobile / Tablet (< 992px) */
 @media (max-width: 991px) {
   .ad-estimate-banner-section {
-    background-image: url('../assets/estimate-banner-bg.png');
+    background-color: #fbf6ee;
+    background-image: url('../assets/estimate-top-leaves.png');
     background-repeat: no-repeat;
-    background-position: -40px -20px;
-    background-size: 650px auto;
-    background-color: #fcf8f3;
-    padding: 50px 0 0;
+    background-position: left top;
+    background-size: clamp(85px, 24vw, 130px) auto;
+    padding: clamp(36px, 7vw, 50px) 0 0;
     min-height: auto;
     display: block;
+    overflow: hidden;
   }
 
   .ad-estimate-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 28px;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    gap: 0;
   }
 
   .ad-estimate-left {
     align-items: center;
     text-align: center;
     width: 100%;
+    margin-bottom: 20px;
   }
 
   .ad-estimate-kicker-row {
     justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .ad-estimate-kicker-line {
+    width: 26px;
+    height: 1.5px;
+    background-color: #a89f91;
+  }
+
+  .ad-estimate-kicker-text {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: #797166;
   }
 
   .ad-estimate-title {
     text-align: center;
-    font-size: clamp(30px, 6.8vw, 42px);
+    font-size: clamp(26px, 7.2vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
   }
 
   .ad-estimate-subtitle {
     text-align: center;
-    margin-bottom: 22px;
+    font-size: clamp(13.5px, 3.6vw, 15.5px);
+    color: #615a53;
+    line-height: 1.4;
+    margin: 0 0 18px;
   }
 
+  /* Badges Row on Mobile: Always Side-by-Side in 1 Row */
   .ad-estimate-badges-row {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: clamp(8px, 2.5vw, 16px);
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .ad-estimate-offer-badge {
+    background: #8d532b;
+    color: #ffffff;
+    padding: 8px clamp(12px, 3vw, 18px);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(141, 83, 43, 0.22);
+  }
+
+  .ad-estimate-offer-price {
+    font-size: clamp(18px, 4.8vw, 22px);
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  .ad-estimate-offer-label {
+    font-size: clamp(10.5px, 2.7vw, 12px);
+    font-weight: 500;
+    color: #f3e8df;
+    margin-top: 1px;
+    white-space: nowrap;
+  }
+
+  .ad-estimate-badge-divider {
+    width: 1px;
+    height: 38px;
+    background: #dcd3c8;
+    flex-shrink: 0;
+    display: block !important;
+  }
+
+  .ad-estimate-validity-badge {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(6px, 2vw, 10px);
+    flex-shrink: 0;
+  }
+
+  .ad-estimate-validity-icon {
+    width: clamp(24px, 6.5vw, 32px);
+    height: clamp(24px, 6.5vw, 32px);
+    color: #8d532b;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ad-estimate-validity-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ad-estimate-validity-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .ad-estimate-validity-label {
+    font-size: clamp(10px, 2.6vw, 11.5px);
+    color: #615a53;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+
+  .ad-estimate-validity-date {
+    font-size: clamp(11.5px, 3vw, 13.5px);
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.25;
+    white-space: nowrap;
   }
 
   /* Hide desktop script text */
@@ -8005,22 +8119,100 @@ select.lead-card-input option {
     display: none;
   }
 
+  /* Right / Card column on mobile */
   .ad-estimate-right {
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .ad-estimate-card {
-    max-width: 500px;
+    width: 100%;
+    max-width: 420px;
     margin: 0 auto;
-    padding: 30px 22px;
+    padding: clamp(22px, 5.5vw, 32px) clamp(16px, 4.5vw, 24px);
+    border-radius: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 32px rgba(45, 30, 15, 0.07);
+    border: 1px solid rgba(220, 210, 195, 0.6);
   }
 
-  /* Show mobile villa wrap below the card! */
+  .ad-estimate-card-title {
+    font-size: clamp(20px, 5vw, 23px);
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+
+  .ad-estimate-card-subtitle {
+    font-size: clamp(12px, 3vw, 13px);
+    margin-bottom: 18px;
+    line-height: 1.4;
+  }
+
+  .ad-estimate-form {
+    gap: 10px;
+  }
+
+  .ad-estimate-input-group {
+    border-radius: 10px;
+  }
+
+  .ad-estimate-input {
+    padding: 11px 12px 11px 40px;
+    font-size: 13.5px;
+  }
+
+  .ad-estimate-input-icon {
+    left: 12px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .ad-estimate-input-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .ad-estimate-submit-btn {
+    padding: 13px 20px;
+    font-size: 14.5px;
+    border-radius: 10px;
+    margin-top: 4px;
+  }
+
+  .ad-estimate-wa-box {
+    margin-top: 14px;
+    padding-top: 12px;
+  }
+
+  .ad-estimate-wa-btn {
+    gap: 10px;
+  }
+
+  .ad-estimate-wa-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .ad-estimate-wa-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ad-estimate-wa-pre {
+    font-size: 11.5px;
+  }
+
+  .ad-estimate-wa-action {
+    font-size: 12.5px;
+  }
+
+  /* Show mobile villa wrap below the card */
   .ad-estimate-mobile-villa-wrap {
     display: block;
     position: relative;
     width: 100%;
-    margin-top: 24px;
+    margin-top: clamp(18px, 5vw, 30px);
     line-height: 0;
     overflow: hidden;
   }
@@ -8036,73 +8228,28 @@ select.lead-card-input option {
 
   .ad-estimate-script-mobile {
     position: absolute;
-    top: 14%;
-    right: 6%;
+    top: 8%;
+    right: 5%;
     z-index: 3;
     pointer-events: none;
   }
 
   .ad-estimate-script-mobile .ad-estimate-script-text {
-    font-size: clamp(22px, 5.2vw, 32px);
+    font-family: 'Caveat', cursive;
+    font-size: clamp(20px, 5.2vw, 30px);
+    font-weight: 700;
+    color: #8d532b;
+    line-height: 1.05;
+    transform: rotate(-6deg);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   .ad-estimate-script-mobile .ad-estimate-script-underline {
-    width: 100px;
+    width: clamp(80px, 20vw, 110px);
+    height: 10px;
+    margin-top: -2px;
   }
 }
 
-@media (max-width: 540px) {
-  .ad-estimate-badges-row {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .ad-estimate-badge-divider {
-    height: 40px;
-  }
-
-  .ad-estimate-offer-badge {
-    padding: 10px 16px;
-    border-radius: 12px;
-  }
-
-  .ad-estimate-offer-price {
-    font-size: 20px;
-  }
-
-  .ad-estimate-offer-label {
-    font-size: 11.5px;
-  }
-
-  .ad-estimate-validity-icon {
-    width: 30px;
-    height: 30px;
-  }
-
-  .ad-estimate-validity-icon svg {
-    width: 26px;
-    height: 26px;
-  }
-
-  .ad-estimate-validity-label {
-    font-size: 11px;
-  }
-
-  .ad-estimate-validity-date {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 400px) {
-  .ad-estimate-badges-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .ad-estimate-badge-divider {
-    display: none;
-  }
-}
