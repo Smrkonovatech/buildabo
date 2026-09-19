@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Chimney on right roof -->
+  <path d="M16.5 7.5V3.5h2.5v6" />
+  <!-- Roof Pitch -->
+  <path d="M2.5 10.5L12 3l9.5 7.5" />
+  <!-- House Body -->
+  <path d="M5 9.5V19.5a1.5 1.5 0 0 0 1.5 1.5h11a1.5 1.5 0 0 0 1.5-1.5V9.5" fill="rgba(255,255,255,0.08)" />
+  <!-- Arched Front Door -->
+  <path d="M9.5 21v-5.5a2.5 2.5 0 0 1 5 0V21" fill="rgba(255,255,255,0.18)" />
+  <circle cx="13" cy="16.5" r="0.6" fill="#ffffff" stroke="none" />
+</svg>
