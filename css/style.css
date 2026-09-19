@@ -6368,10 +6368,7 @@ select.lead-card-input option {
 .ad-why-choose-section {
   position: relative;
   background-color: #fbf9f5;
-  background-image: 
-    radial-gradient(ellipse at 8% 0%, rgba(220, 206, 185, 0.35) 0%, rgba(251, 249, 245, 0) 50%),
-    radial-gradient(ellipse at 92% 100%, rgba(220, 206, 185, 0.25) 0%, rgba(251, 249, 245, 0) 50%);
-  padding: 80px 0 60px;
+  padding: 76px 0 60px;
   overflow: hidden;
   border-bottom: 1px solid #ede5d8;
 }
@@ -6841,10 +6838,7 @@ select.lead-card-input option {
 .ad-proj-showcase-section {
   position: relative;
   background-color: #fbf9f5;
-  background-image: 
-    radial-gradient(ellipse at 12% 0%, rgba(220, 206, 185, 0.35) 0%, rgba(251, 249, 245, 0) 50%),
-    radial-gradient(ellipse at 88% 100%, rgba(220, 206, 185, 0.25) 0%, rgba(251, 249, 245, 0) 50%);
-  padding: 80px 0 60px;
+  padding: 76px 0 60px;
   overflow: hidden;
   border-bottom: 1px solid #ede5d8;
 }
