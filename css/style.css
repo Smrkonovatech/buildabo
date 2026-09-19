@@ -7568,7 +7568,541 @@ select.lead-card-input option {
 }
 
 
+/* ==========================================================================
+   READY TO BUILD - ESTIMATION BANNER SECTION
+   Desktop & Mobile Designs matching design mockups
+   ========================================================================== */
 
+.ad-estimate-banner-section {
+  position: relative;
+  background-color: #fcf8f3;
+  background-image: url('../assets/estimate-banner-bg.png');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: cover;
+  padding: 85px 0 60px;
+  min-height: 840px;
+  overflow: hidden;
+  font-family: inherit;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+}
 
+.ad-estimate-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
 
+/* --- Left Column (Desktop) --- */
+.ad-estimate-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
 
+/* Kicker Row */
+.ad-estimate-kicker-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ad-estimate-kicker-line {
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  background-color: #a89f91;
+}
+
+.ad-estimate-kicker-text {
+  font-family: var(--font-primary), sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #797166;
+}
+
+/* Headline */
+.ad-estimate-title {
+  font-family: var(--font-primary), sans-serif;
+  font-size: clamp(34px, 3.8vw, 52px);
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  margin: 0 0 14px;
+}
+
+.ad-estimate-title-accent {
+  color: #8d532b;
+}
+
+/* Subtitle */
+.ad-estimate-subtitle {
+  font-family: var(--font-primary), sans-serif;
+  font-size: clamp(15px, 1.35vw, 17.5px);
+  color: #5c554e;
+  line-height: 1.45;
+  margin: 0 0 28px;
+}
+
+/* Badges Row */
+.ad-estimate-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Brown Offer Badge */
+.ad-estimate-offer-badge {
+  background: #8d532b;
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(141, 83, 43, 0.25);
+}
+
+.ad-estimate-offer-price {
+  font-family: var(--font-primary), sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.ad-estimate-offer-label {
+  font-family: var(--font-primary), sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #f5eae0;
+  margin-top: 3px;
+}
+
+/* Divider */
+.ad-estimate-badge-divider {
+  width: 1px;
+  height: 48px;
+  background: #d8cec3;
+}
+
+/* Validity Badge */
+.ad-estimate-validity-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ad-estimate-validity-icon {
+  width: 36px;
+  height: 36px;
+  color: #8d532b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ad-estimate-validity-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.ad-estimate-validity-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.ad-estimate-validity-label {
+  font-family: var(--font-primary), sans-serif;
+  font-size: 12.5px;
+  color: #5c554e;
+  line-height: 1.3;
+}
+
+.ad-estimate-validity-date {
+  font-family: var(--font-primary), sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+/* Desktop Script Text: placed below badges, hovering above the villa garden terrace */
+.ad-estimate-script-desktop {
+  margin-top: clamp(60px, 9vw, 150px);
+  align-self: flex-end;
+  margin-right: clamp(10px, 3vw, 40px);
+}
+
+.ad-estimate-script-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: 'Caveat', cursive;
+  font-size: clamp(28px, 2.7vw, 38px);
+  font-weight: 700;
+  color: #8d532b;
+  line-height: 1.05;
+  transform: rotate(-6deg);
+  pointer-events: none;
+  user-select: none;
+}
+
+.ad-estimate-script-underline {
+  width: 120px;
+  height: 12px;
+  margin-top: -2px;
+}
+
+/* --- Right Column: Estimate Card --- */
+.ad-estimate-right {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ad-estimate-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 38px 34px;
+  box-shadow: 0 16px 45px rgba(60, 40, 20, 0.08);
+  border: 1px solid rgba(220, 210, 195, 0.55);
+  width: 100%;
+  max-width: 480px;
+}
+
+.ad-estimate-card-title {
+  font-family: var(--font-primary), sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a1a1a;
+  text-align: center;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.ad-estimate-card-subtitle {
+  font-family: var(--font-primary), sans-serif;
+  font-size: 13.5px;
+  color: #6c6660;
+  text-align: center;
+  margin: 0 0 24px;
+  line-height: 1.45;
+}
+
+.ad-estimate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ad-estimate-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fdfdfd;
+  border: 1.2px solid #e7e3dc;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.ad-estimate-input-group:focus-within {
+  border-color: #8d532b;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(141, 83, 43, 0.12);
+}
+
+.ad-estimate-input-icon {
+  position: absolute;
+  left: 14px;
+  width: 20px;
+  height: 20px;
+  color: #8c827a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.ad-estimate-input-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.ad-estimate-input {
+  width: 100%;
+  padding: 13px 14px 13px 44px;
+  font-size: 14.5px;
+  font-family: inherit;
+  color: #1a1a1a;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.ad-estimate-input::placeholder {
+  color: #8c827a;
+  font-size: 14px;
+}
+
+.ad-estimate-submit-btn {
+  background: #8d532b;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 15px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+  box-shadow: 0 6px 18px rgba(141, 83, 43, 0.28);
+  transition: all 0.25s ease;
+}
+
+.ad-estimate-submit-btn:hover {
+  background: #784420;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(141, 83, 43, 0.35);
+}
+
+.ad-estimate-submit-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.ad-estimate-submit-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* WhatsApp CTA inside card */
+.ad-estimate-wa-box {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #f0ebe4;
+  display: flex;
+  justify-content: center;
+}
+
+.ad-estimate-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.ad-estimate-wa-btn:hover {
+  opacity: 0.88;
+}
+
+.ad-estimate-wa-icon {
+  width: 36px;
+  height: 36px;
+  background: #dcfce7;
+  color: #16a34a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ad-estimate-wa-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ad-estimate-wa-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.ad-estimate-wa-pre {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.ad-estimate-wa-action {
+  font-size: 13px;
+  font-weight: 700;
+  color: #16a34a;
+  line-height: 1.2;
+}
+
+/* Mobile Villa Wrapper: Hidden on desktop */
+.ad-estimate-mobile-villa-wrap {
+  display: none;
+}
+
+/* Responsive Styles for Mobile / Tablet (< 992px) */
+@media (max-width: 991px) {
+  .ad-estimate-banner-section {
+    background-image: url('../assets/estimate-banner-bg.png');
+    background-repeat: no-repeat;
+    background-position: -40px -20px;
+    background-size: 650px auto;
+    background-color: #fcf8f3;
+    padding: 50px 0 0;
+    min-height: auto;
+    display: block;
+  }
+
+  .ad-estimate-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .ad-estimate-left {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .ad-estimate-kicker-row {
+    justify-content: center;
+  }
+
+  .ad-estimate-title {
+    text-align: center;
+    font-size: clamp(30px, 6.8vw, 42px);
+  }
+
+  .ad-estimate-subtitle {
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .ad-estimate-badges-row {
+    justify-content: center;
+    gap: 16px;
+  }
+
+  /* Hide desktop script text */
+  .ad-estimate-script-desktop {
+    display: none;
+  }
+
+  .ad-estimate-right {
+    width: 100%;
+  }
+
+  .ad-estimate-card {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 22px;
+  }
+
+  /* Show mobile villa wrap below the card! */
+  .ad-estimate-mobile-villa-wrap {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-top: 24px;
+    line-height: 0;
+    overflow: hidden;
+  }
+
+  .ad-estimate-mobile-villa-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .ad-estimate-script-mobile {
+    position: absolute;
+    top: 14%;
+    right: 6%;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .ad-estimate-script-mobile .ad-estimate-script-text {
+    font-size: clamp(22px, 5.2vw, 32px);
+  }
+
+  .ad-estimate-script-mobile .ad-estimate-script-underline {
+    width: 100px;
+  }
+}
+
+@media (max-width: 540px) {
+  .ad-estimate-badges-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .ad-estimate-badge-divider {
+    height: 40px;
+  }
+
+  .ad-estimate-offer-badge {
+    padding: 10px 16px;
+    border-radius: 12px;
+  }
+
+  .ad-estimate-offer-price {
+    font-size: 20px;
+  }
+
+  .ad-estimate-offer-label {
+    font-size: 11.5px;
+  }
+
+  .ad-estimate-validity-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ad-estimate-validity-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .ad-estimate-validity-label {
+    font-size: 11px;
+  }
+
+  .ad-estimate-validity-date {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .ad-estimate-badges-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ad-estimate-badge-divider {
+    display: none;
+  }
+}
