@@ -7330,21 +7330,66 @@ select.lead-card-input option {
 .ad-speak-card-media {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #eee7dc;
 }
 
-.ad-speak-card-img {
+.ad-speak-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ad-speak-slide {
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.ad-speak-card-img,
+.ad-speak-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
   display: block;
   transition: transform 0.5s ease;
 }
 
-.ad-speak-card:hover .ad-speak-card-img {
+.ad-speak-card:hover .ad-speak-card-img,
+.ad-speak-card:hover .ad-speak-slide img {
   transform: scale(1.03);
+}
+
+.ad-speak-dots {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 4;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.ad-speak-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ad-speak-dot.active {
+  background: #ffffff;
+  width: 14px;
+  border-radius: 3px;
 }
 
 .ad-speak-location-tag {
@@ -7354,7 +7399,7 @@ select.lead-card-input option {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(147, 86, 42, 0.9);
+  background: rgba(147, 86, 42, 0.92);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: #ffffff;
@@ -7364,10 +7409,15 @@ select.lead-card-input option {
   padding: 4.5px 12px;
   border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  z-index: 3;
+  max-width: calc(100% - 68px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ad-speak-card-body {
-  padding: 32px 28px 30px;
+  padding: 24px 24px 22px;
   display: flex;
   flex-direction: column;
   flex: 1;
