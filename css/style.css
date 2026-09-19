@@ -5462,7 +5462,7 @@ select.lead-card-input option {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
 }
 .ad-hero-logo {
