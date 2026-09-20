@@ -577,6 +577,7 @@ function initMain() {
       const AUTO_POPUP_DELAY = 45 * 1000; // 45 seconds
 
       let autoLeadTimer = null;
+      let autoLeadShown = false;
 
       const clearAutoLead = () => {
         if (autoLeadTimer) {
@@ -587,27 +588,19 @@ function initMain() {
 
       const hasAutoLeadTriggered = () => {
         try {
-          return (
-            sessionStorage.getItem("buildabo-lead-submitted") === "1" ||
-            sessionStorage.getItem("buildabo-lead-auto-shown") === "1" ||
-            sessionStorage.getItem("buildabo-lead-dismissed") === "1"
-          );
-        } catch (err) {
-          return false;
-        }
+          if (sessionStorage.getItem("buildabo-lead-submitted") === "1") {
+            return true;
+          }
+        } catch (err) { }
+        return autoLeadShown;
       };
 
       const markAutoLeadTriggered = () => {
-        try {
-          sessionStorage.setItem("buildabo-lead-auto-shown", "1");
-        } catch (err) { }
+        autoLeadShown = true;
       };
 
       const markLeadDismissed = () => {
-        try {
-          sessionStorage.setItem("buildabo-lead-auto-shown", "1");
-          sessionStorage.setItem("buildabo-lead-dismissed", "1");
-        } catch (err) { }
+        autoLeadShown = true;
       };
 
       const scheduleAutoLead = (delay = AUTO_POPUP_DELAY) => {
@@ -616,7 +609,7 @@ function initMain() {
           return;
         }
         if (hasAutoLeadTriggered()) {
-          console.info("[buildabo] Popup auto-open skipped: already shown, dismissed, or submitted in this session.");
+          console.info("[buildabo] Popup auto-open skipped: already submitted or shown on this page.");
           return;
         }
         console.info(`[buildabo] Popup scheduled to appear once in ${Math.round(delay / 1000)}s`);
@@ -626,7 +619,7 @@ function initMain() {
           }
           markAutoLeadTriggered();
           if (!leadPopup.classList.contains("is-open")) {
-            openLeadPopup(false);
+            openLeadPopup(true);
           }
         }, delay);
       };
