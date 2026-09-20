@@ -5608,8 +5608,9 @@ select.lead-card-input option {
     min-height: calc(100vh - 72px);
     min-height: calc(100svh - 72px);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    padding-top: 3rem;
+    justify-content: flex-start;
   }
   .ad-hero-container {
     padding: 8px 16px 10px !important;
@@ -5684,9 +5685,9 @@ select.lead-card-input option {
     padding-left: 8px !important;
   }
   .ad-features-mob {
-    margin: 4px auto 8px !important;
+    margin: 2px auto 4px !important;
     padding: 2px 0 !important;
-    max-width: 298px !important;
+    max-width: 350px !important;
     width: 100% !important;
   }
   .ad-features-mob .ad-feature-item {
@@ -5712,10 +5713,9 @@ select.lead-card-input option {
   }
   /* Buttons centered on mobile, aligned with icons in same line */
   .ad-hero-ctas {
-    margin: 0 auto 7px !important;
     align-items: center !important;
     text-align: center !important;
-    max-width: 298px !important;
+    max-width: 350px !important;
     width: 100% !important;
     gap: 6px !important;
   }
