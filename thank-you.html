@@ -657,6 +657,11 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
+      event: 'Generate_lead',
+      form_name: 'lead_popup_or_card',
+      page: 'thank_you'
+    });
+    window.dataLayer.push({
       event: 'generate_lead',
       form_name: 'lead_popup_or_card',
       page: 'thank_you'
@@ -672,8 +677,8 @@
       page: 'thank_you'
     });
     if (typeof window.gtag === 'function') {
+      window.gtag('event', 'Generate_lead');
       window.gtag('event', 'generate_lead');
-      window.gtag('event', 'genarate_lead');
     }
   </script>
 </head>

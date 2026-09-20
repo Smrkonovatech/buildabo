@@ -877,6 +877,11 @@ function initMain() {
       try {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
+          event: "Generate_lead",
+          form_name: form.getAttribute("name") || "enquiry",
+          lead_type: prefix
+        });
+        window.dataLayer.push({
           event: "generate_lead",
           form_name: form.getAttribute("name") || "enquiry",
           lead_type: prefix
@@ -892,11 +897,11 @@ function initMain() {
           lead_type: prefix
         });
         if (typeof window.gtag === "function") {
-          window.gtag("event", "generate_lead", {
+          window.gtag("event", "Generate_lead", {
             form_name: form.getAttribute("name") || "enquiry",
             lead_type: prefix
           });
-          window.gtag("event", "genarate_lead", {
+          window.gtag("event", "generate_lead", {
             form_name: form.getAttribute("name") || "enquiry",
             lead_type: prefix
           });
@@ -999,6 +1004,11 @@ function initMain() {
         try {
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({
+            event: "Generate_lead",
+            form_name: form.getAttribute("name") || "enquiry",
+            lead_type: prefix
+          });
+          window.dataLayer.push({
             event: "generate_lead",
             form_name: form.getAttribute("name") || "enquiry",
             lead_type: prefix
@@ -1014,11 +1024,11 @@ function initMain() {
             lead_type: prefix
           });
           if (typeof window.gtag === "function") {
-            window.gtag("event", "generate_lead", {
+            window.gtag("event", "Generate_lead", {
               form_name: form.getAttribute("name") || "enquiry",
               lead_type: prefix
             });
-            window.gtag("event", "genarate_lead", {
+            window.gtag("event", "generate_lead", {
               form_name: form.getAttribute("name") || "enquiry",
               lead_type: prefix
             });
