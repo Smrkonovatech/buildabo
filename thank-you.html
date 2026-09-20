@@ -79,23 +79,24 @@
     .ty-logo {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      padding-left: 5rem;
+      gap: 1px;
+      text-decoration: none;
     }
     .ty-logo-mark {
-      width: 36px;
-      height: auto;
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      flex-shrink: 0;
     }
     .ty-brand-text {
       display: flex;
       flex-direction: column;
     }
-    .ty-brand-name {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 25px;
-      font-weight: 700;
-      line-height: 1;
-      color: #ab5830;
-      letter-spacing: -0.01em;
+    .ty-logo-word {
+      width: 125px;
+      height: auto;
+      display: block;
     }
     .ty-brand-tagline {
       font-size: 7px;
@@ -104,7 +105,8 @@
       color: #ab5830;
       text-transform: uppercase;
       margin-top: 3px;
-      opacity: 0.9;
+      opacity: 0.95;
+      display: block;
     }
     .ty-header-help {
       display: flex;
@@ -136,19 +138,32 @@
     }
     .ty-menu-btn {
       display: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.05);
+      width: 38px;
+      height: 38px;
+      background: transparent;
       border: none;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      color: #2a2a2a;
+      color: #1a221d;
+      padding: 0;
     }
     @media (max-width: 768px) {
       .ty-header {
         padding: 12px 20px;
+        background: #fcf9f4;
+      }
+      .ty-logo-mark {
+        width: 34px;
+        height: 34px;
+      }
+      .ty-logo-word {
+        width: 112px;
+      }
+      .ty-brand-tagline {
+        font-size: 6.5px;
+        letter-spacing: 0.16em;
+        margin-top: 2px;
       }
       .ty-header-help {
         display: none;
@@ -192,11 +207,24 @@
     }
     @media (max-width: 768px) {
       .ty-stage {
-        padding: 36px 16px 56px;
-        align-items: flex-start;
+        padding: 32px 18px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: auto;
+      }
+      .ty-bg-img {
+        object-position: center bottom;
       }
       .ty-overlay {
-        background: linear-gradient(180deg, rgba(254, 251, 246, 0.95) 0%, rgba(254, 251, 246, 0.9) 52%, rgba(254, 251, 246, 0.25) 85%, transparent 100%);
+        background: linear-gradient(
+          180deg,
+          rgba(254, 251, 246, 0.96) 0%,
+          rgba(254, 251, 246, 0.92) 48%,
+          rgba(254, 251, 246, 0.5) 68%,
+          rgba(254, 251, 246, 0) 82%,
+          rgba(254, 251, 246, 0) 100%
+        );
       }
     }
 
@@ -214,29 +242,29 @@
     .ty-check-wrap {
       position: relative;
       display: inline-block;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     .ty-check-circle {
       width: 76px;
       height: 76px;
       border-radius: 50%;
-      background: #d4eedd;
+      background: #cfeed7;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #1e7e34;
+      color: #1e6e37;
       margin: 0 auto;
-      box-shadow: 0 8px 24px rgba(30, 126, 52, 0.18);
+      box-shadow: 0 4px 16px rgba(30, 110, 55, 0.12);
     }
     .ty-check-circle svg {
       width: 36px;
       height: 36px;
-      stroke-width: 3.2;
+      stroke-width: 3.5;
     }
     /* Celebration rays for mobile */
     .ty-sparkles {
       position: absolute;
-      inset: -16px;
+      inset: -18px;
       pointer-events: none;
       display: none;
     }
@@ -247,17 +275,18 @@
     }
     .ty-sparkle {
       position: absolute;
-      width: 3px;
-      height: 9px;
+      width: 3.5px;
+      height: 10px;
       border-radius: 2px;
     }
-    .ty-sp-1 { top: 0; left: 16%; background: #e0441a; transform: rotate(-35deg); }
-    .ty-sp-2 { top: -4px; left: 50%; background: #68b684; transform: translateX(-50%); }
-    .ty-sp-3 { top: 0; right: 16%; background: #68b684; transform: rotate(35deg); }
-    .ty-sp-4 { top: 40%; left: -6px; background: #92a498; transform: rotate(-75deg); }
-    .ty-sp-5 { top: 40%; right: -6px; background: #e0441a; transform: rotate(75deg); }
-    .ty-sp-6 { bottom: 6px; left: 10%; background: #92a498; transform: rotate(-45deg); }
-    .ty-sp-7 { bottom: 6px; right: 10%; background: #92a498; transform: rotate(45deg); }
+    .ty-sp-1 { top: 4px; left: 16%; background: #b84824; transform: rotate(-35deg); }
+    .ty-sp-2 { top: -6px; left: 38%; background: #7aa588; transform: rotate(-10deg); }
+    .ty-sp-3 { top: -6px; right: 38%; background: #7aa588; transform: rotate(10deg); }
+    .ty-sp-4 { top: 4px; right: 16%; background: #b84824; transform: rotate(35deg); }
+    .ty-sp-5 { top: 46%; left: -6px; background: #9daea2; transform: rotate(-75deg); }
+    .ty-sp-6 { top: 46%; right: -6px; background: #b84824; transform: rotate(75deg); }
+    .ty-sp-7 { bottom: 6px; left: 12%; background: #9daea2; transform: rotate(-45deg); }
+    .ty-sp-8 { bottom: 6px; right: 12%; background: #7aa588; transform: rotate(45deg); }
 
     /* Heading & Typography */
     .ty-title {
@@ -383,35 +412,56 @@
       gap: 12px;
       width: 100%;
       max-width: 360px;
-      margin: 0 auto 24px;
+      margin: 0 auto 20px;
     }
     .ty-btn-mob {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
       width: 100%;
-      padding: 14px 20px;
-      border-radius: 10px;
-      font-size: 15.5px;
+      border-radius: 12px;
+      font-size: 15px;
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
       transition: all 0.2s ease;
+      box-sizing: border-box;
     }
     .ty-btn-wa-mob {
-      background: #1e7e34;
-      background: linear-gradient(135deg, #248b3b 0%, #1a6f2d 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #206d39;
+      background: linear-gradient(135deg, #248b3b 0%, #1c6d32 100%);
       color: #ffffff;
-      box-shadow: 0 4px 14px rgba(30, 126, 52, 0.25);
+      padding: 14px 20px;
+      box-shadow: 0 4px 14px rgba(32, 109, 57, 0.25);
+      border: none;
+    }
+    .ty-btn-wa-mob .ty-wa-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ty-btn-wa-mob .ty-wa-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .ty-btn-wa-mob .ty-btn-arrow {
+      position: absolute;
+      right: 20px;
+      font-size: 18px;
+      font-weight: 400;
     }
     .ty-btn-call-mob {
-      background: #ffffff;
-      border: 1px solid #e1e7ea;
-      color: #1a221d;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
       justify-content: space-between;
-      padding: 12px 18px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+      padding: 10px 20px 10px 16px;
+      color: #1a221d;
     }
     .ty-call-mob-left {
       display: flex;
@@ -420,14 +470,20 @@
       text-align: left;
     }
     .ty-call-mob-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(184, 72, 36, 0.1);
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #b84824;
+      color: #ba4623;
+    }
+    .ty-call-mob-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+    .ty-call-mob-text {
+      display: flex;
+      flex-direction: column;
     }
     .ty-call-mob-title {
       font-size: 14px;
@@ -436,29 +492,50 @@
       line-height: 1.2;
     }
     .ty-call-mob-num {
-      font-size: 13px;
-      font-weight: 600;
-      color: #4a544f;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a221d;
+      line-height: 1.2;
+      margin-top: 2px;
+    }
+    .ty-call-mob-arrow {
+      color: #ba4623;
+      font-size: 20px;
+      font-weight: 400;
     }
     .ty-btn-home-mob {
-      border: 1.5px solid #b84824;
-      background: rgba(255, 255, 255, 0.9);
-      color: #b84824;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1.5px solid #ba4623;
+      background: #ffffff;
+      color: #ba4623;
+      padding: 12px 20px;
       font-size: 14.5px;
       font-weight: 700;
+    }
+    .ty-btn-home-mob svg {
+      width: 18px;
+      height: 18px;
+    }
+    .ty-home-arrow {
+      font-size: 18px;
+      margin-left: 2px;
+      font-weight: 400;
     }
 
     /* Floating Stats Glass Card (Mobile) */
     .ty-mobile-stats-card {
       display: none;
-      background: rgba(255, 255, 255, 0.76);
+      background: rgba(255, 255, 255, 0.74);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      border-radius: 14px;
-      padding: 16px 12px;
-      margin: 18px auto 24px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.88);
+      border-radius: 16px;
+      padding: 18px 14px 14px;
+      margin: 16px auto 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
       max-width: 360px;
       width: 100%;
     }
@@ -482,36 +559,36 @@
       top: 15%;
       bottom: 15%;
       width: 1px;
-      background: rgba(0, 0, 0, 0.1);
+      background: rgba(0, 0, 0, 0.08);
     }
     .ty-stat-icon {
       width: 22px;
       height: 22px;
-      color: #2b332d;
+      color: #1a221d;
       margin-bottom: 4px;
     }
     .ty-stat-val {
       font-family: 'DM Sans', sans-serif;
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 800;
       color: #1a221d;
       line-height: 1;
     }
     .ty-stat-lbl {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
-      color: #636d66;
-      margin-top: 2px;
+      color: #556058;
+      margin-top: 3px;
     }
     .ty-stats-tagline {
       font-size: 8.5px;
       font-weight: 750;
-      letter-spacing: 0.12em;
-      color: #6f7871;
+      letter-spacing: 0.14em;
+      color: #6e7771;
       text-transform: uppercase;
       text-align: center;
-      border-top: 1px solid rgba(0, 0, 0, 0.07);
-      padding-top: 8px;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      padding-top: 10px;
       margin: 0;
     }
 
@@ -569,15 +646,20 @@
     @media (max-width: 768px) {
       .ty-script-brand {
         display: block;
-        position: static;
-        margin: 20px auto 0;
-        transform: rotate(-6deg);
-        font-size: 26px;
-        text-align: center;
+        position: relative;
+        align-self: flex-start;
+        margin: 5px 0 50px -90px;
+        transform: rotate(-7deg);
+        font-size: 29px;
+        font-weight: 700;
+        color: #1a2a20;
+        line-height: 1.08;
+        text-align: left;
         width: fit-content;
       }
       .ty-script-underline {
-        margin: 2px auto 0;
+        width: 105px;
+        margin: 2px 0 0;
       }
     }
 
@@ -628,6 +710,8 @@
     .ty-foot-mob-links {
       display: flex;
       align-items: center;
+      justify-content: center;
+      width: 100%;
       gap: 12px;
       font-size: 12px;
       color: rgba(255, 255, 255, 0.8);
@@ -701,8 +785,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="index.html" class="ty-logo" aria-label="buildabo home">
         <img src="assets/logo-mark.png" alt="" class="ty-logo-mark" width="36" height="36" />
         <div class="ty-brand-text">
-          <span class="ty-brand-name">buildabo</span>
-          <span class="ty-brand-tagline">HOMES FOR A BETTER TOMORROW</span>
+          <img src="assets/buildabo.svg" alt="buildabo" class="ty-logo-word" width="125" height="24" />
+         
         </div>
       </a>
 
@@ -718,11 +802,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <!-- Mobile Menu Button -->
-      <a href="index.html" class="ty-menu-btn" aria-label="Home">
-        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-          <path d="M1 1H19M1 7H19M1 13H19" stroke="#333333" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </a>
+      
     </div>
   </header>
 
@@ -752,6 +832,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ty-sparkle ty-sp-5"></span>
           <span class="ty-sparkle ty-sp-6"></span>
           <span class="ty-sparkle ty-sp-7"></span>
+          <span class="ty-sparkle ty-sp-8"></span>
         </div>
       </div>
 
@@ -786,7 +867,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </a>
         </div>
 
-        <a href="index.html" class="ty-btn-home">
+        <a href="top-construction-company-bangalore.html" class="ty-btn-home">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             <polyline points="9 22 9 12 15 12 15 22"/>
@@ -798,33 +879,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Action Buttons (Mobile) -->
       <div class="ty-actions-mobile">
         <a href="https://wa.me/919663635559?text=Hi%20buildabo%2C%20I%20just%20submitted%20an%20enquiry%20for%20house%20construction%20in%20Bangalore." target="_blank" rel="noopener" class="ty-btn-mob ty-btn-wa-mob">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25.7-.99 1.28-1.74 1.38-.5.07-1.15.1-3.32-.8-2.77-1.15-4.57-3.97-4.71-4.16-.14-.19-1.13-1.51-1.13-2.88 0-1.37.72-2.05.97-2.33.25-.28.56-.35.75-.35.19 0 .37 0 .53.01.17.01.4.06.62.53.25.53.86 2.09.93 2.24.07.16.12.35.02.55-.1.19-.15.31-.3.49-.15.18-.32.4-.46.54-.15.15-.31.31-.13.62.18.31.8 1.31 1.71 2.12 1.18 1.05 2.17 1.38 2.48 1.53.31.15.49.13.67-.08.18-.21.78-.91.99-1.22.21-.31.42-.26.71-.15.29.11 1.83.86 2.14 1.02.31.16.52.24.6.37.08.13.08.75-.17 1.45z"/>
-          </svg>
-          Chat on WhatsApp &rarr;
+          <div class="ty-wa-content">
+            <svg class="ty-wa-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25.7-.99 1.28-1.74 1.38-.5.07-1.15.1-3.32-.8-2.77-1.15-4.57-3.97-4.71-4.16-.14-.19-1.13-1.51-1.13-2.88 0-1.37.72-2.05.97-2.33.25-.28.56-.35.75-.35.19 0 .37 0 .53.01.17.01.4.06.62.53.25.53.86 2.09.93 2.24.07.16.12.35.02.55-.1.19-.15.31-.3.49-.15.18-.32.4-.46.54-.15.15-.31.31-.13.62.18.31.8 1.31 1.71 2.12 1.18 1.05 2.17 1.38 2.48 1.53.31.15.49.13.67-.08.18-.21.78-.91.99-1.22.21-.31.42-.26.71-.15.29.11 1.83.86 2.14 1.02.31.16.52.24.6.37.08.13.08.75-.17 1.45z"/>
+            </svg>
+            <span>Chat on WhatsApp</span>
+          </div>
+          <span class="ty-btn-arrow">&rarr;</span>
         </a>
 
         <a href="tel:+919663635559" class="ty-btn-mob ty-btn-call-mob">
           <div class="ty-call-mob-left">
             <span class="ty-call-mob-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
               </svg>
             </span>
-            <div>
+            <div class="ty-call-mob-text">
               <div class="ty-call-mob-title">Call Us Now</div>
               <div class="ty-call-mob-num">+91 98765 43210</div>
             </div>
           </div>
-          <span style="font-size: 18px; color: #b84824;">&rarr;</span>
+          <span class="ty-call-mob-arrow">&rarr;</span>
         </a>
 
-        <a href="index.html" class="ty-btn-mob ty-btn-home-mob">
+        <a href="top-construction-company-bangalore.html" class="ty-btn-mob ty-btn-home-mob">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             <polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
-          Back to Home Page &rarr;
+          <span>Back to Home Page</span>
+          <span class="ty-home-arrow">&rarr;</span>
         </a>
       </div>
 
@@ -852,9 +937,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="ty-stat-item">
             <svg class="ty-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
               <circle cx="9" cy="7" r="4"/>
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
               <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
             <span class="ty-stat-val">5+</span>
@@ -880,9 +965,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="ty-footer-desktop">
       <div class="ty-footer-desktop-inner">
         <div class="ty-foot-brand-line">
-          <a href="index.html" class="ty-logo" style="gap: 8px;">
+          <a href="index.html" class="ty-logo" style="gap: 8px; text-decoration: none;">
             <img src="assets/logo-mark.png" alt="" width="26" height="26" />
-            <span style="font-size: 18px; font-weight: 700; color: #ab5830;">buildabo</span>
+            <img src="assets/buildabo.svg" alt="buildabo" style="width: 95px; height: auto;" />
           </a>
           <span class="ty-foot-sep">|</span>
           <span>House Construction</span>
@@ -898,13 +983,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Mobile Footer -->
     <div class="ty-footer-mobile">
       <div class="ty-footer-mobile-inner">
-        <div class="ty-logo" style="gap: 8px;">
+        <a href="index.html" class="ty-logo" style="gap: 8px; text-decoration: none;">
           <img src="assets/logo-mark.png" alt="" width="28" height="28" style="filter: brightness(0) invert(1);" />
           <div class="ty-brand-text">
-            <span style="font-size: 20px; font-weight: 700; color: #ffffff; line-height: 1;">buildabo</span>
-            <span style="font-size: 6.5px; color: rgba(255,255,255,0.7); letter-spacing: 0.15em;">HOMES FOR A BETTER TOMORROW</span>
+            <img src="assets/buildabo.svg" alt="buildabo" class="ty-logo-word" style="width: 100px; height: auto; filter: brightness(0) invert(1);" />
+          
           </div>
-        </div>
+        </a>
         <div class="ty-foot-mob-links">
           <a href="privacy.html">Privacy Policy</a>
           <span>|</span>
