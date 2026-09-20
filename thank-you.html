@@ -652,6 +652,30 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-M68QWDNV');</script>
   <!-- End Google Tag Manager -->
+
+  <!-- Lead Conversion Tracking -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'generate_lead',
+      form_name: 'lead_popup_or_card',
+      page: 'thank_you'
+    });
+    window.dataLayer.push({
+      event: 'genarate_lead',
+      form_name: 'lead_popup_or_card',
+      page: 'thank_you'
+    });
+    window.dataLayer.push({
+      event: 'Leadgenarate_id',
+      form_name: 'lead_popup_or_card',
+      page: 'thank_you'
+    });
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'generate_lead');
+      window.gtag('event', 'genarate_lead');
+    }
+  </script>
 </head>
 
 <body>

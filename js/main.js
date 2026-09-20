@@ -872,6 +872,37 @@ function initMain() {
       if (submit) submit.disabled = true;
       setStatus("Sending your enquiry…", false);
       showSubmitModal();
+
+      // Push lead conversion events immediately to GTM dataLayer & gtag
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "generate_lead",
+          form_name: form.getAttribute("name") || "enquiry",
+          lead_type: prefix
+        });
+        window.dataLayer.push({
+          event: "genarate_lead",
+          form_name: form.getAttribute("name") || "enquiry",
+          lead_type: prefix
+        });
+        window.dataLayer.push({
+          event: "Leadgenarate_id",
+          form_name: form.getAttribute("name") || "enquiry",
+          lead_type: prefix
+        });
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "generate_lead", {
+            form_name: form.getAttribute("name") || "enquiry",
+            lead_type: prefix
+          });
+          window.gtag("event", "genarate_lead", {
+            form_name: form.getAttribute("name") || "enquiry",
+            lead_type: prefix
+          });
+        }
+      } catch (e) { }
+
       const submitStartTime = Date.now();
       const MIN_LOADER_TIME = 1500;
 
@@ -972,6 +1003,26 @@ function initMain() {
             form_name: form.getAttribute("name") || "enquiry",
             lead_type: prefix
           });
+          window.dataLayer.push({
+            event: "genarate_lead",
+            form_name: form.getAttribute("name") || "enquiry",
+            lead_type: prefix
+          });
+          window.dataLayer.push({
+            event: "Leadgenarate_id",
+            form_name: form.getAttribute("name") || "enquiry",
+            lead_type: prefix
+          });
+          if (typeof window.gtag === "function") {
+            window.gtag("event", "generate_lead", {
+              form_name: form.getAttribute("name") || "enquiry",
+              lead_type: prefix
+            });
+            window.gtag("event", "genarate_lead", {
+              form_name: form.getAttribute("name") || "enquiry",
+              lead_type: prefix
+            });
+          }
         } catch (dataLayerErr) { }
 
         const elapsed = Date.now() - submitStartTime;
