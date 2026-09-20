@@ -56,7 +56,7 @@
     })(window, document, 'script', 'dataLayer', 'GTM-M68QWDNV');</script>
   <!-- End Google Tag Manager -->
   <link rel="stylesheet" href="css/swiper.css">
-  <link rel="stylesheet" href="css/style.css?v=readybuild32" />
+  <link rel="stylesheet" href="css/style.css?v=readybuild33" />
 </head>
 <style>
   .trustedSwiper .swiper-pagination-bullet {
@@ -71,45 +71,83 @@
   }
 
   #slidetrust {
-    height: 30vh;
+    height: 20vh;
+    min-height: 165px;
+    max-height: 205px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    background: #ffffff;
+    padding-bottom: 14px;
   }
 
   .trustedSwiper {
-    height: 70%;
+    height: 60px;
+    width: 100%;
   }
 
   #trustheader {
-    margin-bottom: 1.2rem;
-
+    padding-top: 24px;
+    margin-bottom: 0.65rem;
+    text-align: center;
   }
 
   #trustheader>h2 {
-    font-size: 32px !important;
+    font-size: 28px !important;
+    margin: 0;
   }
 
   .trustedSwiper>.swiper-wrapper>.swiper-slide>#trust-img {
-    height: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   #trust-img>img {
-    height: 70px;
-    width: 100px;
+    height: 48px;
+    width: auto;
+    max-width: 110px;
+    object-fit: contain;
     opacity: 100%;
   }
 
-  @media (max-width:450px) {
-    .trustedSwiper>.swiper-wrapper>.swiper-slide>#trust-img {
-      height: 60%;
+  @media (max-width:768px) {
+    #slidetrust {
+      height: 21vh;
+      min-height: 140px;
+      max-height: 175px;
+      width: 100%;
+      padding-bottom: 10px;
     }
 
-    #slidetrust {
-      height: 40vh;
-      width: 100%;
+    #trustheader {
+      padding-top: 20px;
+      margin-bottom: 0.45rem;
+    }
+
+    #trustheader>h2 {
+      font-size: 22px !important;
+    }
+
+    .trustedSwiper {
+      height: 48px;
+    }
+
+    .trustedSwiper>.swiper-wrapper>.swiper-slide>#trust-img {
+      height: 100%;
+    }
+
+    #trust-img>img {
+      height: 38px;
+      width: auto;
+      max-width: 90px;
     }
 
     .swiper-pagination {
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
   }
 </style>
