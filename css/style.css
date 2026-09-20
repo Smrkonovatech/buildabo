@@ -5076,7 +5076,7 @@ body.lead-open { overflow: hidden; }
 .lead-popup {
   position: fixed;
   inset: 0;
-  z-index: 100;
+  z-index: 99999 !important;
   display: grid;
   place-items: center;
   padding: 24px;
@@ -5089,6 +5089,7 @@ body.lead-open { overflow: hidden; }
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
+  z-index: 99999 !important;
 }
 .lead-popup-backdrop {
   position: absolute;
@@ -5097,6 +5098,7 @@ body.lead-open { overflow: hidden; }
 }
 .lead-popup-panel {
   position: relative;
+  z-index: 100000 !important;
   width: min(480px, 100%);
   max-height: min(90vh, 760px);
   overflow: auto;
@@ -5682,8 +5684,9 @@ select.lead-card-input option {
     padding-left: 8px !important;
   }
   .ad-features-mob {
-    margin: 4px 0 8px !important;
+    margin: 4px auto 8px !important;
     padding: 2px 0 !important;
+    max-width: 298px !important;
     width: 100% !important;
   }
   .ad-features-mob .ad-feature-item {
@@ -5707,12 +5710,12 @@ select.lead-card-input option {
     font-size: 9.5px !important;
     line-height: 1.18 !important;
   }
-  /* Buttons centered on mobile */
+  /* Buttons centered on mobile, aligned with icons in same line */
   .ad-hero-ctas {
     margin: 0 auto 7px !important;
     align-items: center !important;
     text-align: center !important;
-    max-width: 290px !important;
+    max-width: 298px !important;
     width: 100% !important;
     gap: 6px !important;
   }
