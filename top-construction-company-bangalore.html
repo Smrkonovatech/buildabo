@@ -31,20 +31,23 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" />
   </noscript>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" />
-  <link rel="preload" as="image" href="assets/nithin-residence.webp" fetchpriority="high" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" />
+  </noscript>
+  <link rel="preload" as="image" href="assets/hero-house-mobile.webp" media="(max-width: 768px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/hero-house-desktop.webp" media="(min-width: 769px)" fetchpriority="high" />
   <link rel="preload" as="font" href="fonts/Satoshi-Regular.woff2" type="font/woff2" crossorigin />
+  <link rel="preload" as="font" href="fonts/Satoshi-Medium.woff2" type="font/woff2" crossorigin />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="preload" as="font" href="fonts/Satoshi-Black.woff2" type="font/woff2" crossorigin />
-  <link rel="preload" as="script" href="js/projects.js?v=vinayka7" />
-  <link rel="preload" as="script" href="js/chrome.js?v=adform22" />
-  <link rel="preload" as="script" href="js/main.js?v=leadpush4" />
-   <script>
+  <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="vu fu pu gu bu init Hu zu qu ju Gu Xl Bu Qu Du eh ih nh sh rh oh capture getExtension Uu cu hh calculateEventProperties uh register register_once register_for_session unregister unregister_for_session gh Nu dh getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync mh identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset yh shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty fh Xu createPersonProfile setInternalOrTestUser ph wu opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ju debug Yl Os getPageViewId captureTraceFeedback captureTraceMetric Ru".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_BPCvV4BeHKAYxBaZ4cW5apjuyWcMQMBM655S87n9c7JX', {
         api_host: 'https://us.i.posthog.com',
         defaults: '2026-05-30',
-        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+        person_profiles: 'identified_only',
+        disable_session_recording: false
     })
   </script>
   
@@ -945,7 +948,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div class="swiper-slide flex flex-col items-center justify-center">
             <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
-              <img src="./assets/kajaria-logo.webp" alt="iDecorwala" class="max-h-full max-w-full object-contain" />
+              <img src="./assets/kajaria-logo.webp" alt="iDecorwala" width="160" height="80" loading="lazy" decoding="async" class="max-h-full max-w-full object-contain" />
             </div>
           </div>
 
@@ -953,7 +956,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div class="swiper-slide flex flex-col items-center justify-center">
             <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
-              <img src="./assets/jsw-logo.webp" alt="Artisan" class="max-h-full max-w-full object-contain" />
+              <img src="./assets/jsw-logo.webp" alt="Artisan" width="160" height="80" loading="lazy" decoding="async" class="max-h-full max-w-full object-contain" />
             </div>
           </div>
 
@@ -961,7 +964,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- Partner 3 -->
           <div class="swiper-slide flex flex-col items-center justify-center">
             <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
-              <img src="./assets/nippon_paint_logo-1668690725659656321db4e39.webp" alt="Nippon Paint"
+              <img src="./assets/nippon_paint_logo-1668690725659656321db4e39.webp" alt="Nippon Paint" width="160" height="80" loading="lazy" decoding="async"
                 class="max-h-full max-w-full object-contain" />
             </div>
           </div>
@@ -970,7 +973,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- Partner 4 -->
           <div class="swiper-slide flex flex-col items-center justify-center">
             <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
-              <img src="./assets/drfixit-logo.webp" alt="Urban Ladder" class="max-h-full max-w-full object-contain" />
+              <img src="./assets/drfixit-logo.webp" alt="Urban Ladder" width="160" height="80" loading="lazy" decoding="async" class="max-h-full max-w-full object-contain" />
             </div>
           </div>
 
@@ -978,7 +981,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- Partner 5 -->
           <div class="swiper-slide flex flex-col items-center justify-center">
             <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
-              <img src="./assets/acc-logo.webp" alt="Spitze" class="max-h-full max-w-full object-contain" />
+              <img src="./assets/acc-logo.webp" alt="Spitze" width="160" height="80" loading="lazy" decoding="async" class="max-h-full max-w-full object-contain" />
             </div>
           </div>
 
@@ -986,7 +989,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- Partner 6 -->
           <div class="swiper-slide flex flex-col items-center justify-center">
             <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
-              <img src="./assets/fev02.webp" alt="Fevicol" class="max-h-full max-w-full object-contain" />
+              <img src="./assets/fev02.webp" alt="Fevicol" width="160" height="80" loading="lazy" decoding="async" class="max-h-full max-w-full object-contain" />
             </div>
           </div>
 
@@ -994,7 +997,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- More partners -->
           <div class="swiper-slide flex flex-col items-center justify-center">
             <div class="h-20 w-40 flex items-center justify-center" id="trust-img">
-              <img src="./assets/kamdhenu-logo.webp" alt="Partner" class="max-h-full max-w-full object-contain" />
+              <img src="./assets/kamdhenu-logo.webp" alt="Partner" width="160" height="80" loading="lazy" decoding="async" class="max-h-full max-w-full object-contain" />
             </div>
           </div>
 
@@ -1522,6 +1525,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           class="ad-estimate-mobile-villa-img" 
           src="assets/estimate-villa-mobile.webp" 
           alt="buildabo modern luxury home" 
+          width="1024"
+          height="352"
         />
       </div>
     </section>
@@ -1572,7 +1577,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </nav>
 
   <script>
-    (function () { var m = window.matchMedia("(max-width:767px)").matches; window.__buildaboMobile = m; function s(u) { document.write('<script src="' + u + '"><\/script>'); } if (!m) { s("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"); s("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"); s("https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"); } if (document.querySelector(".swiper")) s("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"); })();
+    (function () { var m = window.matchMedia("(max-width:767px)").matches; window.__buildaboMobile = m; function s(u) { document.write('<script src="' + u + '"><\/script>'); } if (!m) { s("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"); s("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"); s("https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"); } })();
   </script>
   <script src="js/projects.js?v=vinayka7"></script>
   <script src="js/chrome.js?v=adform22"></script>
