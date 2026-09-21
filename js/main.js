@@ -465,6 +465,17 @@ function initMain() {
         }
       );
     });
+  } else {
+    // On mobile / reduced-motion: GSAP is not loaded, so js-fade elements
+    // must be made immediately visible — otherwise they stay opacity:0 forever.
+    document.querySelectorAll(".js-fade").forEach((el) => {
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    });
+    document.querySelectorAll(".reveal img").forEach((img) => {
+      img.style.clipPath = "none";
+      img.style.transform = "none";
+    });
   }
 
   const track = document.querySelector(".service-track");
