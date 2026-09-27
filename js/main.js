@@ -125,13 +125,54 @@ function initMain() {
   }
 
   if (typeof Swiper !== "undefined" && document.querySelector(".hero-swiper")) {
-    new Swiper(".hero-swiper", {
+    const updateHeroStage = (sw) => {
+      if (!sw || !sw.slides) return;
+      const activeSlide = sw.slides[sw.activeIndex];
+      const isCamp = activeSlide && (activeSlide.classList.contains("hero-slide-campaign") || Boolean(activeSlide.querySelector(".ad-estimate-card-wrap")));
+      const heroStage = document.querySelector(".hero-stage");
+      if (heroStage) {
+        heroStage.classList.toggle("is-campaign-active", Boolean(isCamp));
+      }
+    };
+
+    const heroSwiper = new Swiper(".hero-swiper", {
       effect: "fade",
       fadeEffect: { crossFade: true },
       loop: !skipAnim,
       speed: isMobile ? 500 : 900,
-      autoplay: skipAnim ? false : { delay: 5000, disableOnInteraction: false },
+      autoplay: skipAnim ? false : { delay: 6000, disableOnInteraction: false },
       pagination: { el: ".hero-pagination", type: "progressbar" },
+      on: {
+        init: function () {
+          updateHeroStage(this);
+        },
+        slideChange: function () {
+          updateHeroStage(this);
+        },
+      },
+    });
+
+    const heroForm = document.querySelector(".hero-slide-campaign form");
+    if (heroForm && heroSwiper && heroSwiper.autoplay) {
+      heroForm.addEventListener("focusin", () => {
+        heroSwiper.autoplay.stop();
+      });
+    }
+
+    document.querySelectorAll("[data-hero-lead-btn]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const estCard = document.getElementById("hero-estimate-card");
+        const nameInput = document.getElementById("hero-est-name");
+        if (estCard && window.innerWidth >= 1025) {
+          e.preventDefault();
+          nameInput?.focus();
+        } else {
+          if (typeof window.openLeadPopup === "function") {
+            e.preventDefault();
+            window.openLeadPopup(true, btn.getAttribute("data-lead-mode") || "estimate");
+          }
+        }
+      });
     });
   }
 

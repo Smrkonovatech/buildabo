@@ -34,7 +34,12 @@
     content="House construction and interior designers in Bangalore. Home construction and interior design from one company." />
   <meta name="twitter:image" content="https://buildabo.in/assets/logo.png" />
 
-  <link rel="preload" as="image" href="assets/hero-1.webp?v=pdf1" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/hero-house-desktop.webp" fetchpriority="high" media="(min-width: 769px)" />
+  <link rel="preload" as="image" href="assets/hero-house-mobile.webp" fetchpriority="high" media="(max-width: 768px)" />
+  <link rel="preload" as="image" href="assets/september-offer-badge.webp?v=clear5" />
+  <link rel="preload" as="font" href="fonts/Satoshi-Black.woff2" type="font/woff2" crossorigin />
+  <link rel="preload" as="font" href="fonts/Satoshi-Regular.woff2" type="font/woff2" crossorigin />
+  <link rel="preload" as="image" href="assets/hero-1.webp?v=pdf1" />
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 
@@ -122,6 +127,253 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="hero-stage">
         <div class="swiper hero-swiper">
           <div class="swiper-wrapper">
+            <div class="swiper-slide hero-slide-campaign ad-hero-slide">
+              <picture class="ad-hero-bg-picture">
+                <source media="(max-width: 768px)" srcset="assets/hero-house-mobile.webp">
+                <img src="assets/hero-house-desktop.webp" alt="House construction in Bangalore by residential builders at buildabo" class="ad-hero-bg-img" fetchpriority="high" loading="eager" decoding="async" width="1600" height="800" />
+              </picture>
+              <div class="ad-hero-overlay"></div>
+
+              <div class="ad-hero-container">
+                <!-- LEFT COLUMN -->
+                <div class="ad-hero-left">
+                  
+                  <!-- September Offer Badge -->
+                  <div class="ad-offer-badge-wrap js-fade" data-y="16">
+                    <img
+                      src="assets/september-offer-badge.webp?v=clear5"
+                      srcset="assets/september-offer-badge@2x.webp 2x, assets/september-offer-badge@3x.webp 3x"
+                      alt="September Offer: ₹50 Off Per Sq.Ft - Offer ends 30 Sep 2026"
+                      class="ad-offer-badge-img"
+                      width="171"
+                      height="114"
+                      fetchpriority="high"
+                    />
+                  </div>
+
+                  <!-- Headline -->
+                  <h1 class="ad-hero-title js-fade" data-y="24" data-delay="0.06">
+                    <span class="ad-title-desk">Build Your Dream<br />Home in <span class="ad-highlight-gold">Bangalore</span></span>
+                    <span class="ad-title-mob">Build Your<br />Dream Home<br />in <span class="ad-highlight-gold">Bangalore</span></span>
+                  </h1>
+
+                  <!-- Price -->
+                  <div class="ad-hero-price-row js-fade" data-y="20" data-delay="0.1">
+                    <span class="ad-price-kicker">FROM</span>
+                    <div class="ad-price-main">
+                      <span class="ad-price-value">₹1,699</span>
+                      <span class="ad-price-unit">/sq.ft*</span>
+                    </div>
+                  </div>
+
+                  <!-- Subtitle -->
+                  <p class="ad-hero-sub js-fade" data-y="18" data-delay="0.14">
+                    Thoughtful Design. Quality Construction.<br />Hassle-Free Handover
+                  </p>
+
+                  <!-- 4 FEATURES ROW (MOBILE PLACEMENT) -->
+                  <div class="ad-features-row ad-features-mob js-fade" data-delay="0.16">
+                    <div class="ad-feature-item">
+                      <div class="ad-feature-icon">
+                        <img src="assets/icon-transparent-pricing.svg?v=d28" alt="" class="ad-feature-icon-img" width="22" height="22" />
+                      </div>
+                      <span class="ad-feature-label">Transparent<br>Pricing</span>
+                    </div>
+                    <div class="ad-feature-item">
+                      <div class="ad-feature-icon">
+                        <img src="assets/icon-custom-design.svg?v=d28" alt="" class="ad-feature-icon-img" width="24" height="24" />
+                      </div>
+                      <span class="ad-feature-label">Custom<br>Design</span>
+                    </div>
+                    <div class="ad-feature-item">
+                      <div class="ad-feature-icon">
+                        <img src="assets/icon-quality-materials.svg?v=d28" alt="" class="ad-feature-icon-img" width="22" height="22" />
+                      </div>
+                      <span class="ad-feature-label">Quality<br>Materials</span>
+                    </div>
+                    <div class="ad-feature-item">
+                      <div class="ad-feature-icon">
+                        <img src="assets/icon-free-estimation.svg?v=d28" alt="" class="ad-feature-icon-img" width="22" height="22" />
+                      </div>
+                      <span class="ad-feature-label">Free<br>Estimation</span>
+                    </div>
+                  </div>
+
+                  <!-- CTA Buttons -->
+                  <div class="ad-hero-ctas js-fade" data-y="16" data-delay="0.18">
+                    <a href="#hero-estimate-card" id="consultation-cta" class="ad-cta-btn ad-cta-solid" data-hero-lead-btn data-lead-mode="offer">
+                      Claim ₹50/sq.ft Offer &rarr;
+                    </a>
+                    <a href="#hero-estimate-card" id="hero-estimate-cta" class="ad-cta-btn ad-cta-outline" data-hero-lead-btn data-lead-mode="estimate">
+                      Get Free Estimate &rarr;
+                    </a>
+                  </div>
+
+                  <!-- Location & Skyline Row -->
+                  <div class="ad-location-skyline-row js-fade" data-delay="0.2">
+                    <div class="ad-location-wrap">
+                      <div class="ad-location-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                      </div>
+                      <div class="ad-location-text">
+                        <span>Serving Homeowners Across</span>
+                        <strong>Bangalore &amp; Nearby Areas</strong>
+                      </div>
+                    </div>
+                    <div class="ad-skyline-wrap" aria-hidden="true">
+                      <img src="assets/bangalore-skyline.webp?v=clear7" alt="Bangalore Skyline" class="ad-skyline-img" width="180" height="46" />
+                    </div>
+                  </div>
+
+                  <!-- Disclaimer -->
+                  <p class="ad-hero-disclaimer js-fade" data-delay="0.22">
+                    *T&amp;C Apply. Pricing may vary based on design, specifications and project requirements
+                  </p>
+
+                </div>
+
+                <!-- RIGHT COLUMN (DESKTOP) -->
+                <div class="ad-estimate-card-wrap js-fade swiper-no-swiping" data-y="24" data-delay="0.12">
+                  <div class="ad-estimate-card" id="hero-estimate-card">
+                    <div class="ad-card-head">
+                      <h2 class="ad-card-title">
+                        Get Your Free<br />
+                        <span class="ad-card-accent">Construction Estimate</span>
+                      </h2>
+                      <p class="ad-card-sub">
+                        Tell us a few details and our team will get back to you with a customised estimate.
+                      </p>
+                    </div>
+
+                    <form class="contact-form ad-card-form" name="hero-estimate" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+                      <input type="hidden" name="form-name" value="hero-estimate" />
+                      <input type="hidden" name="subject" value="New hero estimate lead from buildabo homepage" />
+                      <p class="contact-honeypot" aria-hidden="true" style="display:none;">
+                        <label>Leave blank <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+                      </p>
+
+                      <!-- Name Field -->
+                      <div class="ad-input-group">
+                        <span class="ad-input-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                          </svg>
+                        </span>
+                        <input class="ad-card-input" id="hero-est-name" type="text" name="name" required maxlength="120" placeholder="Full Name*" autocomplete="name" />
+                      </div>
+
+                      <!-- Phone Field with +91 -->
+                      <div class="ad-phone-wrap">
+                        <span class="ad-phone-prefix" aria-hidden="true">
+                          <svg class="ad-flag-icon" viewBox="0 0 24 16">
+                            <rect width="24" height="5.33" fill="#FF9933"/>
+                            <rect y="5.33" width="24" height="5.34" fill="#fff"/>
+                            <rect y="10.67" width="24" height="5.33" fill="#138808"/>
+                            <circle cx="12" cy="8" r="1.7" fill="none" stroke="#000080" stroke-width=".75"/>
+                          </svg>
+                          +91
+                        </span>
+                        <input class="ad-phone-input" id="hero-est-phone" type="tel" name="phone" required maxlength="15" placeholder="Mobile Number*" inputmode="numeric" autocomplete="tel-national" />
+                      </div>
+
+                      <!-- Location Dropdown -->
+                      <div class="ad-input-group">
+                        <span class="ad-input-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                            <circle cx="12" cy="9" r="2.5"/>
+                          </svg>
+                        </span>
+                        <select class="ad-card-input ad-card-select" id="hero-est-location" name="location" required aria-label="Location of your plot">
+                          <option value="" disabled selected>Location of your plot*</option>
+                          <option value="North Bangalore">North Bangalore</option>
+                          <option value="Sarjapur">Sarjapur</option>
+                          <option value="KR Puram">KR Puram</option>
+                          <option value="Hoskote">Hoskote</option>
+                          <option value="Chandapura">Chandapura</option>
+                          <option value="Devanahalli">Devanahalli</option>
+                          <option value="Vidyaranyapura">Vidyaranyapura</option>
+                          <option value="Other areas in Bangalore">Other areas in Bangalore</option>
+                        </select>
+                        <span class="ad-select-arrow" aria-hidden="true">
+                          <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M1 1.5L6 6.5L11 1.5"/>
+                          </svg>
+                        </span>
+                      </div>
+
+                      <!-- Approx Area Dropdown -->
+                      <div class="ad-input-group">
+                        <span class="ad-input-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                          </svg>
+                        </span>
+                        <select class="ad-card-input ad-card-select" id="hero-est-area" name="builtup_area" required aria-label="Approx Built-up Area">
+                          <option value="" disabled selected>Approx. Built-up Area (sq.ft)*</option>
+                          <option value="1,000 - 1,500 sq.ft">1,000 - 1,500 sq.ft</option>
+                          <option value="1,500 - 2,500 sq.ft">1,500 - 2,500 sq.ft</option>
+                          <option value="2,500 - 4,000 sq.ft">2,500 - 4,000 sq.ft</option>
+                          <option value="4,000+ sq.ft">4,000+ sq.ft</option>
+                        </select>
+                        <span class="ad-select-arrow" aria-hidden="true">
+                          <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M1 1.5L6 6.5L11 1.5"/>
+                          </svg>
+                        </span>
+                      </div>
+
+                      <button type="submit" class="ad-card-submit-btn">
+                        Get My Free Estimate &rarr;
+                      </button>
+
+                      <div class="ad-card-safe-notice">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        <span>Your information is safe with us.</span>
+                      </div>
+
+                      <p class="contact-form-status" role="status" aria-live="polite" hidden></p>
+                    </form>
+                  </div>
+
+                  <!-- 4 FEATURES ROW (DESKTOP PLACEMENT UNDER CARD) -->
+                  <div class="ad-features-row ad-features-desk">
+                    <div class="ad-feature-item">
+                      <div class="ad-feature-icon">
+                        <img src="assets/icon-transparent-pricing.svg?v=d28" alt="" class="ad-feature-icon-img" width="22" height="22" />
+                      </div>
+                      <span class="ad-feature-label">Transparent<br>Pricing</span>
+                    </div>
+                    <div class="ad-feature-item">
+                      <div class="ad-feature-icon">
+                        <img src="assets/icon-custom-design.svg?v=d28" alt="" class="ad-feature-icon-img" width="24" height="24" />
+                      </div>
+                      <span class="ad-feature-label">Custom<br>Design</span>
+                    </div>
+                    <div class="ad-feature-item">
+                      <div class="ad-feature-icon">
+                        <img src="assets/icon-quality-materials.svg?v=d28" alt="" class="ad-feature-icon-img" width="22" height="22" />
+                      </div>
+                      <span class="ad-feature-label">Quality<br>Materials</span>
+                    </div>
+                    <div class="ad-feature-item">
+                      <div class="ad-feature-icon">
+                        <img src="assets/icon-free-estimation.svg?v=d28" alt="" class="ad-feature-icon-img" width="22" height="22" />
+                      </div>
+                      <span class="ad-feature-label">Free<br>Estimation</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
             <div class="swiper-slide hero-slide-windows">
               <div class="hero-windows" aria-hidden="true">
                 <div class="hero-window hero-window--sm"><img src="assets/hero-1.webp?v=pdf1"
@@ -131,7 +383,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     height="1000" decoding="async" /></div>
               </div>
               <div class="slide-copy sm:mt-4">
-                <h1>House Construction and <br> Interior Designers in Bangalore</h1>
+                <h2>House Construction and <br> Interior Designers in Bangalore</h2>
                 <p>A premier house construction company and interior designers in Bangalore — residential builders
                   and interior designers for turnkey homes from foundation to handover.</p>
               </div>
