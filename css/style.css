@@ -753,14 +753,7 @@ body.lead-open { overflow: hidden; }
   line-height: 1.7;
 }
 .hero-nav {
-  position: absolute;
-  top: 95px;
-  right: 65px;
-  z-index: 4;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 22px;
+  display: none !important;
 }
 .hero-nav a {
   color: #fff;
