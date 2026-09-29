@@ -138,9 +138,15 @@ function initMain() {
     const heroSwiper = new Swiper(".hero-swiper", {
       effect: "fade",
       fadeEffect: { crossFade: true },
-      loop: !skipAnim,
-      speed: isMobile ? 500 : 900,
-      autoplay: skipAnim ? false : { delay: 6000, disableOnInteraction: false },
+      loop: !reduceMotion,
+      speed: isMobile ? 600 : 900,
+      autoplay: reduceMotion
+        ? false
+        : {
+            delay: isMobile ? 4500 : 6000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          },
       pagination: { el: ".hero-pagination", type: "progressbar" },
       on: {
         init: function () {
@@ -156,6 +162,11 @@ function initMain() {
     if (heroForm && heroSwiper && heroSwiper.autoplay) {
       heroForm.addEventListener("focusin", () => {
         heroSwiper.autoplay.stop();
+      });
+      heroForm.addEventListener("focusout", (e) => {
+        if (!heroForm.contains(e.relatedTarget)) {
+          heroSwiper.autoplay.start();
+        }
       });
     }
 
