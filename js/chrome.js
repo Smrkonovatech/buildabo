@@ -14,6 +14,7 @@
     const target = href.split("#")[0].split("?")[0];
     if (target === "index.html") return file === "index.html";
     if (target === "portfolio.html") return file === "portfolio.html" || file === "project.html";
+    if (target === "blog.html") return file === "blog.html";
     return file === target;
   }
 
@@ -66,6 +67,9 @@
       '<a href="portfolio.html"' +
       currentAttr("portfolio.html") +
       ">Portfolio</a>" +
+      '<a href="blog.html"' +
+      currentAttr("blog.html") +
+      ">Blog</a>" +
       '<a href="contact.html"' +
       currentAttr("contact.html") +
       ">Contact us</a>"
@@ -112,6 +116,9 @@
       "<li><a href=\"portfolio.html\"" +
       currentAttr("portfolio.html") +
       ">Portfolio</a></li>" +
+      "<li><a href=\"blog.html\"" +
+      currentAttr("blog.html") +
+      ">Blog</a></li>" +
       "<li><a href=\"contact.html\"" +
       currentAttr("contact.html") +
       ">Contact us</a></li>" +
@@ -167,6 +174,9 @@
           "<li><a href=\"portfolio.html\"" +
           currentAttr("portfolio.html") +
           ">Projects</a></li>" +
+          "<li><a href=\"blog.html\"" +
+          currentAttr("blog.html") +
+          ">Blog</a></li>" +
           "<li><a href=\"contact.html\"" +
           currentAttr("contact.html") +
           ">Contact</a></li>" +

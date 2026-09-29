@@ -1,0 +1,1637 @@
+/* ==========================================================================
+   buildabo - Blog & Vastu Construction Guide Stylesheet
+   Modern, architectural editorial styling aligned with buildabo design system
+   Fully responsive across all viewport sizes
+   ========================================================================== */
+
+/* Page Padding for Mobile Sticky Quick Actions */
+@media (max-width: 767px) {
+  body.page-shell {
+    padding-bottom: 72px;
+  }
+}
+
+/* Reading Progress Bar */
+.blog-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.05);
+  z-index: 1001;
+}
+
+.blog-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--terracotta, #AB5830), #E67E22);
+  transition: width 0.1s ease-out;
+}
+
+/* Breadcrumb Navigation */
+.blog-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #7A7568;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.blog-breadcrumb a {
+  color: var(--concrete, #4F4C43);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.blog-breadcrumb a:hover {
+  color: var(--terracotta, #AB5830);
+}
+
+.blog-breadcrumb-sep {
+  opacity: 0.5;
+}
+
+.blog-breadcrumb-current {
+  color: var(--terracotta, #AB5830);
+  font-weight: 500;
+  word-break: break-word;
+}
+
+/* Article Hero Header */
+.blog-article-header {
+  padding-top: 1rem;
+  padding-bottom: 2.25rem;
+  border-bottom: 1px solid rgba(79, 76, 67, 0.15);
+  margin-bottom: 2.5rem;
+}
+
+.blog-badge-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.blog-kicker-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(171, 88, 48, 0.1);
+  color: var(--terracotta, #AB5830);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(171, 88, 48, 0.25);
+}
+
+.blog-reading-time {
+  font-size: 0.8125rem;
+  color: #7A7568;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.blog-article-title {
+  font-family: var(--font-serif, "DM Serif Display", serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.15;
+  color: var(--forest, #2F3A1C);
+  margin-bottom: 1rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.blog-article-subtitle {
+  font-size: clamp(1.0625rem, 2vw, 1.35rem);
+  line-height: 1.5;
+  color: #5C584E;
+  margin-bottom: 1.75rem;
+  max-width: 900px;
+  font-weight: 400;
+}
+
+/* Author & Meta Row */
+.blog-author-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: #FAF6EF;
+  border: 1px solid rgba(215, 195, 164, 0.5);
+  border-radius: 12px;
+}
+
+@media (max-width: 640px) {
+  .blog-author-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 0.85rem;
+  }
+}
+
+.blog-author-info {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.blog-author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--forest, #2F3A1C);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.blog-author-name {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--forest, #2F3A1C);
+}
+
+.blog-author-role {
+  font-size: 0.8125rem;
+  color: #7A7568;
+}
+
+.blog-share-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+@media (max-width: 640px) {
+  .blog-share-actions {
+    width: 100%;
+    justify-content: flex-start;
+    border-top: 1px dashed rgba(215, 195, 164, 0.7);
+    padding-top: 0.75rem;
+  }
+}
+
+.blog-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid rgba(79, 76, 67, 0.15);
+  color: var(--concrete, #4F4C43);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.blog-share-btn:hover {
+  background: var(--terracotta, #AB5830);
+  color: #fff;
+  border-color: var(--terracotta, #AB5830);
+  transform: translateY(-2px);
+}
+
+.blog-share-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Hero Feature Image */
+.blog-hero-media {
+  margin-bottom: 3.5rem;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(215, 195, 164, 0.6);
+}
+
+.blog-hero-media img {
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  min-height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-hero-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(20, 24, 15, 0.88) 100%);
+  color: #FAF6EE;
+  padding: 2rem 1.5rem 1rem;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (max-width: 767px) {
+  .blog-hero-media {
+    margin-bottom: 2.25rem;
+    border-radius: 14px;
+    /* Increase hero image width by 20px on mobile screens */
+    margin-inline: -10px;
+    width: calc(100% + 20px);
+    max-width: calc(100% + 20px);
+  }
+  .blog-hero-media img {
+    /* Increased image height by 20px (from 240px to 260px+) */
+    min-height: 260px;
+    height: 300px;
+    object-fit: cover;
+  }
+  .blog-hero-caption {
+    padding: 1.5rem 1.15rem 0.85rem;
+    font-size: 0.8125rem;
+  }
+}
+
+.blog-hero-caption-title {
+  font-weight: 600;
+  color: #FFF;
+}
+
+.blog-hero-caption-loc {
+  opacity: 0.85;
+  font-size: 0.8125rem;
+}
+
+/* Two-column Editorial Layout with Sticky TOC */
+.blog-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .blog-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Table of Contents */
+.blog-toc-wrapper {
+  position: sticky;
+  top: 96px;
+  background: #FAF6EF;
+  border: 1px solid rgba(215, 195, 164, 0.6);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.blog-toc-header {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--forest, #2F3A1C);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(215, 195, 164, 0.6);
+  padding-bottom: 0.6rem;
+}
+
+.blog-toc-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.blog-toc-toggle-btn {
+  display: none;
+  background: #FFFFFF;
+  border: 1px solid rgba(171, 88, 48, 0.3);
+  color: var(--terracotta, #AB5830);
+  border-radius: 6px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
+}
+
+.blog-toc-toggle-btn:hover {
+  background: rgba(171, 88, 48, 0.08);
+}
+
+.toc-toggle-chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s ease;
+}
+
+@media (max-width: 1024px) {
+  .blog-toc-wrapper {
+    position: static;
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+  }
+  .blog-toc-header {
+    cursor: pointer;
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .blog-toc-toggle-btn {
+    display: inline-flex;
+  }
+  .blog-toc-content-collapse.is-collapsed {
+    display: none;
+  }
+  .blog-toc-content-collapse:not(.is-collapsed) {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(215, 195, 164, 0.6);
+    padding-top: 1rem;
+  }
+  .blog-toc-wrapper:has(.is-collapsed) .toc-toggle-chevron {
+    transform: rotate(180deg);
+  }
+}
+
+.blog-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.blog-toc-link {
+  font-size: 0.875rem;
+  color: #5C584E;
+  text-decoration: none;
+  display: block;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+}
+
+.blog-toc-link:hover,
+.blog-toc-link.is-active {
+  background: rgba(171, 88, 48, 0.08);
+  color: var(--terracotta, #AB5830);
+  font-weight: 600;
+  padding-left: 0.85rem;
+}
+
+.blog-toc-cta {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed rgba(215, 195, 164, 0.8);
+}
+
+.blog-toc-cta-box {
+  background: var(--forest, #2F3A1C);
+  color: #fff;
+  border-radius: 10px;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.blog-toc-cta-box h4 {
+  font-family: var(--font-serif, "DM Serif Display", serif);
+  font-size: 1.15rem;
+  color: #F2EBD9;
+  margin-bottom: 0.4rem;
+  font-weight: 400;
+}
+
+.blog-toc-cta-box p {
+  font-size: 0.8125rem;
+  color: #D7C3A4;
+  margin-bottom: 0.85rem;
+  line-height: 1.4;
+}
+
+.blog-toc-cta-btn {
+  display: inline-block;
+  background: var(--terracotta, #AB5830);
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  width: 100%;
+}
+
+.blog-toc-cta-btn:hover {
+  background: #8F4420;
+}
+
+/* Article Body Typography */
+.blog-content {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: #38352E;
+  min-width: 0;
+}
+
+.blog-content p {
+  margin-bottom: 1.5rem;
+}
+
+.blog-lead-paragraph {
+  font-size: clamp(1.125rem, 2.2vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--forest, #2F3A1C);
+  font-weight: 400;
+  margin-bottom: 1.75rem;
+}
+
+.blog-section {
+  margin-bottom: 4rem;
+  scroll-margin-top: 100px;
+}
+
+@media (max-width: 640px) {
+  .blog-section {
+    margin-bottom: 2.75rem;
+    scroll-margin-top: 80px;
+  }
+}
+
+.blog-section-header {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.blog-section-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--terracotta, #AB5830);
+  margin-bottom: 0.5rem;
+}
+
+.blog-section-title {
+  font-family: var(--font-serif, "DM Serif Display", serif);
+  font-size: clamp(1.65rem, 3.5vw, 2.35rem);
+  color: var(--forest, #2F3A1C);
+  line-height: 1.25;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  word-break: break-word;
+}
+
+.blog-section-lead {
+  font-size: 1.0625rem;
+  color: #5C584E;
+  line-height: 1.6;
+}
+
+/* Five Elements (Pancha Bhootas) Callout */
+.pancha-bhootas-box {
+  background: #FAF6EF;
+  border: 1px solid rgba(215, 195, 164, 0.7);
+  border-left: 4px solid var(--terracotta, #AB5830);
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin: 2rem 0 2.5rem;
+}
+
+@media (max-width: 640px) {
+  .pancha-bhootas-box {
+    padding: 1.25rem;
+    margin: 1.5rem 0 2rem;
+  }
+}
+
+.pancha-bhootas-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--forest, #2F3A1C);
+  margin-bottom: 0.5rem;
+}
+
+.pancha-bhootas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.bhoota-item {
+  background: #fff;
+  border: 1px solid rgba(215, 195, 164, 0.6);
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bhoota-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.bhoota-element {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--terracotta, #AB5830);
+}
+
+.bhoota-sanskrit {
+  font-size: 0.75rem;
+  color: #7A7568;
+}
+
+/* Why Vastu Matters Cards */
+.vastu-why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 480px) {
+  .vastu-why-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+}
+
+.vastu-why-card {
+  background: #FFFDF9;
+  border: 1px solid rgba(215, 195, 164, 0.7);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .vastu-why-card {
+    padding: 1.25rem;
+  }
+}
+
+.vastu-why-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--terracotta, #AB5830);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.vastu-why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  border-color: var(--sandstone, #D7C3A4);
+}
+
+.vastu-why-card:hover::before {
+  opacity: 1;
+}
+
+.vastu-why-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(171, 88, 48, 0.1);
+  color: var(--terracotta, #AB5830);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.vastu-why-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+}
+
+.vastu-why-title {
+  font-family: var(--font-primary, "Satoshi", sans-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--forest, #2F3A1C);
+  margin-bottom: 0.6rem;
+}
+
+.vastu-why-text {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #5C584E;
+  margin: 0;
+}
+
+/* ==========================================================================
+   THE 9 VASTU ZONES SHOWCASE SECTION
+   Faithfully matching the reference banner with image cards, elements & benefits
+   ========================================================================== */
+.vastu-showcase-section {
+  background: #FCFAF6;
+  border: 1px solid rgba(215, 195, 164, 0.8);
+  border-radius: 20px;
+  padding: clamp(1.75rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2.5rem);
+  margin: 3.5rem 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .vastu-showcase-section {
+    border-radius: 14px;
+    padding: 1.5rem 1rem;
+    margin: 2.5rem 0;
+  }
+}
+
+.vastu-showcase-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 2.25rem;
+  position: relative;
+}
+
+.vastu-showcase-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7A7568;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.vastu-showcase-eyebrow::before,
+.vastu-showcase-eyebrow::after {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: #B8B0A2;
+}
+
+@media (max-width: 480px) {
+  .vastu-showcase-eyebrow {
+    letter-spacing: 0.1em;
+    font-size: 0.6875rem;
+  }
+  .vastu-showcase-eyebrow::before,
+  .vastu-showcase-eyebrow::after {
+    display: none;
+  }
+}
+
+.vastu-showcase-headline {
+  font-family: var(--font-serif, "DM Serif Display", serif);
+  font-size: clamp(1.75rem, 4.5vw, 2.85rem);
+  font-weight: 400;
+  color: var(--forest, #2F3A1C);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  word-break: break-word;
+}
+
+.vastu-showcase-headline span {
+  color: var(--terracotta, #AB5830);
+}
+
+.vastu-showcase-subhead {
+  font-size: clamp(0.9375rem, 1.8vw, 1.0625rem);
+  color: #6B665A;
+  line-height: 1.6;
+}
+
+/* 9 Zones Grid Layout */
+.vastu-zones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 1024px) {
+  .vastu-zones-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .vastu-zones-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Individual Zone Card */
+.vastu-zone-card {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  background: #FFFFFF;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(215, 195, 164, 0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+@media (max-width: 480px) {
+  .vastu-zone-card {
+    grid-template-columns: 116px 1fr;
+    min-height: 116px;
+  }
+}
+
+.vastu-zone-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  border-color: rgba(171, 88, 48, 0.4);
+}
+
+.vastu-zone-media {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 100px;
+}
+
+.vastu-zone-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.vastu-zone-card:hover .vastu-zone-media img {
+  transform: scale(1.08);
+}
+
+.vastu-zone-content {
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .vastu-zone-content {
+    padding: 0.7rem 0.75rem;
+  }
+}
+
+/* Specific Zone Color Themes matching the reference image */
+.vastu-zone-card.zone-nw .vastu-zone-content {
+  background: #F0F7FB;
+}
+.vastu-zone-card.zone-north .vastu-zone-content {
+  background: #FCF8EE;
+}
+.vastu-zone-card.zone-ne .vastu-zone-content {
+  background: #F0F8FF;
+}
+.vastu-zone-card.zone-west .vastu-zone-content {
+  background: #FDF6ED;
+}
+.vastu-zone-card.zone-south .vastu-zone-content {
+  background: #FAF5EE;
+}
+.vastu-zone-card.zone-se .vastu-zone-content {
+  background: #FFF2ED;
+}
+.vastu-zone-card.zone-sw .vastu-zone-content {
+  background: #F2F8F2;
+}
+.vastu-zone-card.zone-brahma .vastu-zone-content {
+  background: #F7F3FC;
+}
+.vastu-zone-card.zone-east .vastu-zone-content {
+  background: #FFF8EE;
+}
+
+.vastu-zone-icon {
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vastu-zone-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.vastu-zone-direction {
+  font-size: 0.875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #A34825;
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+}
+
+.vastu-zone-sub {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #5C584E;
+  line-height: 1.3;
+}
+
+.vastu-zone-guideline {
+  font-size: 0.725rem;
+  color: #7A7568;
+  margin-top: 0.35rem;
+  line-height: 1.35;
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .vastu-zone-guideline {
+    display: block;
+  }
+}
+
+/* Good Vibes Decorative Badge */
+.good-vibes-badge-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.good-vibes-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(215, 195, 164, 0.7);
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+}
+
+.good-vibes-badge-icon {
+  width: 24px;
+  height: 24px;
+  color: #2F6F4E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.good-vibes-badge-text {
+  font-family: var(--font-serif, "DM Serif Display", serif);
+  font-size: 1.1rem;
+  color: #2F6F4E;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Bottom Benefits Bar */
+.vastu-benefits-bar {
+  background: #FFFFFF;
+  border: 1px solid rgba(215, 195, 164, 0.6);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 768px) {
+  .vastu-benefits-bar {
+    padding: 1.25rem 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+}
+
+.vastu-benefits-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .vastu-benefits-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    width: 100%;
+  }
+  .vastu-benefit-item:last-child {
+    grid-column: span 2;
+    justify-content: center;
+  }
+}
+
+.vastu-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--forest, #2F3A1C);
+}
+
+.vastu-benefit-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #F5EFE6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--forest, #2F3A1C);
+  flex-shrink: 0;
+}
+
+.vastu-benefit-icon svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+.vastu-showcase-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: #1B3F2F;
+  color: #FAF6EE;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(27, 63, 47, 0.25);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .vastu-showcase-cta {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+}
+
+.vastu-showcase-cta:hover {
+  background: #132E22;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(27, 63, 47, 0.35);
+  color: #FFFFFF;
+}
+
+.vastu-showcase-cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.vastu-showcase-cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   ROOM-BY-ROOM VASTU LAYOUT GUIDE (Responsive Table / Card Transformation)
+   ========================================================================== */
+.room-guide-table-wrapper {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 12px;
+  border: 1px solid rgba(215, 195, 164, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.room-guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #FFFDF9;
+  text-align: left;
+  font-size: 0.9375rem;
+}
+
+.room-guide-table th {
+  background: #733617;
+  color: #FFFDF9;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  padding: 1rem 1.25rem;
+}
+
+.room-guide-table td {
+  padding: 1.15rem 1.25rem;
+  border-bottom: 1px solid rgba(215, 195, 164, 0.4);
+  vertical-align: top;
+  color: #38352E;
+  line-height: 1.5;
+}
+
+.room-guide-table tr:last-child td {
+  border-bottom: none;
+}
+
+.room-guide-table tr:nth-child(even) {
+  background: #FAF6EF;
+}
+
+.room-name-cell {
+  font-weight: 700;
+  color: var(--forest, #2F3A1C);
+  white-space: nowrap;
+}
+
+.direction-badge-cell {
+  display: inline-block;
+  background: rgba(171, 88, 48, 0.12);
+  color: #A34825;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+/* Responsive Table Transformation for Mobile (< 768px) */
+@media (max-width: 768px) {
+  .room-guide-table-wrapper {
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+    margin: 1.5rem 0;
+  }
+  .room-guide-table,
+  .room-guide-table thead,
+  .room-guide-table tbody,
+  .room-guide-table th,
+  .room-guide-table td,
+  .room-guide-table tr {
+    display: block;
+  }
+  .room-guide-table thead {
+    display: none;
+  }
+  .room-guide-table tr {
+    background: #FFFDF9;
+    border: 1px solid rgba(215, 195, 164, 0.7);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    padding: 1.15rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  }
+  .room-guide-table td {
+    border: none;
+    padding: 0.3rem 0;
+  }
+  .room-name-cell {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--forest, #2F3A1C);
+    margin-bottom: 0.2rem;
+  }
+  .direction-badge-cell {
+    margin-bottom: 0.4rem;
+  }
+  .room-guide-table td[data-label="Key Guidelines"] {
+    color: #5C584E;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    margin-top: 0.25rem;
+  }
+}
+
+/* ==========================================================================
+   VASTU COLOR SCHEMES & INTERIOR FINISHES
+   ========================================================================== */
+.vastu-colors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 520px) {
+  .vastu-colors-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+}
+
+.vastu-color-card {
+  background: #FFFDF9;
+  border: 1px solid rgba(215, 195, 164, 0.7);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: all 0.25s ease;
+}
+
+@media (max-width: 480px) {
+  .vastu-color-card {
+    padding: 1.25rem;
+  }
+}
+
+.vastu-color-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.vastu-color-swatches {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.color-swatch-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease;
+}
+
+.color-swatch-circle:hover {
+  transform: scale(1.15);
+}
+
+.vastu-color-zone {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--terracotta, #AB5830);
+  margin-bottom: 0.35rem;
+}
+
+.vastu-color-theme {
+  font-family: var(--font-primary, "Satoshi", sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--forest, #2F3A1C);
+  margin-bottom: 0.6rem;
+}
+
+.vastu-color-desc {
+  font-size: 0.875rem;
+  color: #5C584E;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   CRITICAL VASTU PITFALLS IN BENGALURU
+   ========================================================================== */
+.vastu-pitfalls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 520px) {
+  .vastu-pitfalls-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+}
+
+.vastu-pitfall-card {
+  background: #FFF8F6;
+  border: 1px solid rgba(220, 80, 50, 0.25);
+  border-radius: 12px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+@media (max-width: 480px) {
+  .vastu-pitfall-card {
+    padding: 1.25rem;
+  }
+}
+
+.pitfall-icon-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.pitfall-alert-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(220, 53, 69, 0.15);
+  color: #DC3545;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pitfall-alert-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+.pitfall-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #8C2518;
+}
+
+.pitfall-text {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #5C4540;
+  margin-bottom: 0.85rem;
+}
+
+.pitfall-remedy {
+  font-size: 0.8125rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(215, 195, 164, 0.5);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  color: var(--forest, #2F3A1C);
+  line-height: 1.4;
+}
+
+.pitfall-remedy strong {
+  color: var(--terracotta, #AB5830);
+}
+
+/* ==========================================================================
+   READY TO BUILD CTA / LEAD CAPTURE SECTION (From PDF Page 2)
+   Uses buildabo's phone, location, and company details
+   ========================================================================== */
+.vastu-cta-banner {
+  background: linear-gradient(135deg, #242E16 0%, #1A220F 100%);
+  color: #FFFDF9;
+  border-radius: 20px;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  margin: 4rem 0 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .vastu-cta-banner {
+    padding: 2rem 1.25rem;
+    border-radius: 16px;
+    margin: 3rem 0 1.5rem;
+  }
+}
+
+.vastu-cta-banner::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(171, 88, 48, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.vastu-cta-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .vastu-cta-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+}
+
+.vastu-cta-title {
+  font-family: var(--font-serif, "DM Serif Display", serif);
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  line-height: 1.2;
+  color: #F2EBD9;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+  word-break: break-word;
+}
+
+.vastu-cta-desc {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #D7C3A4;
+  margin-bottom: 2rem;
+}
+
+.vastu-company-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.vastu-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.9375rem;
+  color: #FAF6EF;
+}
+
+.vastu-contact-item a {
+  color: #FAF6EF;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.vastu-contact-item a:hover {
+  color: var(--terracotta, #AB5830);
+}
+
+.vastu-contact-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--terracotta, #AB5830);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* CTA Lead Form */
+.vastu-lead-card {
+  background: #FFFDF9;
+  border-radius: 16px;
+  padding: 2rem;
+  color: var(--forest, #2F3A1C);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 640px) {
+  .vastu-lead-card {
+    padding: 1.5rem 1.15rem;
+    border-radius: 12px;
+  }
+}
+
+.vastu-lead-card h3 {
+  font-family: var(--font-serif, "DM Serif Display", serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.35rem;
+  color: var(--forest, #2F3A1C);
+}
+
+.vastu-lead-card p {
+  font-size: 0.875rem;
+  color: #7A7568;
+  margin-bottom: 1.25rem;
+}
+
+.vastu-form-group {
+  margin-bottom: 0.9rem;
+}
+
+.vastu-form-group input,
+.vastu-form-group select,
+.vastu-form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(79, 76, 67, 0.2);
+  background: #FAF6EF;
+  font-family: var(--font-primary, "Satoshi", sans-serif);
+  font-size: 1rem; /* 16px prevents iOS Safari auto-zoom */
+  color: var(--forest, #2F3A1C);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.vastu-form-group input:focus,
+.vastu-form-group select:focus,
+.vastu-form-group textarea:focus {
+  outline: none;
+  border-color: var(--terracotta, #AB5830);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(171, 88, 48, 0.15);
+}
+
+.vastu-form-submit {
+  width: 100%;
+  background: var(--terracotta, #AB5830);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(171, 88, 48, 0.3);
+}
+
+.vastu-form-submit:hover {
+  background: #8F4420;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(171, 88, 48, 0.4);
+}
+
+.vastu-form-legal {
+  font-size: 0.725rem;
+  color: #8C877B;
+  text-align: center;
+  margin-top: 0.75rem;
+  line-height: 1.35;
+}
+
+.vastu-form-legal a {
+  color: var(--terracotta, #AB5830);
+  text-decoration: underline;
+}
+
+/* FAQ Accordion */
+.vastu-faq-item {
+  background: #FFFDF9;
+  border: 1px solid rgba(215, 195, 164, 0.7);
+  border-radius: 10px;
+  margin-bottom: 0.85rem;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.vastu-faq-item:hover {
+  border-color: var(--sandstone, #D7C3A4);
+}
+
+.vastu-faq-trigger {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 1.15rem 1.25rem;
+  font-family: var(--font-primary, "Satoshi", sans-serif);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--forest, #2F3A1C);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .vastu-faq-trigger {
+    padding: 1rem;
+    font-size: 0.9375rem;
+  }
+}
+
+.vastu-faq-trigger svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.vastu-faq-item.is-open .vastu-faq-trigger svg {
+  transform: rotate(180deg);
+}
+
+.vastu-faq-panel {
+  padding: 0 1.25rem 1.15rem;
+  color: #5C584E;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .vastu-faq-panel {
+    padding: 0 1rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+.vastu-faq-item.is-open .vastu-faq-panel {
+  display: block;
+}
+
+/* Floating Action Buttons for Mobile */
+.vastu-mobile-quick-actions {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .vastu-mobile-quick-actions {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #FFFFFF;
+    border-top: 1px solid rgba(79, 76, 67, 0.15);
+    padding: 0.65rem 1rem;
+    z-index: 999;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+    gap: 0.75rem;
+  }
+
+  .vastu-mob-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1rem;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    min-height: 44px; /* Accessible touch target */
+  }
+
+  .vastu-mob-call {
+    background: #1B3F2F;
+    color: #FAF6EE;
+  }
+
+  .vastu-mob-enquire {
+    background: var(--terracotta, #AB5830);
+    color: #FFF;
+  }
+}
