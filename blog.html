@@ -52,7 +52,7 @@
   <link rel="preload" as="image" href="assets/blog/vastu-hero.jpg" />
 
   <link rel="stylesheet" href="css/style.css?v=adform27" />
-  <link rel="stylesheet" href="css/blog.css?v=vastu3" />
+  <link rel="stylesheet" href="css/blog.css?v=vastu5" />
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -867,12 +867,14 @@
                   </ul>
                 </div>
 
-                <!-- Lead Card Form -->
-                <div class="vastu-lead-card">
-                  <h3>Get Free Vastu Blueprint Review</h3>
-                  <p>Share your plot details. Our senior civil engineers will contact you within 24 hours.</p>
+                <!-- Integrated Lead Consultation Form (Single Container) -->
+                <div class="vastu-form-col">
+                  <div class="vastu-form-header">
+                    <h3 class="vastu-form-title">Get Free Vastu Blueprint Review</h3>
+                    <p class="vastu-form-desc">Share your plot details. Our senior civil engineers will contact you within 24 hours.</p>
+                  </div>
 
-                  <form class="contact-form" name="vastu-enquiry" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+                  <form class="contact-form vastu-consultation-form" name="vastu-enquiry" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
                     <input type="hidden" name="form-name" value="vastu-enquiry" />
                     <input type="hidden" name="subject" value="New Vastu Blog enquiry from buildabo.in" />
                     <p class="contact-honeypot" aria-hidden="true" style="display:none;">
@@ -916,7 +918,7 @@
                       <textarea name="message" id="vastu-notes" rows="2" placeholder="Tell us about your orientation or specific Vastu requirements (Optional)"></textarea>
                     </div>
 
-                    <button type="submit" class="vastu-form-submit">Request Vastu Consultation</button>
+                    <button type="submit" class="vastu-form-submit contact-submit">Request Vastu Consultation</button>
 
                     <p class="vastu-form-legal">
                       By submitting, you agree to our <a href="privacy.html">Privacy Policy</a>. Your details are safe with buildabo.
