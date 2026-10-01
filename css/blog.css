@@ -1713,3 +1713,404 @@
     color: #FFF;
   }
 }
+
+/* ==========================================================================
+   House Design & Drawings in Bangalore - Specific Architectural Components
+   ========================================================================== */
+
+/* Metadata Pill Box (Editorial Tag & Target Keywords) */
+.blog-editorial-meta-box {
+  background: var(--sand, #F7F3EB);
+  border: 1px solid rgba(171, 88, 48, 0.2);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.blog-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.blog-meta-label {
+  font-weight: 700;
+  color: var(--charcoal, #1C1B18);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 140px;
+}
+
+.blog-meta-value {
+  color: var(--concrete, #4F4C43);
+}
+
+.blog-meta-tag-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.blog-meta-tag {
+  background: #FFF;
+  border: 1px solid rgba(79, 76, 67, 0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  color: var(--terracotta, #AB5830);
+  font-weight: 500;
+}
+
+/* 3 Core Drawing Stages Grid */
+.drawing-stages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.drawing-stage-card {
+  background: #FFF;
+  border: 1px solid rgba(79, 76, 67, 0.15);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.drawing-stage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+  border-color: var(--terracotta, #AB5830);
+}
+
+.drawing-stage-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--terracotta, #AB5830);
+  background: rgba(171, 88, 48, 0.08);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  width: fit-content;
+  margin-bottom: 1rem;
+}
+
+.drawing-stage-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.35rem;
+  color: var(--charcoal, #1C1B18);
+  margin: 0 0 0.75rem;
+  line-height: 1.25;
+}
+
+.drawing-stage-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.drawing-stage-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--charcoal, #1C1B18);
+  line-height: 1.4;
+}
+
+.drawing-stage-list li::before {
+  content: "•";
+  color: var(--terracotta, #AB5830);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.drawing-stage-desc {
+  font-size: 0.875rem;
+  color: var(--concrete, #4F4C43);
+  line-height: 1.55;
+  border-top: 1px dashed rgba(79, 76, 67, 0.15);
+  padding-top: 1rem;
+  margin-top: auto;
+  font-style: italic;
+}
+
+/* Plot Dimensions Specification Table */
+.plot-specs-table-wrapper {
+  margin: 2rem 0;
+  overflow-x: auto;
+  border: 1px solid rgba(79, 76, 67, 0.15);
+  border-radius: 14px;
+  background: #FFF;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.plot-specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9375rem;
+}
+
+.plot-specs-table th {
+  background: var(--sand, #F7F3EB);
+  color: var(--charcoal, #1C1B18);
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.05rem;
+  padding: 1.15rem 1.25rem;
+  border-bottom: 2px solid rgba(171, 88, 48, 0.25);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.plot-specs-table td {
+  padding: 1.15rem 1.25rem;
+  border-bottom: 1px solid rgba(79, 76, 67, 0.1);
+  color: var(--concrete, #4F4C43);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.plot-specs-table tr:last-child td {
+  border-bottom: none;
+}
+
+.plot-specs-table tr:hover td {
+  background: rgba(247, 243, 235, 0.5);
+}
+
+.plot-tag-dim {
+  font-weight: 700;
+  color: var(--charcoal, #1C1B18);
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.plot-tag-area {
+  display: inline-block;
+  background: rgba(171, 88, 48, 0.09);
+  color: var(--terracotta, #AB5830);
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.plot-tag-type {
+  font-weight: 600;
+  color: var(--charcoal, #1C1B18);
+}
+
+/* 5 Critical Risks Cards */
+.risks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.risk-item-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  background: #FFF;
+  border: 1px solid rgba(79, 76, 67, 0.14);
+  border-left: 5px solid #C0392B;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.risk-item-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.risk-number-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(192, 57, 43, 0.1);
+  color: #C0392B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.25rem;
+  font-family: 'DM Serif Display', Georgia, serif;
+  flex-shrink: 0;
+}
+
+.risk-content-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.25rem;
+  color: var(--charcoal, #1C1B18);
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.risk-content-body {
+  font-size: 0.9375rem;
+  color: var(--concrete, #4F4C43);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.risk-solution-callout {
+  margin-top: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #1E6B47;
+  background: rgba(30, 107, 71, 0.08);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+}
+
+/* Interior Architecture Sync Grid */
+.interior-sync-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.interior-sync-card {
+  background: var(--sand, #F7F3EB);
+  border: 1px solid rgba(79, 76, 67, 0.12);
+  border-radius: 14px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.interior-sync-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: #FFF;
+  border: 1px solid rgba(171, 88, 48, 0.2);
+  color: var(--terracotta, #AB5830);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.interior-sync-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.interior-sync-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--charcoal, #1C1B18);
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.interior-sync-text {
+  font-size: 0.875rem;
+  color: var(--concrete, #4F4C43);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Cross-Blog Navigation Card */
+.blog-crosslink-card {
+  background: linear-gradient(135deg, var(--sand, #F7F3EB) 0%, #FFF 100%);
+  border: 1px solid rgba(171, 88, 48, 0.25);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 3rem 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+}
+
+.blog-crosslink-info {
+  flex: 1;
+}
+
+.blog-crosslink-kicker {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--terracotta, #AB5830);
+  margin-bottom: 0.35rem;
+}
+
+.blog-crosslink-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.4rem;
+  color: var(--charcoal, #1C1B18);
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.blog-crosslink-desc {
+  font-size: 0.9rem;
+  color: var(--concrete, #4F4C43);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.blog-crosslink-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--terracotta, #AB5830);
+  color: #FFF;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.blog-crosslink-btn:hover {
+  background: var(--terracotta-dark, #8C4422);
+  transform: translateX(3px);
+}
+
+@media (max-width: 1024px) {
+  .drawing-stages-grid {
+    grid-template-columns: 1fr;
+  }
+  .interior-sync-grid {
+    grid-template-columns: 1fr;
+  }
+  .blog-crosslink-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+

@@ -7,6 +7,7 @@
 
     # Explicit route for /blog and /blog/ -> blog.html
     RewriteRule ^blog/?$ blog.html [L,QSA]
+    RewriteRule ^blog/house-design-and-drawings-in-bangalore/?$ house-design-and-drawings-in-bangalore.html [L,QSA]
 
     # Clean URLs for all pages: serve .html if file without extension requested
     RewriteCond %{REQUEST_FILENAME} !-d
