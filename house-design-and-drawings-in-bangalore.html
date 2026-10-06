@@ -52,7 +52,7 @@
   <link rel="preload" as="image" href="assets/blog/house-design-drawings-hero.jpg" />
 
   <link rel="stylesheet" href="css/style.css?v=adform27" />
-  <link rel="stylesheet" href="css/blog.css?v=arch3" />
+  <link rel="stylesheet" href="css/blog.css?v=arch5" />
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -402,61 +402,88 @@
                 Spatial blueprints must adapt directly to local site dimensions and regulatory frameworks. In Bangalore, plot geometry, road widths, sun trajectories, and BBMP setback norms define whether your living spaces feel cramped or expansive:
               </p>
 
-              <!-- Plot Specifications Table (Faithfully reproducing PDF Table) -->
+              <!-- Plot Specifications Table (Responsive Desktop Table / Mobile Spec Cards) -->
               <div class="plot-specs-table-wrapper">
                 <table class="plot-specs-table" aria-label="Bangalore Residential Plot Dimensions, Typologies and Recommended Strategy">
                   <thead>
                     <tr>
-                      <th scope="col" style="min-width: 140px;">Plot Dimension</th>
-                      <th scope="col" style="min-width: 140px;">Built-Up Area</th>
-                      <th scope="col" style="min-width: 180px;">Common Typology</th>
-                      <th scope="col" style="min-width: 280px;">Recommended Strategy</th>
+                      <th scope="col" class="th-dim">Plot Dimension</th>
+                      <th scope="col" class="th-area">Built-Up Area</th>
+                      <th scope="col" class="th-type">Common Typology</th>
+                      <th scope="col" class="th-strategy">Recommended Strategy</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <span class="plot-tag-dim">30x40 Site</span>
-                        <div style="font-size: 0.75rem; color: #7A7568; margin-top: 0.2rem;">1,200 sq. ft. Plot</div>
+                    <tr class="plot-spec-row">
+                      <td class="plot-cell-dim">
+                        <div class="plot-dim-header-group">
+                          <div>
+                            <span class="plot-tag-dim">30x40 Site</span>
+                            <div class="plot-sub-dim">1,200 sq. ft. Plot</div>
+                          </div>
+                          <span class="plot-tag-area mob-only">1,200 sq. ft.</span>
+                        </div>
                       </td>
-                      <td>
+                      <td class="plot-cell-area desk-only">
                         <span class="plot-tag-area">1,200 sq. ft.</span>
                       </td>
-                      <td>
+                      <td class="plot-cell-type">
+                        <span class="plot-field-label">Common Typology</span>
                         <span class="plot-tag-type">3BHK Duplex / 2BHK + Rent</span>
                       </td>
-                      <td>
-                        <strong>Light shafts / cutouts for ventilation;</strong> covered parking bay integrated. Open floor plans maximize perceived volume while maintaining strict BBMP setbacks.
+                      <td class="plot-cell-strategy">
+                        <span class="plot-field-label">Recommended Strategy</span>
+                        <div class="plot-strategy-text">
+                          <strong>Light shafts / cutouts for ventilation;</strong> covered parking bay integrated. Open floor plans maximize perceived volume while maintaining strict BBMP setbacks.
+                        </div>
                       </td>
                     </tr>
-                    <tr>
-                      <td>
-                        <span class="plot-tag-dim">30x50 Site</span>
-                        <div style="font-size: 0.75rem; color: #7A7568; margin-top: 0.2rem;">1,500 sq. ft. Plot</div>
+                    <tr class="plot-spec-row">
+                      <td class="plot-cell-dim">
+                        <div class="plot-dim-header-group">
+                          <div>
+                            <span class="plot-tag-dim">30x50 Site</span>
+                            <div class="plot-sub-dim">1,500 sq. ft. Plot</div>
+                          </div>
+                          <span class="plot-tag-area mob-only">1,500 sq. ft.</span>
+                        </div>
                       </td>
-                      <td>
+                      <td class="plot-cell-area desk-only">
                         <span class="plot-tag-area">1,500 sq. ft.</span>
                       </td>
-                      <td>
+                      <td class="plot-cell-type">
+                        <span class="plot-field-label">Common Typology</span>
                         <span class="plot-tag-type">4BHK Duplex / G+2 Units</span>
                       </td>
-                      <td>
-                        <strong>Double-height living space,</strong> dedicated home office, open kitchen utility. Strategic courtyard cutouts illuminate central corridors naturally throughout Bangalore's monsoon and summer seasons.
+                      <td class="plot-cell-strategy">
+                        <span class="plot-field-label">Recommended Strategy</span>
+                        <div class="plot-strategy-text">
+                          <strong>Double-height living space,</strong> dedicated home office, open kitchen utility. Strategic courtyard cutouts illuminate central corridors naturally throughout Bangalore's monsoon and summer seasons.
+                        </div>
                       </td>
                     </tr>
-                    <tr>
-                      <td>
-                        <span class="plot-tag-dim">40x60 Site</span>
-                        <div style="font-size: 0.75rem; color: #7A7568; margin-top: 0.2rem;">2,400 sq. ft. Plot</div>
+                    <tr class="plot-spec-row">
+                      <td class="plot-cell-dim">
+                        <div class="plot-dim-header-group">
+                          <div>
+                            <span class="plot-tag-dim">40x60 Site</span>
+                            <div class="plot-sub-dim">2,400 sq. ft. Plot</div>
+                          </div>
+                          <span class="plot-tag-area mob-only">2,400 sq. ft.</span>
+                        </div>
                       </td>
-                      <td>
+                      <td class="plot-cell-area desk-only">
                         <span class="plot-tag-area">2,400 sq. ft.</span>
                       </td>
-                      <td>
+                      <td class="plot-cell-type">
+                        <span class="plot-field-label">Common Typology</span>
                         <span class="plot-tag-type">Luxury Villa / Residence</span>
                       </td>
-                      <td>
-                        <strong>Landscaped setback gardens,</strong> home theater, private hydraulic lift provision, servant quarters. Generous side setbacks provide all-around daylight and perimeter ventilation.
+                      <td class="plot-cell-strategy">
+                        <span class="plot-field-label">Recommended Strategy</span>
+                        <div class="plot-strategy-text">
+                          <strong>Landscaped setback gardens,</strong> home theater, private hydraulic lift provision, servant quarters. Generous side setbacks provide all-around daylight and perimeter ventilation.
+                        </div>
                       </td>
                     </tr>
                   </tbody>
@@ -687,7 +714,7 @@
                     Learn how to align your architectural floor plans with cosmic Pancha Bhoota energy zones, room orientations, and elemental balance for 30x40 and 40x60 plots.
                   </p>
                 </div>
-                <a href="blog.html" class="blog-crosslink-btn">
+                <a href="vastu-for-home-construction-in-bengaluru.html" class="blog-crosslink-btn">
                   Read Vastu Guide &rarr;
                 </a>
               </div>

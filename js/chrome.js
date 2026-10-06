@@ -14,7 +14,7 @@
     const target = href.split("#")[0].split("?")[0];
     if (target === "index.html") return file === "index.html";
     if (target === "portfolio.html") return file === "portfolio.html" || file === "project.html";
-    if (target === "blog.html") return file === "blog.html" || file === "house-design-and-drawings-in-bangalore.html";
+    if (target === "blog.html") return file === "blog.html" || file === "house-design-and-drawings-in-bangalore.html" || file === "vastu-for-home-construction-in-bengaluru.html";
     return file === target;
   }
 
